@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
+import { MainBanner } from "../component/mainBanner";
 import "../../styles/home.css";
 
 export const Home = () => {
@@ -8,6 +9,8 @@ export const Home = () => {
 
 	return (
 		<div className="text-center mt-5">
+
+			<MainBanner/>
 			<h1>ESTE SERÄ EL HOME PAGE!!</h1>
 			<p>
 				<img src={rigoImageUrl} />
