@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export const AuxiliarGreenOne = () => {
   return (
@@ -13,8 +13,8 @@ export const AuxiliarGreenOne = () => {
 
         <div className="d-flex justify-content-center align-items-center h-100">
           <div className="text-white auxiliar-banner-text">
-            <h1 className="mb-3 banner-maintext">Historias de éxito</h1>
-            <h4 className="mb-3 banner-description ">Hablada sobre como ayudamos a concretar campañas y fundraisings.</h4>
+            <h1 className="mb-3 banner-maintext">¡Historias de éxito!</h1>
+            <p className="mb-3 banner-description">Hablada sobre las causas que promueven</p>
           </div>
         </div>
 

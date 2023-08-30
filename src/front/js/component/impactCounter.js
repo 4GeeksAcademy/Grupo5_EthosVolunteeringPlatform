@@ -7,7 +7,7 @@ export const ImpactCounter = () => {
 
     return (
         <>
-            <div className='container mt-5'>
+            <div className='container white-space'>
                 <div className='row mt-5'>
                     <div className='col-sm-6'>
 

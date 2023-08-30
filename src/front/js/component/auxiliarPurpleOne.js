@@ -14,7 +14,7 @@ export const AuxiliarPurpleOne = () => {
         <div className="d-flex justify-content-center align-items-center h-100">
           <div className="text-white auxiliar-banner-text">
             <h1 className="mb-3 banner-maintext">Lo que nos impulsa</h1>
-            <h4 className="mb-3 banner-description ">Hablada sobre las causas que promueven</h4>
+            <p className="mb-3 banner-description ">Hablada sobre las causas que promueven</p>
           </div>
         </div>
 

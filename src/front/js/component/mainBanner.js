@@ -3,7 +3,7 @@ import React from 'react'
 export const MainBanner = () => {
   return (
     <>
-      <div id="carouselExampleCaptions" className="carousel slide hero-header fullwidth" data-bs-ride="carousel">
+      <div id="carouselExampleCaptions" className="carousel slide hero-header fullwidth mb-5" data-bs-ride="carousel">
 
         
         <div className="custom-shape-divider-top-1693265318">
@@ -15,8 +15,8 @@ export const MainBanner = () => {
         <div className="d-flex justify-content-center align-items-center h-100">
           <div className="text-white banner-text">
             <h1 className="mb-3 banner-maintext fade-in-top">Algo sobre el espíritu / visión de Ethos</h1>
-            <h4 className="mb-3 banner-description fade-in-top">Hablada sobre el objetivo, o lo que hacen...</h4>
-            <button className="cta-button btn-lg wobble-hor-bottom" href="#!" role="button">Buscar campañas</button>
+            <h4 className="mb-5 banner-description fade-in-top">Hablada sobre el objetivo, o lo que hacen...</h4>
+            <button className="cta-button btn-lg wobble-hor-bottom" href="#!" role="button">BUSCAR CAMPAÑAS</button>
           </div>
         </div>
 
