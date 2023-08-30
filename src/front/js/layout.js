@@ -37,6 +37,7 @@ const Layout = () => {
                     <Navbar />
                     <Routes>
                         <Route element={<Home />} path="/" />
+                        <Route element={<Acerca />} path="/Acerca" />
                         <Route element={<Impacto />} path="/Impacto" />
                         <Route element={<Causas />} path="/Causas" />
                         <Route element={<Campaign />} path="/Campaign" />
@@ -47,7 +48,6 @@ const Layout = () => {
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
-                    <Footer />
                 </ScrollToTop>
             </BrowserRouter>
         </div>
