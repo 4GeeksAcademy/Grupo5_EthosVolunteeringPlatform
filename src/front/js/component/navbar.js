@@ -27,33 +27,12 @@ export const Navbar = () => {
 									<a className="nav-link" aria-current="page" href="#">Impacto</a>
 								</Link>
 							</li>
-							<li className="nav-item dropdown">
-
-								<a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-									Causas
-								</a>
-
-								<ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li>
-										<Link to={"/Causas"} style={{ textDecoration: 'none' }}>
-											<a className="dropdown-item" href="#">Ambiente y Conservación</a>
-										</Link>
-
-									</li>
-									<li>
-										<Link to={"/Causas"} style={{ textDecoration: 'none' }}>
-											<a className="dropdown-item" href="#">Sociedad y Cultura</a>
-										</Link>
-									</li>
-									<li><a className="dropdown-divider"> </a></li>
-									<li>
-										<Link to={"/Causas"} style={{ textDecoration: 'none' }}>
-											<a className="dropdown-item" href="#">Salud y Bienestar</a>
-										</Link>
-									</li>
-								</ul>
-
+							<li className="nav-item">
+								<Link to={"/Causas"} style={{ textDecoration: 'none' }}>
+									<a className="nav-link" aria-current="page" href="#">Causas</a>
+								</Link>
 							</li>
+	
 							<li className="nav-item">
 								<Link to={"/Campaign"} style={{ textDecoration: 'none' }}>
 									<a className="nav-link" aria-current="page" href="#">Campañas</a>
