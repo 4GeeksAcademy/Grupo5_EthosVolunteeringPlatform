@@ -1,5 +1,4 @@
 import React from 'react';
-import CounterInput from 'react-bootstrap-counter';
 
 
 export const ImpactCounter = () => {
