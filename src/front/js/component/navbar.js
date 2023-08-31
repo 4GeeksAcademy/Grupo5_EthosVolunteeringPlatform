@@ -32,7 +32,7 @@ export const Navbar = () => {
 									<a className="nav-link" aria-current="page" href="#">Causas</a>
 								</Link>
 							</li>
-	
+
 							<li className="nav-item">
 								<Link to={"/Campaign"} style={{ textDecoration: 'none' }}>
 									<a className="nav-link" aria-current="page" href="#">Campañas</a>
@@ -48,12 +48,38 @@ export const Navbar = () => {
 									<a className="nav-link" aria-current="page">Contacto</a>
 								</Link>
 							</li>
-							<button type="button" class="btn login btn-primary ms-4">Login</button>
-							<button type="button" class="btn join btn-primary ms-2">Unirse</button>
+
+							<div class="dropdown">
+								<button class="btn login dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+									Login
+								</button>
+								<ul class="dropdown-menu">
+									<Link to={"/Contacto"} style={{ textDecoration: 'none' }}>
+										<li><a class="dropdown-item join-login-text" href="#">Como organización</a></li>
+										<li><a class="dropdown-item join-login-text" href="#">Como voluntario</a></li>
+									</Link>
+								</ul>
+							</div>
+							
+
+							<div class="dropdown">
+								<button class="btn join dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+									Unirse
+								</button>
+								<ul class="dropdown-menu">
+									<Link to={"/UnirseOrganizacion"} style={{ textDecoration: 'none' }}>
+										<li><a class="dropdown-item join-login-text" href="#">Como organización</a></li>	
+									</Link>
+									<Link to={"/UnirseVoluntario"} style={{ textDecoration: 'none' }}>
+									<li><a class="dropdown-item join-login-text" href="#">Como voluntario</a></li>
+									</Link>
+								</ul>
+							</div>
+
 						</ul>
 					</div>
 				</div>
-			</nav>
+			</nav >
 		</>
 	);
 };
