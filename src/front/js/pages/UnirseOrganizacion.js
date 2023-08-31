@@ -3,7 +3,7 @@ import React from 'react'
 export const UnirseOrganizacion = () => {
   return (
     <>
-      <div className='form-wrapper container mt-5'>
+      <div className='form-wrapper-org container mt-5'>
         <form>
           <div className='row mt-4'>
             <div className='form-header col'>
