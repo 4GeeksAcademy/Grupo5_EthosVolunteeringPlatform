@@ -348,6 +348,20 @@ body{
     border-radius: 25px;
     box-shadow: 3px 3px 5px #42424280;
 }
+.form-wrapper-contact{
+    width: 35%;
+    height: 550px;
+    padding: 2%;
+    background: #f5f5f5;
+    color: #f5f5f5;
+    background: linear-gradient(18deg, rgba(0,92,102,1) 0%, rgba(0,54,124,1) 47%, rgba(144,74,242,1) 100%);
+    border: 1px solid #dcdcdc;
+    border-radius: 25px;
+    box-shadow: 3px 3px 5px #42424280;
+}
+.color-text{
+    color: #C76A00;
+}
 
 .form-header{
     text-align: center;
