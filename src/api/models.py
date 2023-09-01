@@ -16,28 +16,17 @@ class User(db.Model):
 
     role= db.Column(db.Enum(Role), default= Role.VOLUNTEER)
 
-    # foreign keys
-    events= db.Column(db.Integer, db.ForeignKey("event.id"))
-    attended= db.Column(db.Integer, db.ForeignKey("attendance.id"))
-
     # relationships
-    created_evenAts= db.relationship("Event", back_populates="creator")
+    created_events= db.relationship("Event", back_populates="creator")
     attended_events= db.relationship("Attendance", back_populates="user")
     
     def __repr__(self):
         return f'User(email={self.email}, name={self.name})'
-
-    def serialize(self):
-        return {
-            "id": self.id,
-            "organization_name": self.organization.name,
-            "email": self.email,
-            "role": self.role
-        }
     
     def serialize(self):
         return {
             "id": self.id,
+            "organization_name": self.organization.name,
             "name": self.name,
             "last_name": self.last_name,
             "email": self.email,
@@ -50,13 +39,14 @@ class Event(db.Model):
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(255))
     location = db.Column(db.String(150), nullable=False)
-    date = db.Column( nullable=False)
+    event_date = db.Column(db.String(15), nullable=False)
+    event_time = db.Column(db.String(4), nullable=False)
     duration = db.Column(db.String(150), nullable=False)
     cost = db.Column(db.Integer)
 
     # foreign key
     creator_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-    assistance = db.Column(db.Integer, db.ForeignKey("attendance.id"))
+    # assistance = db.Column(db.Integer, db.ForeignKey("attendance.id"))
     # relationships
     creator = db.relationship("User", back_populates= "created_events")
     attendance = db.relationship("Attendance", back_populates= "event")
@@ -67,7 +57,8 @@ class Event(db.Model):
             "name": self.name,
             "description": self.description,
             "location": self.location,
-            "date": self.date,
+            "event_date": self.event_date,
+            "event_time": self.event_time,
             "duration": self.duration,
             "cost": self.cost,
             "creator_id": self.creator_id
@@ -91,3 +82,4 @@ class Attendance(db.Model):
             "user_id": self.user_id,
             "event_id": self.event_id
         }
+
