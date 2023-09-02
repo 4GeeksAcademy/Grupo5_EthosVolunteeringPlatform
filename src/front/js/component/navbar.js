@@ -43,35 +43,35 @@ export const Navbar = () => {
 									<a className="nav-link" aria-current="page">Partnerships</a>
 								</Link>
 							</li>
-							<li className="nav-item">
+							<li className="nav-item me-3">
 								<Link to={"/Contacto"} style={{ textDecoration: 'none' }}>
 									<a className="nav-link" aria-current="page">Contacto</a>
 								</Link>
 							</li>
 
-							<div class="dropdown">
-								<button class="btn login dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-									Login
+							<div className="dropdown">
+								<button className="btn login dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+									Ingresar
 								</button>
-								<ul class="dropdown-menu">
+								<ul className="dropdown-menu">
 									<Link to={"/Contacto"} style={{ textDecoration: 'none' }}>
-										<li><a class="dropdown-item join-login-text" href="#">Como organización</a></li>
-										<li><a class="dropdown-item join-login-text" href="#">Como voluntario</a></li>
+										<li><a className="dropdown-item join-login-text" href="#">Como organización</a></li>
+										<li><a className="dropdown-item join-login-text" href="#">Como voluntario</a></li>
 									</Link>
 								</ul>
 							</div>
 							
 
-							<div class="dropdown">
-								<button class="btn join dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-									Unirse
+							<div className="dropdown">
+								<button className="btn join dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+									Registrarse
 								</button>
-								<ul class="dropdown-menu">
+								<ul className="dropdown-menu">
 									<Link to={"/UnirseOrganizacion"} style={{ textDecoration: 'none' }}>
-										<li><a class="dropdown-item join-login-text" href="#">Como organización</a></li>	
+										<li><a className="dropdown-item join-login-text" href="#">Como organización</a></li>	
 									</Link>
 									<Link to={"/UnirseVoluntario"} style={{ textDecoration: 'none' }}>
-									<li><a class="dropdown-item join-login-text" href="#">Como voluntario</a></li>
+									<li><a className="dropdown-item join-login-text" href="#">Como voluntario</a></li>
 									</Link>
 								</ul>
 							</div>

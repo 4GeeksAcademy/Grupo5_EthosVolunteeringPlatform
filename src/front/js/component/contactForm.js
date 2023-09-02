@@ -17,7 +17,7 @@ export const ContactForm = () => {
             <input name="organization_name" class="form-control" required></input>
           </div>
           <div class="mb-3">
-            <label class="form-label">Email</label>
+            <label class="form-label">Correo electrónico</label>
             <input name="email" class="form-control" placeholder="name@example.com" required></input>
           </div>
           <select className="form-select color-text my-3" aria-label="Default select example">
