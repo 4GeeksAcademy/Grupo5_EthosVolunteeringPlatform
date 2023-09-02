@@ -63,6 +63,63 @@ def serve_any_other_file(path):
     response.cache_control.max_age = 0 # avoid cache memory
     return response
 
+@app.route('/register', methods=['POST'])
+def register():
+    data = request.json
+    if data is None or not data:
+        return jsonify({'error': 'No Json data provided'}), 400
+
+    # verificar si el usuario existe, verificar tipo de usuario
+    user = User.query.filter_by(email=data['email']).first()
+    if user:
+        return jsonify({'error': 'This user already exists'}), 409
+
+    is_organization = data.get('is_organization', None)
+    if is_organization:
+        required_keys = ['organization_name', 'email', 'password']
+        for key in required_keys:
+            value = data.get(key, None)
+            if value is None:
+                return jsonify({'error': 'Some fields are marked as required'}), 400
+        try:
+            new_organization_user = User(
+                organization_name=data['organization_name'],
+                email=data['email'],
+                password=data['password'],
+                role=Role.ORGANIZATION
+            )
+            db.session.add(new_organization_user)
+            db.session.commit()
+            print(new_organization_user)
+            return jsonify({'message': 'User created'}), 201
+        except Exception as error:
+            db.session.rollback()
+            print(error.args)
+            return jsonify({'message': 'Can not create user'}), 500
+    else:
+        required_keys = ['name', 'last_name', 'email', 'password']
+        for key in required_keys:
+            value = data.get(key, None)
+            if value is None:
+                return jsonify({'error': 'Some fields are marked as required'}), 400
+        try:
+            new_volunteer = User(
+                name=data['name'],
+                last_name=data['last_name'],
+                email=data['email'],
+                password=data['password'],
+                role=Role.VOLUNTEER
+            )
+            db.session.add(new_volunteer)
+            db.session.commit()
+            print(new_volunteer)
+            return jsonify({'message': 'User created'}), 201
+        except Exception as error:
+            db.session.rollback()
+            print(error.args)
+            return jsonify({'message': 'Can not create user'}), 500
+
+
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
