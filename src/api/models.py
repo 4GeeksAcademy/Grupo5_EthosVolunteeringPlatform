@@ -2,7 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 import enum
 db = SQLAlchemy()
 
-class Role(enum.Enum):
+class Role(str, enum.Enum):
     VOLUNTEER="Volunteer"
     ORGANIZATION="Organization"
 
@@ -42,7 +42,6 @@ class Event(db.Model):
     event_date = db.Column(db.String(15), nullable=False)
     event_time = db.Column(db.String(4), nullable=False)
     duration = db.Column(db.String(150), nullable=False)
-    cost = db.Column(db.Integer)
 
     # foreign key
     creator_id = db.Column(db.Integer, db.ForeignKey("user.id"))
@@ -60,7 +59,6 @@ class Event(db.Model):
             "event_date": self.event_date,
             "event_time": self.event_time,
             "duration": self.duration,
-            "cost": self.cost,
             "creator_id": self.creator_id
         }
 
