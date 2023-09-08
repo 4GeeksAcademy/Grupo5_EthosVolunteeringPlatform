@@ -31,16 +31,16 @@ export const FatFooter = () => {
 
                         </div>
 
-                        <div class="col-lg-3 col-md-6">
+                        <div className="col-lg-3 col-md-6">
                             <h4 className=" text-start text-light fw-normal mb-4 ">Contacto</h4>
-                            <p className="mb-3 text-start"><i class="fa fa-map-marker-alt me-3"></i>San José, Costa Rica</p>
-                            <p className="mb-3 text-start"><i class="fa fa-phone-alt me-3"></i>(+506) 2345 6755</p>
-                            <p className="mb-3 text-start"><i class="fa fa-envelope me-3"></i>info@ethos.org</p>
+                            <p className="mb-3 text-start"><i className="fa fa-map-marker-alt me-3"></i>San José, Costa Rica</p>
+                            <p className="mb-3 text-start"><i className="fa fa-phone-alt me-3"></i>(+506) 2345 6755</p>
+                            <p className="mb-3 text-start"><i className="fa fa-envelope me-3"></i>info@ethos.org</p>
                             <div className="d-flex pt-2">
-                                <a className="btn btn-outline-light btn-social" href="https://api.whatsapp.com/" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                                <a className="btn btn-outline-light btn-social" href="https://www.tiktok.com/" target="_blank"><i class="fab fa-tiktok"></i></a>
-                                <a className="btn btn-outline-light btn-social" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-                                <a className="btn btn-outline-light btn-social" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
+                                <a className="btn btn-outline-light btn-social" href="https://api.whatsapp.com/" target="_blank"><i className="fab fa-whatsapp"></i></a>
+                                <a className="btn btn-outline-light btn-social" href="https://www.tiktok.com/" target="_blank"><i className="fab fa-tiktok"></i></a>
+                                <a className="btn btn-outline-light btn-social" href="https://www.instagram.com/" target="_blank"><i className="fab fa-instagram"></i></a>
+                                <a className="btn btn-outline-light btn-social" href="https://www.facebook.com/" target="_blank"><i className="fab fa-facebook"></i></a>
                             </div>
                         </div>
 
@@ -50,12 +50,13 @@ export const FatFooter = () => {
                             <p className="text-start">9AM - 4PM</p>
                         </div>
 
-                        <div class="col-lg-3 col-md-6">
+                        <div className="col-lg-3 col-md-6">
                             <img className='img-fluid mb-3 float-left' src={logofooter} width="200px"></img>
 
                             <div className="floating">
-
-                                <button type="button" className="btn join-footer btn-primary ms-2">Unirse</button>
+                                <Link to='/UnirseVoluntario'>
+                                <button type="button" className="btn join-footer btn-primary ms-2">Únete</button>
+                                </Link>
                             </div>
                         </div>
 
@@ -64,7 +65,7 @@ export const FatFooter = () => {
                     </div>
 
 
-                    <div row g-5 justofy-content-center>
+                    <div className='row g-5 justofy-content-center'>
                         <div className="col-md text-center text-md-center mb-3 mb-md-2">
                             <div className="border-top mt-1"></div>
                         

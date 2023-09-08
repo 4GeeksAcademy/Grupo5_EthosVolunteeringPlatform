@@ -2,6 +2,7 @@ import React from 'react';
 import { CausasCards } from "../component/causasCards";
 import { FatFooter } from "../component/fatFooter";
 import { AuxiliarBlueOne } from '../component/auxiliarBlueOne';
+import { HistoriaBanner } from '../component/historiaBanner';
 
 export const Causas = () => {
   return (
@@ -9,7 +10,7 @@ export const Causas = () => {
       <div className="text-center mt-5">
 
         <div>
-          <h3>***Falta slider de "Causas destacadas"***</h3>
+          <HistoriaBanner/>
         </div>
 
         

@@ -31,7 +31,7 @@ export const Organizaciones = () => {
             <div className="text-white auxiliar-banner-text">
               <h1 className="mb-3 banner-maintext">ETHOS impulsa iniciativas</h1>
               <h1 className="mb-3 banner-maintext"> con responsabilidades eticas</h1>
-              <p className="mb-3 banner-description">Hablada sobre las causas que promueven</p>
+              <p className="mb-3 banner-description">El voluntariado es una manifestación tangible de nuestra capacidad para influir positivamente en el mundo que nos rodea. Ya sea plantando un árbol, brindando apoyo en un hospital o enseñando sobre la rica historia de una región, cada acción cuenta.</p>
               <button className="cta-button btn-lg wobble-hor-bottom" href="#!" role="button">PARTNERSHIPS</button>
             </div>
           </div>

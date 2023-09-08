@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 
@@ -22,7 +23,9 @@ export const CausasCards = () => {
                                 <div className="card-body">
                                     <h5 className="card-title">Medioambiente</h5>
                                     <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" className="card-button btn btn-primary">LEER MÁS...</a>
+                                    <Link to='/MedioAmbiente'>
+                                    <div href="#" className="card-button btn btn-primary">LEER MÁS...</div>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
