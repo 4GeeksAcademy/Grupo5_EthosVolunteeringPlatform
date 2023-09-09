@@ -75,7 +75,7 @@ body{
 
 .hero-header { /* Banner image */
     height: 620px;
-    background: linear-gradient(#00367C90, #00367C90), url("https://images.unsplash.com/photo-1617358452668-1a47fde02538?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"); /*esto hace máscara de color*/
+    background: linear-gradient(#00367C80, #00367C), url("https://images.unsplash.com/photo-1617358452668-1a47fde02538?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"); /*esto hace máscara de color*/
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -92,7 +92,7 @@ body{
 /* Volunteers Banner style*/
 .hero-volunteer { /* Banner image */
     height: 620px;
-    background: linear-gradient(#005C6690, #005C6690), url("https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"); /*esto hace máscara de color*/
+    background: linear-gradient(#005C6680, #005C66), url("https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"); /*esto hace máscara de color*/
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -103,7 +103,7 @@ body{
 /* Partnerships Banner style*/
 .hero-partnerships{
     height: 620px;
-    background: linear-gradient(#00367C90, #00367C90), url("https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"); /*esto hace máscara de color*/
+    background: linear-gradient(#00367C80, #00367C), url("https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"); /*esto hace máscara de color*/
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -113,13 +113,34 @@ body{
 
 .hero-campaign{
     height: 620px;
-    background: linear-gradient(#00367C90, #00367C90); /*esto hace máscara de color*/
+    background: linear-gradient(#00367C80, #00367C); /*esto hace máscara de color*/
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     transform: translateX(0);
     width: 100vw;
 }
+
+.hero-highlights{
+    height: 620px;
+    background: linear-gradient(#5627AB80, #5627AB), url("https://images.unsplash.com/photo-1633949838304-3476df84d86c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"); /*esto hace máscara de color*/
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: translateX(0);
+    width: 100vw;
+}
+
+.hero-about{
+    height: 620px;
+    background: linear-gradient(#5627AB80, #5627AB), url("https://images.unsplash.com/photo-1504022462188-88f023db97bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"); /*esto hace máscara de color*/
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: translateX(0);
+    width: 100vw;
+}
+
 
 
 /* Auxiliar colored banners */
@@ -177,6 +198,25 @@ body{
     border-radius: 25px;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
+}
+
+.cta-button-partners{
+    background: #C76A00;
+    width: 200px;
+    border: none;
+    color:#F5f5f5;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+.cta-button-partners:hover{
+    background: #F5f5f5;
+    color:#00367C;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    -webkit-animation:wobble-hor-bottom .8s both;animation:wobble-hor-bottom .8s both;
 }
 
 .cta-button:hover,
