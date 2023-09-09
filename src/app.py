@@ -71,9 +71,6 @@ def serve_any_other_file(path):
     response.cache_control.max_age = 0  # avoid cache memory
     return response
 
-# login organization
-
-
 @app.route('/register', methods=['POST'])
 def register():
     data = request.json
@@ -129,15 +126,6 @@ def register():
             db.session.rollback()
             print(error.args)
             return jsonify({'message': 'Can not create user'}), 500
-
-
-# login volunteer
-# @app.route('', methods=['POST'])
-# def add_volunteer_user():
-
-# create event organization
-# @app.route('', methods=['POST'])
-# def add_event():
 
 
 # this only runs if `$ python src/main.py` is executed

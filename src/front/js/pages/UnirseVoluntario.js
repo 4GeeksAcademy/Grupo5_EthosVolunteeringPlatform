@@ -12,21 +12,21 @@ export const UnirseVoluntario = () => {
             </div>
           </div>
 
-          <div class="mb-3">
-            <label class="form-label text-dark">Nombre</label>
-            <input name="name" class="form-control" required></input>
+          <div className="mb-3">
+            <label className="form-label text-dark">Nombre</label>
+            <input name="name" className="form-control" required></input>
           </div>
-          <div class="mb-3">
-            <label class="form-label text-dark">Apellido</label>
-            <input name="last_name" class="form-control" required></input>
+          <div className="mb-3">
+            <label className="form-label text-dark">Apellido</label>
+            <input name="last_name" className="form-control" required></input>
           </div>
-          <div class="mb-3">
-            <label class="form-label text-dark">Email</label>
-            <input name="email" class="form-control" placeholder="name@example.com" required></input>
+          <div className="mb-3">
+            <label className="form-label text-dark">Email</label>
+            <input name="email" className="form-control" placeholder="name@example.com" required></input>
           </div>
-          <div class="mb-3">
-            <label class="form-label text-dark">Contraseña</label>
-            <input name="password" class="form-control" placeholder="**********" required></input>
+          <div className="mb-3">
+            <label className="form-label text-dark">Contraseña</label>
+            <input name="password" className="form-control" placeholder="**********" required></input>
           </div>
 
           <div className="row">

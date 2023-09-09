@@ -53,9 +53,9 @@ export const FatFooter = () => {
                         <div class="col-lg-3 col-md-6">
                             <img className='img-fluid mb-3 float-left' src={logofooter} width="200px"></img>
 
-                            <div class="floating">
+                            <div className="floating">
 
-                                <button type="button" class="btn join-footer btn-primary ms-2">Unirse</button>
+                                <button type="button" className="btn join-footer btn-primary ms-2">Unirse</button>
                             </div>
                         </div>
 

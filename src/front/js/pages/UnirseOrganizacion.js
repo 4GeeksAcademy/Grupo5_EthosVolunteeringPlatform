@@ -12,17 +12,17 @@ export const UnirseOrganizacion = () => {
             </div>
           </div>
 
-          <div class="mb-3">
-            <label class="form-label text-dark">Nombre de la organización</label>
-            <input name="organization_name" class="form-control" required></input>
+          <div className="mb-3">
+            <label className="form-label text-dark">Nombre de la organización</label>
+            <input name="organization_name" className="form-control" required></input>
           </div>
-          <div class="mb-3">
-            <label class="form-label text-dark">Email</label>
-            <input name="email" class="form-control" placeholder="name@example.com" required></input>
+          <div className="mb-3">
+            <label className="form-label text-dark">Email</label>
+            <input name="email" className="form-control" placeholder="name@example.com" required></input>
           </div>
-          <div class="mb-3">
-            <label class="form-label text-dark">Contraseña</label>
-            <input name="email" class="form-control" placeholder="**********" required></input>
+          <div className="mb-3">
+            <label className="form-label text-dark">Contraseña</label>
+            <input name="email" className="form-control" placeholder="**********" required></input>
           </div>
 
           <div className="row">

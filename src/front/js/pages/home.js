@@ -60,8 +60,8 @@ export const Home = () => {
 
 
 			<FatFooter/>
-			<a href="https://api.whatsapp.com/" class="float" target="_blank">
-				<i class="fab fa-whatsapp my-float"></i>
+			<a href="https://api.whatsapp.com/" className="float" target="_blank">
+				<i className="fab fa-whatsapp my-float"></i>
 			</a>
 
 		</div>
