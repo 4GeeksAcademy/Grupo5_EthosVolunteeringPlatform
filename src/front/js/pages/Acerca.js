@@ -3,6 +3,7 @@ import { MainBanner } from "../component/mainBanner";
 import { AuxiliarWhiteThree } from '../component/auxiliarWhiteThree';
 import { ImpactCounter } from "../component/impactCounter";
 import { FatFooter } from "../component/fatFooter";
+import { HistoriaBanner } from '../component/historiaBanner';
 
 
 export const Acerca = () => {
@@ -16,7 +17,7 @@ export const Acerca = () => {
       </div>
 
       <div className='mt-4 mb-5'>
-        <h3>***Falta slider de "Historia"***</h3>
+        <HistoriaBanner/>
       </div>
 
       <div className='mt-4 mb-5'>

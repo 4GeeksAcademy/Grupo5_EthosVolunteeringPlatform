@@ -11,14 +11,13 @@ export const VolunteersBannerCopy = () => {
           </svg>
         </div>
 
-
+        
         <div className="d-flex justify-content-center align-items-center h-100">
           <div className="text-white banner-text">
             <h1 className="mb-3 banner-maintext fade-in-top">¡Apuntate a participar!</h1>
-            <h4 className="mb-5 banner-description fade-in-top">O algún texto alusivo a que sean voluntarios...</h4>
+            <h4 className="mb-5 banner-description fade-in-top">Unidos por el cambio, impulsados por la pasión</h4>
           </div>
         </div>
-
       </div>
     </>
   )
