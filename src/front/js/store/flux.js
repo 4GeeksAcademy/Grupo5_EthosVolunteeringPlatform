@@ -42,7 +42,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					password : store.password
 				}
 
-				await fetch("process.env.BACKEND_URL=https://crispy-enigma-v9965q55wqgh5j-3001.app.github.dev + api/register ", {
+				await fetch("https://crispy-enigma-v9965q55wqgh5j-3001.app.github.dev/api/register", {
 					method : "POST",
 					headers : { "Content-Type": "application/json" },
 					body : JSON.stringify(user)
