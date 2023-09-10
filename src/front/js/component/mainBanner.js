@@ -21,7 +21,7 @@ export const MainBanner = () => {
             <h5 className="mb-5 banner-description fade-in-top">Es una oportunidad de trascender nuestras propias vidas y tocar la de otros, dejando una huella imborrable en sus corazones.</h5>
             </div>
             <Link to={"/Campaign"}>
-            <button className="cta-button-partners btn-lg wobble-hor-bottom pb-2" href="#!" role="button">BUSCAR CAMPAÑAS</button>
+            <button className="cta-button-alt btn-lg wobble-hor-bottom pb-2" href="#!" role="button">BUSCAR CAMPAÑAS</button>
             </Link>
           </div>
         </div>
