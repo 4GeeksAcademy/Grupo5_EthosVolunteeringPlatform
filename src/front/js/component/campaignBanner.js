@@ -20,7 +20,7 @@ export const CampaignBanner = () => {
               <h5 className="mb-5 banner-description fade-in-top">304 perros callejeros encontraron un hogar junto a diferentes familias costarricenses durante la campaña de adopción ZaguaTinder. Además, se recaudaron $37000 destinados a cubrir gastos veterinarios de la Fundación Razas Únicas.</h5>
             </div>
             <Link to={"/Causas"}>
-              <button className="cta-button btn-lg wobble-hor-bottom pb-2" href="#!" role="button">NUESTRAS CAUSAS</button>
+              <button className="cta-button-alt btn-lg wobble-hor-bottom pb-2" href="#!" role="button">NUESTRAS CAUSAS</button>
             </Link>
           </div>
         </div>

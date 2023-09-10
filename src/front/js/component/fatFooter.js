@@ -55,7 +55,7 @@ export const FatFooter = () => {
 
                             <div className="floating">
                                 <Link to='/UnirseVoluntario'>
-                                <button type="button" className="btn join-footer btn-primary ms-2">Únete</button>
+                                <button type="button" className="btn join-footer btn-primary ms-2">Registrarse</button>
                                 </Link>
                             </div>
                         </div>

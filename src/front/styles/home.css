@@ -23,7 +23,7 @@ body{
 
 .login{
     background: #C76A00;
-    width: 100px;
+    width: 130px;
     border: none;
     color:#F5f5f5;
     border-radius: 25px;
@@ -34,7 +34,7 @@ body{
 .join{
     background: #5627AB;
     margin-left: 5px;
-    width: 150px;
+    width: 130px;
     border: none;
     color:#F5f5f5;
     border-radius: 25px;
@@ -200,7 +200,7 @@ body{
     font-size: 16px;
 }
 
-.cta-button-partners{
+.cta-button-alt{
     background: #C76A00;
     width: 200px;
     border: none;
@@ -210,7 +210,7 @@ body{
     font-size: 16px;
 }
 
-.cta-button-partners:hover{
+.cta-button-alt:hover{
     background: #F5f5f5;
     color:#00367C;
     font-family: 'Poppins', sans-serif;
@@ -221,12 +221,14 @@ body{
 
 .cta-button:hover,
 .join:hover{
-    -webkit-animation:wobble-hor-bottom .8s both;animation:wobble-hor-bottom .8s both;
     background: #00367C;
+    color:#F5f5f5;
 }
 
 .login:hover{
     background: #00367C;
+    color:#F5f5f5;
+
 }
 
 
@@ -339,7 +341,7 @@ body{
 
 .join-footer{
     background: #5627AB;
-    width: 100px;
+    width: 130px;
     border: none;
     color:#F5f5f5;
     border-radius: 25px;
@@ -349,6 +351,7 @@ body{
 
 .join-footer:hover{
     background: #00367C;
+    color:#F5f5f5;
 }
 
 /* White spacing*/
