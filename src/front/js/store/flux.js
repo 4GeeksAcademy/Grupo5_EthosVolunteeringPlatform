@@ -1,6 +1,14 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+
+			organization_name : null,
+			name: null,
+			email: null,
+			password: null,
+			signupData: [],
+			token: null,
+
 			message: null,
 			demo: [
 				{
@@ -16,6 +24,57 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+
+			// HANDLE DATA CHANGE IN USER INFO
+			handleChange: e => {
+				setStore({[e.target.name] : e.target.value})
+			},
+
+			// FETCH USER SIGNUP DATA FROM ENDPOINT
+			fetchSignup: async () => {
+				const store = getStore()
+
+				// Body request format
+				const user = {
+					organization_name : store.organization_name,
+					name : store.name,
+					email : store.email,
+					password : store.password
+				}
+
+				await fetch("process.env.BACKEND_URL=https://crispy-enigma-v9965q55wqgh5j-3001.app.github.dev + api/register ", {
+					method : "POST",
+					headers : { "Content-Type": "application/json" },
+					body : JSON.stringify(user)
+
+				})
+				.then(response => response.json())
+				.then(data => {setStore({signupData : data.response})})
+				.catch(err => err)
+			},
+
+			// FETCH USER LOGIN DATA FROM ENDPOINT
+			fetchLogin: async () => {
+				const store = getStore()
+
+				// Body request format
+				const user = {
+					email : store.email,
+					password : store.password
+				}
+
+				await fetch("process.env.BACKEND_URL=https://crispy-enigma-v9965q55wqgh5j-3001.app.github.dev + api/login ", {
+					method : "POST",
+					headers : { "Content-Type": "application/json" },
+					body : JSON.stringify(user)
+
+				})
+				.then(response => response.json())
+				.then(data => {localStorage.setItem("token", data.access_token)}) // Storage token
+				.catch(err => err)
+			},
+
+
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
