@@ -14,7 +14,7 @@ export const Organizaciones = () => {
         
         <PartnersBanner />
 
-        <div className='mt-4'>
+        <div className='mt-'>
         <AuxiliarWhiteFive/>
         </div>
 

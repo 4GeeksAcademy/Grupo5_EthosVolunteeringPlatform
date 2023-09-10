@@ -21,10 +21,10 @@ export const CausasCards = () => {
                             <div className="card" style={cardStyle}>
                                 <img className="card-img-top img-fluid" src="https://images.unsplash.com/photo-1551855350-c86caeaf8707?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Card image cap"></img>
                                 <div className="card-body">
-                                    <h5 className="card-title text-dark">Medioambiente</h5>
+                                    <h5 className="card-title text-dark">01</h5>
                                     <p className="card-text text-dark">Impulsamos iniciativas que promuevan el desarrollo sustentable y la conservación de la biodiversidad.</p>
                                     <Link to='/MedioAmbiente'>
-                                    <div href="#" className="card-button btn btn-primary">LEER MÁS...</div>
+                                        <div href="#" className="card-button btn btn-primary">LEER MÁS...</div>
                                     </Link>
                                 </div>
                             </div>
@@ -42,7 +42,7 @@ export const CausasCards = () => {
                         </div>
 
                         <div className="col-lg-3 col-md-4">
-                        <div className="card" style={cardStyle}>
+                            <div className="card" style={cardStyle}>
                                 <img className="card-img-top img-fluid" src="https://images.unsplash.com/photo-1576765974102-b756026ecee3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1778&q=80" alt="Card image cap"></img>
                                 <div className="card-body">
                                     <h5 className="card-title">Salud y Bienestar</h5>
