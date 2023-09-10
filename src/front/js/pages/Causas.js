@@ -2,7 +2,8 @@ import React from 'react';
 import { CausasCards } from "../component/causasCards";
 import { FatFooter } from "../component/fatFooter";
 import { AuxiliarBlueOne } from '../component/auxiliarBlueOne';
-import { HistoriaBanner } from '../component/historiaBanner';
+import { AuxiliarWhiteFour } from '../component/auxiliarWhiteFour';
+import { CampaignBannerCopy } from '../component/campaignBannerCopy';
 
 export const Causas = () => {
   return (
@@ -10,18 +11,15 @@ export const Causas = () => {
       <div className="text-center mt-5">
 
         <div>
-          <HistoriaBanner/>
+          <CampaignBannerCopy/>
         </div>
 
+        <div className='mt-4'>
+          <AuxiliarWhiteFour/>
+        </div>
         
-          
-            <div className="text-white auxiliar-banner-text">
-              <h1 className="mb-3 banner-maintext text-dark">Juntos por el ambiente, la</h1>
-              <h1 className="mb-3 banner-maintext text-dark">cultura y el bienestar</h1>
-            </div>
-          
 
-        <div className=' mb-5'>
+        <div>
           <CausasCards />
         </div>
 

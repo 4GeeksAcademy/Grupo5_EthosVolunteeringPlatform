@@ -17,10 +17,10 @@ export const PartnersBanner = () => {
 
         <div className="d-flex justify-content-center align-items-center h-100">
           <div className="text-white banner-text">
-            <img className='mb-3' src={logowhite} width="665px"></img>
-            <h4 className="mb-5 banner-description fade-in-top">Las asociaciones son el núcleo de nuestra filosofía en ETHOS. A medida que avanzamos, continuamos buscando oportunidades para colaborar, innovar y crecer junto con nuestros valiosos socios.</h4>
+            <img  src={logowhite} width="665px"></img>
+            <h5 className="mb-3 mt-3 banner-description fade-in-top">Las asociaciones son el núcleo de nuestra filosofía en ETHOS. A medida que avanzamos, continuamos buscando oportunidades para colaborar, innovar y crecer junto con nuestros valiosos socios.</h5>
             <Link to='/Organizaciones'>
-            <button className="cta-button btn-lg wobble-hor-bottom" href="#!" role="button">PARTNERSHIPS</button>
+            <button className="cta-button-partners btn-lg mt-3 mb-5" href="#!" role="button">PARTNERSHIPS</button>
             </Link>
           </div>
         </div>

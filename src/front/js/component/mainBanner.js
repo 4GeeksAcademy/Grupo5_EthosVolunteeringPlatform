@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Link } from "react-router-dom";
 
 
@@ -18,10 +18,10 @@ export const MainBanner = () => {
           <div className="text-white banner-text">
             <h1 className="mb-3 banner-maintext fade-in-top">No esperes el cambio, sé el cambio</h1>
             <div>
-            <h4 className="mb-5 banner-description fade-in-top">Es una oportunidad de trascender nuestras propias vidas y tocar la de otros, dejando una huella imborrable en sus corazones.</h4>
+            <h5 className="mb-5 banner-description fade-in-top">Es una oportunidad de trascender nuestras propias vidas y tocar la de otros, dejando una huella imborrable en sus corazones.</h5>
             </div>
             <Link to={"/Campaign"}>
-            <button className="cta-button btn-lg wobble-hor-bottom pb-2" href="#!" role="button">BUSCAR CAMPAÑAS</button>
+            <button className="cta-button-partners btn-lg wobble-hor-bottom pb-2" href="#!" role="button">BUSCAR CAMPAÑAS</button>
             </Link>
           </div>
         </div>
