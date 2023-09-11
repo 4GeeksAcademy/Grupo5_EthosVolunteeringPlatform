@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Login = () => {
+export const Registrarse = () => {
   return (
     <div>
       <div className='form-wrapper-org container mt-5'>
