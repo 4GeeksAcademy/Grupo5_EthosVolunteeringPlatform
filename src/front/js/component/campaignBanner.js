@@ -1,49 +1,30 @@
-import React from 'react'
+import React from 'react';
+import { Link } from "react-router-dom";
 
 export const CampaignBanner = () => {
   return (
     <>
-
-      <div id="carouselExampleCaptions" className="carousel slide hero-campaign fullwidth" data-bs-ride="carousel">
-
+      <div id="carouselExampleCaptions" className="carousel slide hero-highlights fullwidth mb-5" data-bs-ride="carousel">
 
 
-        <div className="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <div className="custom-shape-divider-top-1693265318">
+          <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="shape-fill"></path>
+          </svg>
         </div>
-        <div className="carousel-inner">
-          <div className="carousel-item active">
-            <img src="https://images.unsplash.com/photo-1628717341663-0007b0ee2597?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" className="d-block w-100" alt="img"></img>
-            <div className="carousel-caption d-none d-md-block banner-text">
-              <h5>First slide label</h5>
-              <p>Some representative placeholder content for the first slide.</p>
+
+        <div className="d-flex justify-content-center align-items-center h-100">
+          <div className="text-white banner-text">
+            <h1 className="mb-3 banner-maintext fade-in-top">ZaguaTinder | Destacada 2022</h1>
+            <div>
+              <h5 className="mb-5 banner-description fade-in-top">304 perros callejeros encontraron un hogar junto a diferentes familias costarricenses durante la campaña de adopción ZaguaTinder. Además, se recaudaron $37000 destinados a cubrir gastos veterinarios de la Fundación Razas Únicas.</h5>
             </div>
-          </div>
-          <div className="carousel-item">
-            <img src="https://images.unsplash.com/photo-1652971876875-05db98fab376?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2029&q=80" className="d-block w-100" alt="img"></img>
-            <div className="carousel-caption d-none d-md-block banner-text">
-              <h5>Second slide label</h5>
-              <p>Some representative placeholder content for the second slide.</p>
-            </div>
-          </div>
-          <div className="carousel-item">
-            <img src="https://images.unsplash.com/photo-1553688738-a278b9f063e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80c" className="d-block w-100" alt="img"></img>
-            <div className="carousel-caption d-none d-md-block banner-text">
-              <h5>Third slide label</h5>
-              <p>Some representative placeholder content for the third slide.</p>
-            </div>
+            <Link to={"/Causas"}>
+              <button className="cta-button-alt btn-lg wobble-hor-bottom pb-2" href="#!" role="button">NUESTRAS CAUSAS</button>
+            </Link>
           </div>
         </div>
-        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Next</span>
-        </button>
+
       </div>
 
     </>

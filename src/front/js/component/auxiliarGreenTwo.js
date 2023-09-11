@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-export const AuxiliarPurpleTwo = () => {
+export const AuxiliarGreenTwo = () => {
   return (
     <>
-      <div className='auxiliar fullwidth'>
+      <div className='auxiliar-green fullwidth'>
 
         <div className="custom-shape-divider-top-1693265318">
           <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -13,13 +13,14 @@ export const AuxiliarPurpleTwo = () => {
 
         <div className="d-flex justify-content-center align-items-center h-100">
           <div className="text-white auxiliar-banner-text">
-            <h1 className="mb-3 banner-maintext">”No desprecies tus aportes a la humanidad.</h1>
-            <p className="mb-3 banner-maintext"> Cada diminuta acción amable, también cuenta”.</p>
-            <p>- Lailah Gifty Akita</p>
+            <h1 className="mb-3 banner-maintext">ETHOS impulsa iniciativas con</h1>
+            <h1 className="mb-3 banner-maintext">responsabilidad ética</h1>
+            <p className="mb-3 banner-description">El voluntariado es una manifestación tangible de nuestra capacidad para influir positivamente en el mundo que nos rodea. Por esta razón, para ETHOS es crucial que las organizaciones colaboradores conozcan a profundidad las causas por las que abogan y el impacto que tendrán en el mediano y largo plazo sobre las comunidades.</p>
           </div>
         </div>
 
       </div>
+
 
 
 

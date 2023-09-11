@@ -9,6 +9,7 @@ import { CampaignBanner } from "../component/campaignBanner";
 import { AuxiliarWhiteTwo } from "../component/auxiliarWhiteTwo";
 import { VolunteersBanner } from "../component/volunteersBanner";
 import { AuxiliarWhiteOne } from "../component/auxiliarWhiteOne";
+import { AuxiliarWhiteFour} from "../component/auxiliarWhiteFour";
 import { PartnersBanner } from "../component/partnersBanner";
 import { Sponsors } from "../component/sponsors";
 import { FatFooter } from "../component/fatFooter";
@@ -30,7 +31,11 @@ export const Home = () => {
 			<AuxiliarPurpleOne/>
 			</div>
 
-			<div className='mt-4 mb-5'>
+			<div className="mt-5">
+				<AuxiliarWhiteFour/>
+			</div>
+
+			<div className=' mb-5'>
 			<CausasCards/>
 			</div>
 

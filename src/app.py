@@ -7,7 +7,7 @@ from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
 from api.utils import APIException, generate_sitemap
-from api.models import db, User, Event, Role
+from api.models import db, User, Event, Role, Attendance
 from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
@@ -201,12 +201,22 @@ def add_event():
 @app.route('/all-events', methods=['GET'])
 @jwt_required()
 def get_all_events():
-    current_user= get_jwt_identity()
+    current_user= get_jwt_identity() 
     user= User.query.filter_by(id=current_user['id']).one_or_none()
     if user is None:
         return jsonify ({'message': 'user not found'}), 404
     events_list= [event.serialize() for event in user.created_events]
     return jsonify ({'message': events_list}), 200
+
+
+# Endpoint for listing all events
+@app.route('/events-list', methods=['GET'])
+def get_events_list():
+    events= Event.query.all() #empty array if no events created
+    events_list = [event.serialize() for event in events]
+    return jsonify ({'result': events_list})
+
+
 
 
     # this only runs if `$ python src/main.py` is executed

@@ -59,7 +59,8 @@ class Event(db.Model):
             "event_date": self.event_date,
             "event_time": self.event_time,
             "duration": self.duration,
-            "creator_id": self.creator_id
+            "creator_id": self.creator_id,
+            "attendance" : len(self.attendance)
         }
 
 
