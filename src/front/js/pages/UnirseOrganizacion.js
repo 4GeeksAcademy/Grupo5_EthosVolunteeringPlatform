@@ -1,14 +1,14 @@
 import React from 'react'
 
-export const Login = () => {
+export const UnirseOrganizacion = () => {
   return (
-    <div>
+    <>
       <div className='form-wrapper-org container mt-5'>
         <form>
           <div className='row mt-4'>
             <div className='form-header col'>
               <h3 className='text-dark'>¡Bienvenido a ETHOS!</h3>
-              <h6 className='text-dark mb-4'>Ingrese su organización</h6>
+              <h6 className='text-dark mb-4'>Registre a su organización</h6>
             </div>
           </div>
 
@@ -34,6 +34,6 @@ export const Login = () => {
 
         </form>
       </div>
-    </div>
+    </>
   )
 }

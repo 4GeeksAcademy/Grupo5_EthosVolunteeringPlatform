@@ -1,11 +1,9 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 
-
-export const MainBanner = () => {
+export const CampaignBannerCopy = () => {
   return (
     <>
-      <div id="carouselExampleCaptions" className="carousel slide hero-header fullwidth mb-5" data-bs-ride="carousel">
+      <div id="carouselExampleCaptions" className="carousel slide hero-highlights fullwidth mb-5" data-bs-ride="carousel">
 
 
         <div className="custom-shape-divider-top-1693265318">
@@ -16,17 +14,15 @@ export const MainBanner = () => {
 
         <div className="d-flex justify-content-center align-items-center h-100">
           <div className="text-white banner-text">
-            <h1 className="mb-3 banner-maintext fade-in-top">No esperes el cambio, sé el cambio</h1>
+            <h1 className="mb-3 banner-maintext fade-in-top">ZaguaTinder | Destacada 2022</h1>
             <div>
-            <h5 className="mb-5 banner-description fade-in-top">Es una oportunidad de trascender nuestras propias vidas y tocar la de otros, dejando una huella imborrable en sus corazones.</h5>
+              <h5 className="mb-5 banner-description fade-in-top">304 perros callejeros encontraron un hogar junto a diferentes familias costarricenses durante la campaña de adopción ZaguaTinder. Además, se recaudaron $37000 destinados a cubrir gastos veterinarios de la Fundación Razas Únicas.</h5>
             </div>
-            <Link to={"/Campaign"}>
-            <button className="cta-button-alt btn-lg wobble-hor-bottom pb-2" href="#!" role="button">BUSCAR CAMPAÑAS</button>
-            </Link>
           </div>
         </div>
 
       </div>
+
     </>
   )
 }

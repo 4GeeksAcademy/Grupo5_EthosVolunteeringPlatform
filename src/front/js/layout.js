@@ -13,6 +13,8 @@ import { Causas } from "./pages/Causas";
 import { Campaign } from "./pages/Campaign";
 import { Organizaciones } from "./pages/Organizaciones";
 import { Contacto } from "./pages/Contacto";
+import { UnirseOrganizacion } from "./pages/UnirseOrganizacion";
+import { UnirseVoluntario } from "./pages/UnirseVoluntario";
 
 
 
@@ -21,6 +23,7 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+
 
 //create your first component
 const Layout = () => {
@@ -37,17 +40,19 @@ const Layout = () => {
                     <Navbar />
                     <Routes>
                         <Route element={<Home />} path="/" />
+                        <Route element={<Acerca />} path="/Acerca" />
                         <Route element={<Impacto />} path="/Impacto" />
                         <Route element={<Causas />} path="/Causas" />
                         <Route element={<Campaign />} path="/Campaign" />
                         <Route element={<Organizaciones />} path="/Organizaciones" />
                         <Route element={<Contacto />} path="/Contacto" />
+                        <Route element={<UnirseOrganizacion />} path="/UnirseOrganizacion" />
+                        <Route element={<UnirseVoluntario />} path="/UnirseVoluntario" />
                         <Route element={<Demo />} path="/demo" />
                         
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
-                    <Footer />
                 </ScrollToTop>
             </BrowserRouter>
         </div>

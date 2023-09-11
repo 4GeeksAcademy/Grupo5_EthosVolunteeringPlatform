@@ -5,3 +5,427 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+
+
+body{
+    background: #f5f5f5;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+
+}
+
+/* Navbar style */
+.nav-style{
+    background: #f5f5f5;
+
+}
+
+
+.login{
+    background: #C76A00;
+    width: 130px;
+    border: none;
+    color:#F5f5f5;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+.join{
+    background: #5627AB;
+    margin-left: 5px;
+    width: 130px;
+    border: none;
+    color:#F5f5f5;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+.join-login-text{
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+
+}
+.wrapper{
+    padding-left: 22%;
+}
+
+
+.brand-text{
+    margin-top: 1%;
+}
+
+/* Fonts */ 
+@import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Dosis&family=Poppins:wght@400;500;700&family=Roboto&family=Rubik:wght@400;600;700;800&display=swap');
+
+
+/* Main Banner style */
+.banner-maintext{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    
+}
+
+.banner-description{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    width: 950px;
+}
+
+.hero-header { /* Banner image */
+    height: 620px;
+    background: linear-gradient(#00367C80, #00367C), url("https://images.unsplash.com/photo-1617358452668-1a47fde02538?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"); /*esto hace máscara de color*/
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: translateX(0);
+    width: 100vw;
+}
+
+.banner-text{ /* Text position*/
+    margin-top: 20%;
+}
+
+
+
+/* Volunteers Banner style*/
+.hero-volunteer { /* Banner image */
+    height: 620px;
+    background: linear-gradient(#005C6680, #005C66), url("https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"); /*esto hace máscara de color*/
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: translateX(0);
+    width: 100vw;
+}
+
+/* Partnerships Banner style*/
+.hero-partnerships{
+    height: 620px;
+    background: linear-gradient(#00367C80, #00367C), url("https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"); /*esto hace máscara de color*/
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: translateX(0);
+    width: 100vw;
+}
+
+.hero-campaign{
+    height: 620px;
+    background: linear-gradient(#00367C80, #00367C); /*esto hace máscara de color*/
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: translateX(0);
+    width: 100vw;
+}
+
+.hero-highlights{
+    height: 620px;
+    background: linear-gradient(#5627AB80, #5627AB), url("https://images.unsplash.com/photo-1633949838304-3476df84d86c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"); /*esto hace máscara de color*/
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: translateX(0);
+    width: 100vw;
+}
+
+.hero-about{
+    height: 620px;
+    background: linear-gradient(#5627AB80, #5627AB), url("https://images.unsplash.com/photo-1504022462188-88f023db97bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"); /*esto hace máscara de color*/
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: translateX(0);
+    width: 100vw;
+}
+
+
+
+/* Auxiliar colored banners */
+.auxiliar{ /* purple auxiliar banner */
+    height: 450px;
+    background: #5627AB; /* color mask */
+    background-size: cover;
+    transform: translateX(0);
+    width: 100vw;
+}
+
+.auxiliar-banner-text{
+    margin-top: 4%;
+}
+
+/* White auxiliars*/
+.auxiliar-white{
+    height: 450px;
+    background: #f5f5f5; /* color mask */
+    background-size: cover;
+    transform: translateX(0);
+    width: 100vw;
+}
+
+/* Green Auxiliars*/
+.auxiliar-green{
+    height: 450px;
+    background: #005C66; /* color mask */
+    background-size: cover;
+    transform: translateX(0);
+    width: 100vw;
+}
+
+.auxiliar-blue{
+    height: 450px;
+    background: #00367C; /* color mask */
+    background-size: cover;
+    transform: translateX(0);
+    width: 100vw;
+}
+
+
+
+
+/* Banner text animation effect */
+.fade-in-top{animation:fade-in-top .6s cubic-bezier(.39,.575,.565,1.000) both}
+@keyframes fade-in-top{0%{transform:translateY(-50px);opacity:0}100%{transform:translateY(0);opacity:1}}
+
+
+.cta-button{
+    background: #C76A00;
+    width: 200px;
+    border: none;
+    color:#F5f5f5;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+.cta-button-alt{
+    background: #C76A00;
+    width: 200px;
+    border: none;
+    color:#F5f5f5;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+.cta-button-alt:hover{
+    background: #F5f5f5;
+    color:#00367C;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    -webkit-animation:wobble-hor-bottom .8s both;animation:wobble-hor-bottom .8s both;
+}
+
+.cta-button:hover,
+.join:hover{
+    background: #00367C;
+    color:#F5f5f5;
+}
+
+.login:hover{
+    background: #00367C;
+    color:#F5f5f5;
+
+}
+
+
+/* ----------------------------------------------
+ * Generated by Animista on 2023-8-28 17:56:38
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+ @-webkit-keyframes wobble-hor-bottom{0%,100%{-webkit-transform:translateX(0);transform:translateX(0);-webkit-transform-origin:50% 50%;transform-origin:50% 50%}15%{-webkit-transform:translateX(-30px) rotate(-6deg);transform:translateX(-30px) rotate(-6deg)}30%{-webkit-transform:translateX(15px) rotate(6deg);transform:translateX(15px) rotate(6deg)}45%{-webkit-transform:translateX(-15px) rotate(-3.6deg);transform:translateX(-15px) rotate(-3.6deg)}60%{-webkit-transform:translateX(9px) rotate(2.4deg);transform:translateX(9px) rotate(2.4deg)}75%{-webkit-transform:translateX(-6px) rotate(-1.2deg);transform:translateX(-6px) rotate(-1.2deg)}}@keyframes wobble-hor-bottom{0%,100%{-webkit-transform:translateX(0);transform:translateX(0);-webkit-transform-origin:50% 50%;transform-origin:50% 50%}15%{-webkit-transform:translateX(-30px) rotate(-6deg);transform:translateX(-30px) rotate(-6deg)}30%{-webkit-transform:translateX(15px) rotate(6deg);transform:translateX(15px) rotate(6deg)}45%{-webkit-transform:translateX(-15px) rotate(-3.6deg);transform:translateX(-15px) rotate(-3.6deg)}60%{-webkit-transform:translateX(9px) rotate(2.4deg);transform:translateX(9px) rotate(2.4deg)}75%{-webkit-transform:translateX(-6px) rotate(-1.2deg);transform:translateX(-6px) rotate(-1.2deg)}}
+
+.custom-shape-divider-top-1693265318 {
+    position: absolute;
+    top: -5;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1693265318 svg {
+    position: relative;
+    display: block;
+    width: calc(153% + 5px);
+    height: 56px;
+}
+
+.custom-shape-divider-top-1693265318 .shape-fill {
+    fill: #F5f5f5;
+}
+
+/* Whatsapp floating button */
+.float{
+	position:fixed;
+	width:53px;
+	height:53px;
+	bottom:120px;
+	right:42px;
+	background-color:#25d366;
+    box-shadow: 3px 3px 5px #42424280;
+	color:#f5f5f5;
+	border-radius:50px;
+	text-align:center;
+    font-size:35px;
+    z-index:100;
+}
+
+
+/* Impact counter pannel */
+.counter-deco{
+    border-color: #C76A00;
+    color:#C76A00;
+}
+
+.custom_font{
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.impact-message{
+    margin-top: 5%;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 80px;
+    text-align: left;
+}
+
+/* Causas cards style*/
+.card-text{
+    text-align: left;
+}
+
+.card{
+    box-shadow: 3px 3px 5px #42424280;
+}
+
+.card-button{
+    background: #C76A00;
+    width: 200px;
+    border: none;
+    color:#F5f5f5;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+.card-button:hover{
+    background: #00367C;
+}
+
+/* Footer style */
+.footer-color{
+    height: 500px;
+    background: #C76A00;
+    color:#f5f5f5;
+    background-size: cover;
+    transform: translateX(0);
+    width: 100vw;
+}
+
+.btn-social{
+    margin-right: 7px;
+}
+
+.btn-social:hover{
+    background: #00367C;
+    color: #F5f5f5;
+}
+
+.join-footer{
+    background: #5627AB;
+    width: 130px;
+    border: none;
+    color:#F5f5f5;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+.join-footer:hover{
+    background: #00367C;
+    color:#F5f5f5;
+}
+
+/* White spacing*/
+.white-space{
+    height: 600px;
+    margin-top: 10%;
+}
+
+.filter-button{
+    background: #C76A00;
+    margin: 5px;
+    width: 150px;
+    border: none;
+    color:#F5f5f5;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+/* Form style */
+.form-wrapper-org{
+    width: 35%;
+    height: 500px;
+    padding: 2%;
+    background: #f5f5f5;
+    /*background: linear-gradient(18deg, rgba(0,92,102,1) 0%, rgba(0,54,124,1) 47%, rgba(144,74,242,1) 100%);*/
+    border: 1px solid #dcdcdc;
+    border-radius: 25px;
+    box-shadow: 3px 3px 5px #42424280;
+}
+
+.form-wrapper-vol{
+    width: 35%;
+    height: 525px;
+    padding: 2%;
+    background: #f5f5f5;
+    /*background: linear-gradient(18deg, rgba(0,92,102,1) 0%, rgba(0,54,124,1) 47%, rgba(144,74,242,1) 100%);*/
+    border: 1px solid #dcdcdc;
+    border-radius: 25px;
+    box-shadow: 3px 3px 5px #42424280;
+}
+.form-wrapper-contact{
+    width: 35%;
+    height: 550px;
+    padding: 2%;
+    background: #f5f5f5;
+    color: #f5f5f5;
+    background: linear-gradient(18deg, rgba(0,92,102,1) 0%, rgba(0,54,124,1) 47%, rgba(144,74,242,1) 100%);
+    border: 1px solid #dcdcdc;
+    border-radius: 25px;
+    box-shadow: 3px 3px 5px #42424280;
+}
+.color-text{
+    color: #C76A00;
+}
+
+.form-header{
+    text-align: center;
+
+}
+
+label{
+    font-size: 14px;
+}
+
+.submit-button{
+    width: 100px;
+    border: none;
+    border-radius: 25px;
+    background: #C76A00;
+    color:#f5f5f5;
+    
+}
+.custom-img {
+    width: 100%;
+    height: 350px;
+  }
+

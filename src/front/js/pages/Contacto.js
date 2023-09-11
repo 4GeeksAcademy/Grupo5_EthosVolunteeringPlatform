@@ -1,7 +1,10 @@
 import React from 'react'
+import { ContactForm } from '../component/contactForm'
 
 export const Contacto = () => {
   return (
-    <div>Contacto</div>
+    <div className='pb-3'>
+      <ContactForm/>
+    </div>
   )
 }
