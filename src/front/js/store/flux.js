@@ -84,6 +84,38 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => err)
 			},
 
+			// FETCH USER-ORGANIZATION ADD EVENT
+			fetchAddEvent: async () => { // MISSING AUTHORIZATION HEADER
+
+				const store = getStore()
+				let token = localStorage.getItem("token")
+				console.log(token)
+
+				// Body request format
+				const new_event = {
+					name: store.name,
+					description: store.description,
+					location: store.location,
+					event_date: store.event_date,
+					event_time: store.event_time,
+					duration: store.duration,
+				}
+
+				await fetch("process.env.BACKEND_URL=https://crispy-enigma-v9965q55wqgh5j-3001.app.github.dev + api/add-event", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer" + token,
+					},
+					body: JSON.stringify(new_event)
+
+				})
+					.then(response => response.json())
+					.then(data => {setStore(data.token)}) // 
+					.catch(err => err)
+
+			},
+
 			
 
 
