@@ -17,11 +17,12 @@ const [fromattedDate, setFormattedDate] = useState("");
 
     // Actualizar el estado con la fecha formateada
     setFormattedDate(formatted);
-  };
+  }
 
   const handleTimeChange = (e) => {
     // Actualizo el estado con la hora seleccionada
     setTime(e.target.value);
+  }
     
   return (
     <div>
