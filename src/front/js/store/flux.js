@@ -2,12 +2,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 
-			organization_name : null,
+			// For register and login
+			organization_name: null,
 			name: null,
 			email: null,
 			password: null,
 			signupData: [],
 			token: null,
+
+			// For Add Event
+			description: null,
+			location: null,
+			event_date: null,
+			event_time: null,
+			duration: null,
+			user_role : null,
 
 			message: null,
 			demo: [
@@ -27,7 +36,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// HANDLE DATA CHANGE IN USER INFO
 			handleChange: e => {
-				setStore({[e.target.name] : e.target.value})
+				setStore({ [e.target.name]: e.target.value })
 			},
 
 			// FETCH USER SIGNUP DATA FROM ENDPOINT
@@ -36,21 +45,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				// Body request format
 				const user = {
-					organization_name : store.organization_name,
-					name : store.name,
-					email : store.email,
-					password : store.password
+					organization_name: store.organization_name,
+					name: store.name,
+					email: store.email,
+					password: store.password,
+					user_role : store.user_role
 				}
 
-				await fetch("https://crispy-enigma-v9965q55wqgh5j-3001.app.github.dev/api/register", {
-					method : "POST",
-					headers : { "Content-Type": "application/json" },
-					body : JSON.stringify(user)
+				await fetch("process.env.BACKEND_URL + api/register ", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(user)
 
 				})
-				.then(response => response.json())
-				.then(data => {setStore({signupData : data.response})})
-				.catch(err => err)
+					.then(response => response.json())
+					.then(data => { setStore({ signupData: data.response }) })
+					.catch(err => err)
 			},
 
 			// FETCH USER LOGIN DATA FROM ENDPOINT
@@ -59,20 +69,54 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				// Body request format
 				const user = {
-					email : store.email,
-					password : store.password
+					email: store.email,
+					password: store.password
 				}
 
-				await fetch("process.env.BACKEND_URL=https://crispy-enigma-v9965q55wqgh5j-3001.app.github.dev + api/login ", {
-					method : "POST",
-					headers : { "Content-Type": "application/json" },
-					body : JSON.stringify(user)
+				await fetch("process.env.BACKEND_URL + api/login ", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(user)
 
 				})
-				.then(response => response.json())
-				.then(data => {localStorage.setItem("token", data.access_token)}) // Storage token
-				.catch(err => err)
+					.then(response => response.json())
+					.then(data => { localStorage.setItem("jwt-token", data.token) }) // Storage token
+					.catch(err => err)
 			},
+
+			// FETCH USER-ORGANIZATION ADD EVENT
+			fetchAddEvent: async () => { // MISSING AUTHORIZATION HEADER
+
+				const store = getStore()
+				let token = localStorage.getItem("token")
+				console.log(token)
+
+				// Body request format
+				const new_event = {
+					name: store.name,
+					description: store.description,
+					location: store.location,
+					event_date: store.event_date,
+					event_time: store.event_time,
+					duration: store.duration,
+				}
+
+				await fetch("process.env.BACKEND_URL=https://crispy-enigma-v9965q55wqgh5j-3001.app.github.dev + api/add-event", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer" + token,
+					},
+					body: JSON.stringify(new_event)
+
+				})
+					.then(response => response.json())
+					.then(data => {setStore(data.token)}) // 
+					.catch(err => err)
+
+			},
+
+			
 
 
 			// Use getActions to call a function within a fuction
@@ -81,14 +125,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getMessage: async () => {
-				try{
+				try {
 					// fetching data from the backend
 					const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
 					const data = await resp.json()
 					setStore({ message: data.message })
 					// don't forget to return something, that is how the async resolves
 					return data;
-				}catch(error){
+				} catch (error) {
 					console.log("Error loading message from backend", error)
 				}
 			},
