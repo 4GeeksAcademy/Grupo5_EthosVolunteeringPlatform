@@ -427,5 +427,11 @@ label{
 .custom-img {
     width: 100%;
     height: 350px;
-  }
+}
+
+.container-jumbotron{
+    width: 80%;
+    margin-top: 10%;
+    margin-left: 8%;
+}
 

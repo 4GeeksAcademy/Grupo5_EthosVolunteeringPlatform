@@ -36,7 +36,9 @@ export const CausasCards = () => {
                                 <div className="card-body">
                                     <h5 className="card-title">Sociedad y Cultura</h5>
                                     <p className="card-text">Promovemos la expresión artística como motor de desarrollo de la sociedad costarricense.</p>
-                                    <a href="#" className="card-button btn btn-primary">LEER MÁS...</a>
+                                    <Link to='/SociedadyCultura'>
+                                    <div href="#" className="card-button btn btn-primary">LEER MÁS...</div>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -47,7 +49,9 @@ export const CausasCards = () => {
                                 <div className="card-body">
                                     <h5 className="card-title">Salud y Bienestar</h5>
                                     <p className="card-text">Apoyamos las iniciativas que velan por la salud integral y el bienestar de la cuidadanía, la fauna y el ambiente.</p>
-                                    <a href="#" className="card-button btn btn-primary">LEER MÁS...</a>
+                                    <Link to='/SaludyBienestar'>
+                                    <div href="#" className="card-button btn btn-primary">LEER MÁS...</div>
+                                    </Link>
                                 </div>
                             </div>
 
