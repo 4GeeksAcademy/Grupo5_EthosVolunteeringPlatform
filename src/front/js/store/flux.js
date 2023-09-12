@@ -52,7 +52,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					user_role : store.user_role
 				}
 
-				await fetch("process.env.BACKEND_URL + api/register ", {
+				await fetch(`${process.env.BACKEND_URL}/api/register`, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(user)
@@ -73,14 +73,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					password: store.password
 				}
 
-				await fetch("process.env.BACKEND_URL + api/login ", {
+				await fetch(`${process.env.BACKEND_URL}/api/login`, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(user)
 
 				})
 					.then(response => response.json())
-					.then(data => { localStorage.setItem("jwt-token", data.token) }) // Storage token
+					.then(data => { localStorage.setItem("token", data.token) }) // Storage token
 					.catch(err => err)
 			},
 
@@ -99,13 +99,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					event_date: store.event_date,
 					event_time: store.event_time,
 					duration: store.duration,
+					creator_id: store.token
 				}
 
-				await fetch("process.env.BACKEND_URL + api/add-event", {
+				await fetch(`${process.env.BACKEND_URL}/api/add-event`, {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
-						"Authorization": "Bearer" + token,
+						"Authorization": `Bearer ${token}`,
 					},
 					body: JSON.stringify(new_event)
 
