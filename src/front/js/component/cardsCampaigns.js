@@ -19,7 +19,7 @@ export const CardsCampaigns = ({ item }) => {
 
                 <div className="row g-4 justify-content-md-center align-items-center">
                     {item.map((val) => (
-                        <div className="col-lg-3 col-md-4" key={val.id}>
+                        <div className="col-lg col-md" key={val.id}>
                         <div className="card" style={cardStyle}>
                             <img className="card-img-top img-fluid" src={val.img} style={imgStyle} alt="Card image cap"></img>
                             <div className="card-body">
