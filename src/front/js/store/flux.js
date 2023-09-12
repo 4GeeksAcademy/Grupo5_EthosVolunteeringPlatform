@@ -166,6 +166,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 
+			// FETCH FOR DELETING EVENT
+			fetchDeleteEvent: async () => {
+				
+				// Get user token
+				const store = getStore()
+				let token = localStorage.getItem("token")
+
+				
+
+			fetch(`${process.env.BACKEND_URL}/api/delete-event/<int:event_id>`, {
+				method: "DELETE",
+				headers: {
+					"Content-Type": "application/json",
+					"Authorization": `Bearer ${token}`,
+				},
+				body: JSON.stringify([])
+
+			})
+			.then(response => response.json())
+				.then(data => {setStore({ allEventsList: data.response })}) // 
+				.catch(err => err)
+			},
+
+
 			
 
 
