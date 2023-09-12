@@ -25,7 +25,7 @@ export const Organizaciones = () => {
         </div>
 
 
-        <div className='mt-4'>
+
           <CardsOrgs item={item} />
         </div>
         
