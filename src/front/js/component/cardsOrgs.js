@@ -14,7 +14,7 @@ const imgStyle = {
 export const CardsOrgs = ( {item} ) => {
     return (
         <>
-            <div className="container-xxl white-space">
+            <div className="container-xxl white-space mt-5">
 
                 <div className="row g-4 justify-content-md-center align-items-center">
                     {item.map((val) => (
