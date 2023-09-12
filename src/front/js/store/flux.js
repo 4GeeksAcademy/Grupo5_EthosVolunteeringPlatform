@@ -8,6 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			email: null,
 			password: null,
 			signupData: [],
+			allEventsList: [],
 			token: null,
 
 			// For Add Event
@@ -116,6 +117,54 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => err)
 
 			},
+
+			//FETCH ALL EVENTS AND ATTENDANCE FOR ORGANIZATIONS
+			fetchAllEventsByOrg: async () => {
+
+				// Get user token
+				const store = getStore()
+				let token = localStorage.getItem("token")
+
+				// Body request format
+				const response_body = {
+					"msg" : events_list
+				}
+
+				await fetch(`${process.env.BACKEND_URL}/api/all-events`, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": `Bearer ${token}`,
+					},
+					body: JSON.stringify(events_list)
+				})
+				.then(response => response.json())
+				.then(data => {setStore(data.token)}) // 
+				.catch(err => err)
+				
+
+			},
+
+			// FETCH ALL EVENTS FOR VOLUNTEERS
+
+			fetchEventsList: async () => {
+
+				const store = getStore()
+
+				const response_body = {
+					"msg" : events_list
+				}
+
+				await fetch( `${process.env.BACKEND_URL}/api/events-list` , {
+					method: "GET",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(events_list)
+				})
+				.then(response => response.json())
+				.then(data => {setStore({ allEventsList: data.response })}) // 
+				.catch(err => err)
+			},
+
 
 			
 
