@@ -23,6 +23,10 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Ingresar } from "./pages/Ingresar";
+import InfoAmbiente from "./component/infoAmbiente";
+import InfoSalud from "./component/infoSalud";
+import InfoSociedad from "./component/infoSociedad";
 
 
 //create your first component
@@ -46,8 +50,12 @@ const Layout = () => {
                         <Route element={<Campaign />} path="/Campaign" />
                         <Route element={<Organizaciones />} path="/Organizaciones" />
                         <Route element={<Contacto />} path="/Contacto" />
+                        <Route element={<Ingresar />} path="/Ingresar" />
                         <Route element={<UnirseOrganizacion />} path="/UnirseOrganizacion" />
                         <Route element={<UnirseVoluntario />} path="/UnirseVoluntario" />
+                        <Route element={<InfoAmbiente/>} path="/MedioAmbiente"/>
+                        <Route element={<InfoSalud/>} path="/SaludyBienestar"/>
+                        <Route element={<InfoSociedad/>} path="/SociedadyCultura"/>
                         <Route element={<Demo />} path="/demo" />
                         
                         <Route element={<Single />} path="/single/:theid" />
