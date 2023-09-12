@@ -48,17 +48,9 @@ export const Navbar = () => {
 								</Link>
 							</li>
 
-							<div className="dropdown">
-								<button className="btn login dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-									Ingresar
-								</button>
-								<ul className="dropdown-menu">
-									<Link to={"/Ingresar"} style={{ textDecoration: 'none' }}>
-										<li><div className="dropdown-item join-login-text" href="#">Como organización</div></li>
-										<li><div className="dropdown-item join-login-text" href="#">Como voluntario</div></li>
-									</Link>
-								</ul>
-							</div>
+							<button className="btn login" type="button">
+								Ingresar
+							</button>
 
 
 							<div className="dropdown">
