@@ -23,7 +23,7 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import { Ingresar } from "./pages/Ingresar";
+import { LoginForm } from "./component/loginForm";
 import InfoAmbiente from "./component/infoAmbiente";
 import InfoSalud from "./component/infoSalud";
 import InfoSociedad from "./component/infoSociedad";
@@ -50,7 +50,7 @@ const Layout = () => {
                         <Route element={<Campaign />} path="/Campaign" />
                         <Route element={<Organizaciones />} path="/Organizaciones" />
                         <Route element={<Contacto />} path="/Contacto" />
-                        <Route element={<Ingresar />} path="/Ingresar" />
+                        <Route element={<LoginForm />} path="/loginForm" />
                         <Route element={<UnirseOrganizacion />} path="/UnirseOrganizacion" />
                         <Route element={<UnirseVoluntario />} path="/UnirseVoluntario" />
                         <Route element={<InfoAmbiente/>} path="/MedioAmbiente"/>
