@@ -25,11 +25,18 @@ export const Organizaciones = () => {
         </div>
 
 
-        <div className='container-xxl white-space'>
+        <div className='mt-4'>
           <CardsOrgs item={item} />
         </div>
         
+        <div className=' white-space-sm '></div>
+
+        <div className='mt-4 mb-4'>
         <AuxiliarGreenTwo/>
+        </div>
+        
+
+        
           <Sponsors />
           <FatFooter></FatFooter>
       </div>
