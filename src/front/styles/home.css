@@ -360,6 +360,11 @@ body{
     margin-top: 10%;
 }
 
+.white-space-sm{
+    height: 250px;
+    margin-top: 10%;
+}
+
 .filter-button{
     background: #C76A00;
     margin: 5px;
@@ -440,5 +445,15 @@ label{
 /* Campaign cards style */
 .bold{
     font-weight: bold;
+}
+
+/* Causas jumbotrón icon */
+.fas{
+    color: #C76A00;
+}
+
+.fas:hover{
+    color: #00367C;
+
 }
 

@@ -17,7 +17,7 @@ export const CausasCards = () => {
 
                     <div className="row g-4 justify-content-md-center align-items-center">
 
-                        <div className="col-lg col-md">
+                        <div className="col-lg-3 col-md-4">
                             <div className="card" style={cardStyle}>
                                 <img className="card-img-top img-fluid" src="https://images.unsplash.com/photo-1551855350-c86caeaf8707?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Card image cap"></img>
                                 <div className="card-body">
@@ -30,7 +30,7 @@ export const CausasCards = () => {
                             </div>
                         </div>
 
-                        <div className="col-lg col-md">
+                        <div className="col-lg-3 col-md-4">
                             <div className="card" style={cardStyle}>
                                 <img className="card-img-top img-fluid" src="https://images.unsplash.com/photo-1504685723432-f3f005135e75?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Card image cap"></img>
                                 <div className="card-body">
@@ -43,7 +43,7 @@ export const CausasCards = () => {
                             </div>
                         </div>
 
-                        <div className="col-lg col-md">
+                        <div className="col-lg-3 col-md-4">
                         <div className="card" style={cardStyle}>
                                 <img className="card-img-top img-fluid" src="https://images.unsplash.com/photo-1576765974102-b756026ecee3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1778&q=80" alt="Card image cap"></img>
                                 <div className="card-body">
