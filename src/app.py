@@ -135,6 +135,7 @@ def register():
             print(error.args)
             return jsonify({'message': 'Can not create user'}), 500
 
+
 @app.route('/login', methods=['POST'])
 def login():
     # verify data content
@@ -150,6 +151,7 @@ def login():
     
     token= create_access_token(identity={'id':user.id, 'role':user.role})
     return jsonify({'message': 'logged in succesfully', 'token': token}), 200
+
 
 @app.route('/add-event', methods=['POST'])
 @jwt_required()
