@@ -78,18 +78,19 @@ def serve_any_other_file(path):
     return response
 
 
+# endpoint to user register
 @app.route('/register', methods=['POST'])
 def register():
     data = request.json
     if data is None or not data:
         return jsonify({'error': 'No Json data provided'}), 400
 
-    # verificar si el usuario existe
+    # does user exists?
     user = User.query.filter_by(email=data['email']).first()
     if user:
         return jsonify({'error': 'This user already exists'}), 409
 
-    # verificar tipo de usuario
+    # type of user
     is_organization = data.get('is_organization', None)
     if is_organization:
         required_keys = ['organization_name', 'email', 'password']
@@ -136,6 +137,7 @@ def register():
             return jsonify({'message': 'Can not create user'}), 500
 
 
+# endpoint to login
 @app.route('/login', methods=['POST'])
 def login():
     # verify data content
@@ -152,7 +154,7 @@ def login():
     token= create_access_token(identity={'id':user.id, 'role':user.role})
     return jsonify({'message': 'logged in succesfully', 'token': token}), 200
 
-
+# endpoint to post-add events
 @app.route('/add-event', methods=['POST'])
 @jwt_required()
 def add_event():
@@ -195,6 +197,7 @@ def add_event():
             return jsonify({'message': 'Can not create event'}), 500
 
 
+# Endpoint for listing org-user events
 @app.route('/all-events', methods=['GET'])
 @jwt_required()
 def get_all_events():
@@ -213,6 +216,25 @@ def get_events_list():
     events_list = [event.serialize() for event in events]
     return jsonify ({'result': events_list})
 
+
+# Endpoint to delete event
+@app.route("/delete-event/<int:event_id>", methods=['DELETE'])
+@jwt_required()
+def delete_event(event_id):
+    current_user= get_jwt_identity()
+    print(current_user)
+    event = Event.query.filter_by(id=event_id).first()
+
+    if event is not None:
+        try:
+            db.session.delete(event)
+            db.session.commit()
+            return jsonify({"ok": True, "message": "Event deleted"}), 204
+        except Exception as error:
+            print(error)
+            db.session.rollback()
+            return jsonify({"message": "Server error"}), 500
+    return jsonify({"message": "Not found"}), 404
 
 
 
