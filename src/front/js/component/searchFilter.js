@@ -1,31 +1,23 @@
 import React from 'react';
+import DataCampaign from './DataCampaign';
 
-export const SearchFilter = () => {
+export const SearchFilter = ({filterItems, filterSearch, setItem}) => {
     return (
         <>
-            <div className="container">
+            <div className="container mt-5 mb-5 pb-3 pt-5">
                 <h2 className='text-dark'>Explorar campañas</h2>
-                <p className='text-dark'>Filtre la búsqueda por tema o fecha.</p>
-                <div className="dropdown">
-                    <button className="filter-button btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Por tema
-                    </button>
-                    <ul className="dropdown-menu">
-                        <li><a className="dropdown-item" href="#">Ambiente y conservación</a></li>
-                        <li><a className="dropdown-item" href="#">Sociedad y cultura</a></li>
-                        <li><a className="dropdown-item" href="#">Salud y bienestar</a></li>
-                    </ul>
-
-                    <button className="filter-button btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Por fecha
-                    </button>
-                    <ul className="dropdown-menu">
-                        <li><a className="dropdown-item" href="#">Septiembre</a></li>
-                        <li><a className="dropdown-item" href="#">Octubre</a></li>
-                    </ul>
-
-
+                <p className='text-dark'>Filtre la búsqueda por tema de causa.</p>
+                <div className="d-flex justify-content-center">
+                   {
+                    filterItems.map( (val) => (
+                        <button className='bnt filter-button'
+                        onClick={() => filterSearch(val)}> {val} </button>
+                    ))
+                   }
+                   <button className='bnt filter-button'
+                   onClick={() => setItem(DataCampaign)}> Todos </button>
                 </div>
+                
             </div>
         </>
     )

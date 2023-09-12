@@ -1,10 +1,10 @@
 import React from 'react'
-import { Login } from '../component/login'
+import { Registrarse } from '../component/registrarse'
 
 export const Ingresar = () => {
   return (
     <div>
-        <Login></Login>
+      <Registrarse/>
     </div>
   )
 }
