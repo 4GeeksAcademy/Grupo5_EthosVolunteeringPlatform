@@ -27,6 +27,7 @@ import { LoginForm } from "./component/loginForm";
 import InfoAmbiente from "./component/infoAmbiente";
 import InfoSalud from "./component/infoSalud";
 import InfoSociedad from "./component/infoSociedad";
+import InfoPartner from "./component/infoPartner";
 
 
 //create your first component
@@ -56,6 +57,7 @@ const Layout = () => {
                         <Route element={<InfoAmbiente/>} path="/MedioAmbiente"/>
                         <Route element={<InfoSalud/>} path="/SaludyBienestar"/>
                         <Route element={<InfoSociedad/>} path="/SociedadyCultura"/>
+                        <Route element={<InfoPartner/>} path="/infoPartner"/>
                         <Route element={<Demo />} path="/demo" />
                         
                         <Route element={<Single />} path="/single/:theid" />
