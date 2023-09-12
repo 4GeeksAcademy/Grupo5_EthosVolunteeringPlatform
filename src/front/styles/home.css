@@ -363,8 +363,10 @@ body{
 .filter-button{
     background: #C76A00;
     margin: 5px;
-    width: 150px;
+    height: 40px;
+    width: 170px;
     border: none;
+    border-radius: 10px;
     color:#F5f5f5;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
@@ -433,5 +435,10 @@ label{
     width: 80%;
     margin-top: 10%;
     margin-left: 8%;
+}
+
+/* Campaign cards style */
+.bold{
+    font-weight: bold;
 }
 

@@ -101,7 +101,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					duration: store.duration,
 				}
 
-				await fetch("process.env.BACKEND_URL=https://crispy-enigma-v9965q55wqgh5j-3001.app.github.dev + api/add-event", {
+				await fetch("process.env.BACKEND_URL + api/add-event", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
