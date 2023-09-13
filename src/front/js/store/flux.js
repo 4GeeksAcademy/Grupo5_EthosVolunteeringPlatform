@@ -103,6 +103,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					creator_id: store.token
 				}
 
+
 				await fetch(`${process.env.BACKEND_URL}/api/add-event`, {
 					method: "POST",
 					headers: {

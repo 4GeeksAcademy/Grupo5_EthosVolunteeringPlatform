@@ -24,7 +24,6 @@ export const Organizaciones = () => {
         <AuxiliarWhiteFive/>
         </div>
 
-
         <div className='mt-5 mb-5'>
           <CardsOrgs item={item} />
         </div>

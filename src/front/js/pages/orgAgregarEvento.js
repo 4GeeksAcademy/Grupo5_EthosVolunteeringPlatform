@@ -7,5 +7,6 @@ export const orgAgregarEvento = () => {
         <div>
             <formOrgAgregarEvento/>
         </div>
-    )
+    );
+
 }

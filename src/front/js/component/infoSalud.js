@@ -5,6 +5,7 @@ import { FatFooter } from "../component/fatFooter";
 
 const infoSalud = () => {
     return (
+
         <div>
             <div className='container-jumbotron'>
                 <div className='row m-0'>
@@ -21,6 +22,7 @@ const infoSalud = () => {
                                 <i className='fas fa-arrow-alt-circle-left'></i>
                             </Link>
                         </div>
+
 
                     </div>
 

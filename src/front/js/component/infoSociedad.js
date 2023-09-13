@@ -10,6 +10,7 @@ const infoSociedad = () => {
                 <div className='row m-0'>
                     <div className='container col-6'>
                         <img className="custom-img ps-3 pt-3" src={`https://images.unsplash.com/photo-1504685723432-f3f005135e75?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80`} alt="img" />
+
                     </div>
                     <div className='col-6' >
                         <div className='row ms-5 mt-3 justify-content-left'>

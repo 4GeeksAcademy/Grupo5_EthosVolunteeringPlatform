@@ -16,6 +16,7 @@ export const CardsOrgs = ({ item }) => {
         <>
 
             <div className="container">
+
                 <div className="row g-4 justify-content-md-center align-items-center">
                     {item.map((val) => (
                         <div className="col-lg-3 col-md-4" key={val.id}>
