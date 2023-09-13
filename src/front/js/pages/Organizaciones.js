@@ -1,13 +1,19 @@
 import React from 'react';
+import { useState } from 'react';
 import { PartnersBanner } from '../component/partnersBanner';
 import { AuxiliarWhiteFive } from '../component/auxiliarWhiteFive';
-import OrganizacionesCards from '../component/OrganizacionesCards';
+import { CardsOrgs } from '../component/cardsOrgs';
+import {DataOrganizations} from '../component/DataOrganizations';
 import { AuxiliarGreenTwo} from '../component/auxiliarGreenTwo';
 import { Sponsors } from '../component/sponsors';
 import { FatFooter } from "../component/fatFooter";
 
 
 export const Organizaciones = () => {
+
+  const [item, setItem] = useState(DataOrganizations); //pupulate cards
+
+
   return (
     <>
       <div className='mt-4 mb-5 text-center'>
@@ -18,12 +24,18 @@ export const Organizaciones = () => {
         <AuxiliarWhiteFive/>
         </div>
 
-
-        <div className='mt-4 mb-5'>
-          <OrganizacionesCards />
+        <div className='mt-5 mb-5'>
+          <CardsOrgs item={item} />
         </div>
         
+        
+
+        <div className='mt-4 mb-4'>
         <AuxiliarGreenTwo/>
+        </div>
+        
+
+        
           <Sponsors />
           <FatFooter></FatFooter>
       </div>

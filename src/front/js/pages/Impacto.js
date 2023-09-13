@@ -20,7 +20,7 @@ export const Impacto = () => {
         </div>
 
         <div className='mt-4 mb-5'>
-        <h3>***Estas cards son mockups para idea visual***</h3>
+        <h3></h3>
           <CausasCards />
         </div>
 
