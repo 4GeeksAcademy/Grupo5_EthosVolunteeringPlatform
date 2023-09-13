@@ -48,9 +48,11 @@ export const Navbar = () => {
 								</Link>
 							</li>
 
-							<button className="btn login" type="button">
-								Ingresar
-							</button>
+							<Link to={"/loginForm"} style={{ textDecoration: 'none' }}>
+								<button className="btn login" type="button">
+									Ingresar
+								</button>
+							</Link>
 
 
 							<div className="dropdown">

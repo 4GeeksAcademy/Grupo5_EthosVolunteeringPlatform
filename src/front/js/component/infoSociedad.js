@@ -1,28 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FatFooter } from "../component/fatFooter";
+
 
 const infoSociedad = () => {
     return (
-        <div className='container-jumbotron'>
-            <div className='row m-0'>
-                <div className='container col-6'>
-                    <img className="custom-img ps-3 pt-3" src={`https://images.unsplash.com/photo-1504685723432-f3f005135e75?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80`} alt="img" />
-                </div>
+        <div>
+            <div className='container-jumbotron'>
+                <div className='row m-0'>
+                    <div className='container col-6'>
+                        <img className="custom-img ps-3 pt-3" src={`https://images.unsplash.com/photo-1504685723432-f3f005135e75?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80`} alt="img" />
 
-                <div className='col-6' >
-                    <div className='row ms-5 mt-3 justify-content-left'>
-                        <h1 className='mx-3'>Sociedad y Cultura</h1>
                     </div>
-                    <div className='container row p-3 ms-5 text-dark'>
-                        <p>En un mundo globalizado, proteger y promover la diversidad cultural es esencial. Voluntarios comprometidos con la sociedad y la cultura trabajan en museos, organizan festivales, promueven el arte y la literatura, y más. A través de estas acciones, se busca no solo conservar la rica tapeza cultural de nuestra humanidad, sino también promover el entendimiento mutuo, la tolerancia y el respeto. En una sociedad diversa, el voluntariado cultural actúa como un puente, celebrando las diferencias y fomentando la unidad.</p>
-                        <Link to={"/Causas"} style={{ textDecoration: 'none' }}>
-                            <i className='fas fa-arrow-alt-circle-left'></i>
-                        </Link>
+                    <div className='col-6' >
+                        <div className='row ms-5 mt-3 justify-content-left'>
+                            <h1 className='mx-3'>Sociedad y Cultura</h1>
+                        </div>
+                        <div className='container row p-3 ms-5 text-dark'>
+                            <p>En un mundo globalizado, proteger y promover la diversidad cultural es esencial. Voluntarios comprometidos con la sociedad y la cultura trabajan en museos, organizan festivales, promueven el arte y la literatura, y más. A través de estas acciones, se busca no solo conservar la rica tapeza cultural de nuestra humanidad, sino también promover el entendimiento mutuo, la tolerancia y el respeto. En una sociedad diversa, el voluntariado cultural actúa como un puente, celebrando las diferencias y fomentando la unidad.</p>
+                            <Link to={"/Causas"} style={{ textDecoration: 'none' }}>
+                                <i className='fas fa-arrow-alt-circle-left'></i>
+                            </Link>
+                        </div>
+
                     </div>
 
                 </div>
-
             </div>
+            <FatFooter />
         </div>
     )
 }
