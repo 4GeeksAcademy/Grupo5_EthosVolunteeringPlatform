@@ -19,7 +19,7 @@ export const PartnersBanner = () => {
           <div className="text-white banner-text">
             <img  src={logowhite} width="665px"></img>
             <h5 className="mb-3 mt-3 banner-description fade-in-top">Las asociaciones son el núcleo de nuestra filosofía en ETHOS. A medida que avanzamos, continuamos buscando oportunidades para colaborar, innovar y crecer junto con nuestros valiosos socios.</h5>
-            <Link to='/Organizaciones'>
+            <Link to='/infoPartner'>
             <button className="cta-button-alt btn-lg mt-3 mb-5" href="#!" role="button">PARTNERSHIPS</button>
             </Link>
           </div>

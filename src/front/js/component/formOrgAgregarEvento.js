@@ -23,7 +23,7 @@ const [fromattedDate, setFormattedDate] = useState("");
     // Actualizo el estado con la hora seleccionada
     setTime(e.target.value);
   }
-    
+
   return (
     <div>
 

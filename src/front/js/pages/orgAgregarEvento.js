@@ -8,4 +8,5 @@ export const orgAgregarEvento = () => {
             <formOrgAgregarEvento/>
         </div>
     );
+
 }

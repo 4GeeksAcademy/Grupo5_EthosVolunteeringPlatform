@@ -1,10 +1,16 @@
 import React from 'react'
-import { Login } from '../component/login'
+import { Registrarse } from '../component/registrarse'
+import { FatFooter } from "../component/fatFooter";
 
 export const Ingresar = () => {
   return (
-    <div>
-        <Login></Login>
-    </div>
+    <>
+      <div>
+        <Registrarse />
+      </div>
+      <div>
+        <FatFooter />
+      </div>
+    </>
   )
 }
