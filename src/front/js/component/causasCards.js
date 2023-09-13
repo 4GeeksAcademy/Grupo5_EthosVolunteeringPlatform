@@ -12,7 +12,7 @@ const cardStyle = {
 export const CausasCards = () => {
     return (
         <>
-            <div className="container-xxl white-space">
+            <div className="container-xxl pt-5 pb-5">
                 <div className="container">
 
                     <div className="row g-4 justify-content-md-center align-items-center">

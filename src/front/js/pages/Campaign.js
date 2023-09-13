@@ -30,8 +30,11 @@ export const Campaign = () => {
             filterSearch = {filterSearch}
             setItem = {setItem}
           />
-        
-          <CardsCampaigns item={item}/>
+
+        </div>
+
+        <div>
+        <CardsCampaigns item={item}/>
         </div>
 
         <div className='mt-5'>

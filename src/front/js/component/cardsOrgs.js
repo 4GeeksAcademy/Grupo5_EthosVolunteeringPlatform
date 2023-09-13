@@ -11,10 +11,11 @@ const imgStyle = {
     height: "12rem"
 }
 
-export const CardsOrgs = ( {item} ) => {
+export const CardsOrgs = ({ item }) => {
     return (
         <>
-            <div className="container-xxl white-space">
+
+            <div className="container">
 
                 <div className="row g-4 justify-content-md-center align-items-center">
                     {item.map((val) => (

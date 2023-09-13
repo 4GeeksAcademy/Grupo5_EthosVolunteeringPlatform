@@ -24,12 +24,18 @@ export const Organizaciones = () => {
         <AuxiliarWhiteFive/>
         </div>
 
-
-        <div className='container-xxl white-space'>
+        <div className='mt-5 mb-5'>
           <CardsOrgs item={item} />
         </div>
         
+        
+
+        <div className='mt-4 mb-4'>
         <AuxiliarGreenTwo/>
+        </div>
+        
+
+        
           <Sponsors />
           <FatFooter></FatFooter>
       </div>

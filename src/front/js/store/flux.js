@@ -8,6 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			email: null,
 			password: null,
 			signupData: [],
+			allEventsList: [],
 			token: null,
 
 			// For Add Event
@@ -52,7 +53,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					user_role : store.user_role
 				}
 
-				await fetch("process.env.BACKEND_URL + api/register ", {
+				await fetch(`${process.env.BACKEND_URL}/api/register`, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(user)
@@ -73,14 +74,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					password: store.password
 				}
 
-				await fetch("process.env.BACKEND_URL + api/login ", {
+				await fetch(`${process.env.BACKEND_URL}/api/login`, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(user)
 
 				})
 					.then(response => response.json())
-					.then(data => { localStorage.setItem("jwt-token", data.token) }) // Storage token
+					.then(data => { localStorage.setItem("token", data.token) }) // Storage token
 					.catch(err => err)
 			},
 
@@ -99,13 +100,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					event_date: store.event_date,
 					event_time: store.event_time,
 					duration: store.duration,
+					creator_id: store.token
 				}
 
-				await fetch("process.env.BACKEND_URL + api/add-event", {
+
+				await fetch(`${process.env.BACKEND_URL}/api/add-event`, {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
-						"Authorization": "Bearer" + token,
+						"Authorization": `Bearer ${token}`,
 					},
 					body: JSON.stringify(new_event)
 
@@ -115,6 +118,54 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => err)
 
 			},
+
+			//FETCH ALL EVENTS AND ATTENDANCE FOR ORGANIZATIONS
+			fetchAllEventsByOrg: async () => {
+
+				// Get user token
+				const store = getStore()
+				let token = localStorage.getItem("token")
+
+				// Body request format
+				const response_body = {
+					"msg" : events_list
+				}
+
+				await fetch(`${process.env.BACKEND_URL}/api/all-events`, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": `Bearer ${token}`,
+					},
+					body: JSON.stringify(events_list)
+				})
+				.then(response => response.json())
+				.then(data => {setStore(data.token)}) // 
+				.catch(err => err)
+				
+
+			},
+
+			// FETCH ALL EVENTS FOR VOLUNTEERS
+
+			fetchEventsList: async () => {
+
+				const store = getStore()
+
+				const response_body = {
+					"msg" : events_list
+				}
+
+				await fetch( `${process.env.BACKEND_URL}/api/events-list` , {
+					method: "GET",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(events_list)
+				})
+				.then(response => response.json())
+				.then(data => {setStore({ allEventsList: data.response })}) // 
+				.catch(err => err)
+			},
+
 
 			
 
