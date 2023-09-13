@@ -7,13 +7,14 @@ from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
 from api.utils import APIException, generate_sitemap
-from api.models import db, User, Event, Role, Attendance
 from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
+
+from api.models import db, User, Event, Role, Attendance
 from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity, create_access_token
 from datetime import datetime, timedelta
-
+from flask_mail import Mail, Message
 
 
 # from models import Person
@@ -24,6 +25,20 @@ static_file_dir = os.path.join(os.path.dirname(
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
+
+# flask mail
+app.config.update(dict(
+    DEBUG=False,
+    MAIL_SERVER='smtp.gmail.com',
+    MAIL_PORT=587,
+    MAIL_USE_TLS=True,
+    MAIL_USE_SSL=False,
+    MAIL_USERNAME='alopez70828@gmail.com',
+    MAIL_PASSWORD='rpgm gkta vmmd tded'
+))
+mail = Mail(app)
+
+
 # database condiguration
 db_url = os.getenv("DATABASE_URL")
 if db_url is not None:
@@ -33,8 +48,15 @@ else:
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////tmp/test.db"
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(seconds=1800) #duracion del token
-jwt = JWTManager(app) #inicializar jwt
+
+
+# duracion del token
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(seconds=1800) 
+
+# inicializar jwt
+jwt = JWTManager(app)
+
+
 MIGRATE = Migrate(app, db, compare_type=True)
 db.init_app(app)
 
@@ -82,6 +104,7 @@ def serve_any_other_file(path):
 @app.route('/register', methods=['POST'])
 def register():
     data = request.json
+
     if data is None or not data:
         return jsonify({'error': 'No Json data provided'}), 400
 
@@ -92,12 +115,15 @@ def register():
 
     # type of user
     is_organization = data.get('is_organization', None)
+
     if is_organization:
         required_keys = ['organization_name', 'email', 'password']
+
         for key in required_keys:
             value = data.get(key, None)
             if value is None:
                 return jsonify({'error': 'Some fields are marked as required'}), 400
+
         try:
             new_organization_user = User(
                 organization_name=data['organization_name'],
@@ -105,20 +131,24 @@ def register():
                 password=data['password'],
                 role=Role.ORGANIZATION
             )
+
             db.session.add(new_organization_user)
             db.session.commit()
             print(new_organization_user)
             return jsonify({'message': 'User created'}), 201
+
         except Exception as error:
             db.session.rollback()
             print(error.args)
             return jsonify({'message': 'Can not create user'}), 500
+
     else:
         required_keys = ['name', 'last_name', 'email', 'password']
         for key in required_keys:
             value = data.get(key, None)
             if value is None:
                 return jsonify({'error': 'Some fields are marked as required'}), 400
+
         try:
             new_volunteer = User(
                 name=data['name'],
@@ -127,10 +157,12 @@ def register():
                 password=data['password'],
                 role=Role.VOLUNTEER
             )
+
             db.session.add(new_volunteer)
             db.session.commit()
             print(new_volunteer)
             return jsonify({'message': 'User created'}), 201
+
         except Exception as error:
             db.session.rollback()
             print(error.args)
@@ -140,25 +172,30 @@ def register():
 # endpoint to login
 @app.route('/login', methods=['POST'])
 def login():
+
     # verify data content
     if request.json is None or not request.json:
         return jsonify({'error': 'No Json data provided'}), 400
-    
+
     email = request.json.get('email', None)
     password = request.json.get('password', None)
 
     user = User.query.filter_by(email=email, password=password).first()
+
     if user is None:
         return jsonify({'error': 'something went wrong, please try again'}), 401
-    
-    token= create_access_token(identity={'id':user.id, 'role':user.role})
-    return jsonify({'message': 'logged in succesfully', 'token': token}), 200
+
+    token = create_access_token(identity={'id': user.id, 'role': user.role})
+    return jsonify({'message': 'logged in succesfully',
+                    'token': token
+                    }), 200
+
 
 # endpoint to post-add events
 @app.route('/add-event', methods=['POST'])
 @jwt_required()
 def add_event():
-    current_user= get_jwt_identity()
+    current_user = get_jwt_identity()
     print(current_user)
     data = request.json
 
@@ -172,11 +209,13 @@ def add_event():
     if event:
         return jsonify({'error': 'This event already exists'}), 409
 
-    required_keys = ['name', 'description', 'location', 'event_date', 'event_time', 'duration']
+    required_keys = ['name', 'description', 'location',
+                     'event_date', 'event_time', 'duration']
     for key in required_keys:
         value = data.get(key, None)
         if value is None:
             return jsonify({'error': 'Some fields are marked as required'}), 400
+
         try:
             new_event = Event(
                 name=data['name'],
@@ -187,10 +226,11 @@ def add_event():
                 duration=data['duration'],
                 creator_id=current_user['id']
             )
+
             db.session.add(new_event)
             db.session.commit()
-            #print(new_event)
             return jsonify({'message': 'Event created'}), 201
+
         except Exception as error:
             db.session.rollback()
             print(error.args)
@@ -201,27 +241,29 @@ def add_event():
 @app.route('/all-events', methods=['GET'])
 @jwt_required()
 def get_all_events():
-    current_user= get_jwt_identity() 
-    user= User.query.filter_by(id=current_user['id']).one_or_none()
+    current_user = get_jwt_identity()
+    user = User.query.filter_by(id=current_user['id']).one_or_none()
+
     if user is None:
-        return jsonify ({'message': 'user not found'}), 404
-    events_list= [event.serialize() for event in user.created_events]
-    return jsonify ({'message': events_list}), 200
+        return jsonify({'message': 'user not found'}), 404
+
+    events_list = [event.serialize() for event in user.created_events]
+    return jsonify({'message': events_list}), 200
 
 
 # Endpoint for listing all events
 @app.route('/events-list', methods=['GET'])
 def get_events_list():
-    events= Event.query.all() #empty array if no events created
+    events = Event.query.all()  # empty array if no events created
     events_list = [event.serialize() for event in events]
-    return jsonify ({'result': events_list})
+    return jsonify({'result': events_list})
 
 
 # Endpoint to delete event
 @app.route("/delete-event/<int:event_id>", methods=['DELETE'])
 @jwt_required()
 def delete_event(event_id):
-    current_user= get_jwt_identity()
+    current_user = get_jwt_identity()
     print(current_user)
     event = Event.query.filter_by(id=event_id).first()
 
@@ -230,12 +272,27 @@ def delete_event(event_id):
             db.session.delete(event)
             db.session.commit()
             return jsonify({"ok": True, "message": "Event deleted"}), 204
+
         except Exception as error:
             print(error)
             db.session.rollback()
             return jsonify({"message": "Server error"}), 500
+
     return jsonify({"message": "Not found"}), 404
 
+
+# Endpoint to send an email
+@app.route('/recuperacion-psw', methods=['POST'])
+def send_email():
+
+    message = Message(subject="Test de email",
+                      sender='alopez70828@gmail.com',
+                      recipients=['alopez70828@gmail.com']
+                      )
+
+    message.body = "Hola"
+    mail.send(message)
+    return jsonify({"message": "Send succesfully"}), 200
 
 
     # this only runs if `$ python src/main.py` is executed
