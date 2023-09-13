@@ -35,7 +35,7 @@ app.config.update(dict(
     MAIL_USE_TLS=True,
     MAIL_USE_SSL=False,
     MAIL_USERNAME='alopez70828@gmail.com',
-    MAIL_PASSWORD='rpgm gkta vmmd tded'
+    MAIL_PASSWORD='rpgmgktavmmdtded'
 ))
 mail = Mail(app)
 
@@ -44,7 +44,7 @@ mail = Mail(app)
 db_url = os.getenv("DATABASE_URL")
 if db_url is not None:
     app.config['SQLALCHEMY_DATABASE_URI'] = db_url.replace(
-        
+
         "postgres://", "postgresql://")
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////tmp/test.db"
@@ -53,7 +53,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
 # duracion del token
-app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(seconds=1800) 
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(seconds=1800)
 
 # inicializar jwt
 jwt = JWTManager(app)
@@ -75,8 +75,6 @@ setup_commands(app)
 app.register_blueprint(api, url_prefix='/api')
 
 # Handle/serialize errors like a JSON object
-
-
 
 
 @app.errorhandler(APIException)
@@ -285,18 +283,50 @@ def delete_event(event_id):
     return jsonify({"message": "Not found"}), 404
 
 
-# Endpoint to send an email
-@app.route('/recuperacion-psw', methods=['POST'])
-def send_email():
+# Endpoints to send an email
+@app.route('/reset-psw-request', methods=['POST'])
+def reset_psw_request():
 
-    message = Message(subject="Test de email",
-                      sender='alopez70828@gmail.com',
-                      recipients=['alopez70828@gmail.com']
-                      )
+    email = request.json.get('email', None)
+    if email is not None:
+        user = User.query.filter_by(email=email).first()
+        if user:
+            reset_token = create_access_token(identity=user.id)
+            user.reset_token = reset_token
+            try:
+                db.session.commit()
+                reset_url = f"https://zany-broccoli-qjprvq6j9j9f6x7w-3000.app.github.dev/update-psw?token={reset_token}"
+                message = Message(subject="Test de email",
+                                  sender='alopez70828@gmail.com',
+                                  recipients=['alopez70828@gmail.com']
+                                  )
 
-    message.body = "Hola"
-    mail.send(message)
-    return jsonify({"message": "Send succesfully"}), 200
+                message.body = reset_url
+                mail.send(message)
+                return jsonify({"message": "Send succesfully"}), 200
+            except Exception as error:
+                db.session.rollback()
+                return jsonify({"message": f"Server error {error}"}), 500
+    return jsonify({"message": f"user not found"}), 404
+            
+@app.route('/reset-psw/<token>', methods=['POST'])
+@jwt_required()
+def reset_psw(token):
+    current_user_id= get_jwt_identity()
+    user= User.query.get(current_user_id)
+    if user.reset_token == token:
+        new_password= request.json.get("password")
+        user.password= new_password
+        user.reset_token=None
+        try:
+            db.session.commit()
+            return jsonify({"message": f"Password reset succesfully"}), 200
+        except Exception as error:
+            db.session.rollback()
+            return jsonify({"message": f"Server error {error}"}), 500
+    return jsonify({"message": f"Invalid or expired token"}), 401
+
+
 
 
     # this only runs if `$ python src/main.py` is executed

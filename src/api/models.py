@@ -13,6 +13,7 @@ class User(db.Model):
     last_name= db.Column(db.String(20), nullable=True)
     email = db.Column(db.String(50), unique=True, nullable=False)
     password = db.Column(db.String(150), nullable=False)
+    reset_token= db.Column(db.String(300), unique=True)
 
     role= db.Column(db.Enum(Role), default= Role.VOLUNTEER)
 

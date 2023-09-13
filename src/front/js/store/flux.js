@@ -17,7 +17,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			event_date: null,
 			event_time: null,
 			duration: null,
-			user_role : null,
+			user_role: null,
 
 			message: null,
 			demo: [
@@ -41,19 +41,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			// FETCH USER SIGNUP DATA FROM ENDPOINT
-			fetchSignup: async () => {
+			fetchSignup: async (user) => {
 				const store = getStore()
 
 				// Body request format
-				const user = {
-					organization_name: store.organization_name,
-					name: store.name,
-					email: store.email,
-					password: store.password,
-					user_role : store.user_role
-				}
+				// const user = {
+				// 	organization_name: store.organization_name,
+				// 	name: store.name,
+				// 	email: store.email,
+				// 	password: store.password,
+				// 	user_role: store.user_role
+				// }
 
-				await fetch(`${process.env.BACKEND_URL}/api/register`, {
+				await fetch(`${process.env.BACKEND_URL}/register`, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(user)
@@ -74,7 +74,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					password: store.password
 				}
 
-				await fetch(`${process.env.BACKEND_URL}/api/login`, {
+				await fetch(`${process.env.BACKEND_URL}/login`, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(user)
@@ -104,7 +104,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 
 
-				await fetch(`${process.env.BACKEND_URL}/api/add-event`, {
+				await fetch(`${process.env.BACKEND_URL}/add-event`, {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
@@ -114,7 +114,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				})
 					.then(response => response.json())
-					.then(data => {setStore(data.token)}) // 
+					.then(data => { setStore(data.token) }) // 
 					.catch(err => err)
 
 			},
@@ -128,10 +128,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				// Body request format
 				const response_body = {
-					"msg" : events_list
+					"msg": events_list
 				}
 
-				await fetch(`${process.env.BACKEND_URL}/api/all-events`, {
+				await fetch(`${process.env.BACKEND_URL}/all-events`, {
 					method: "GET",
 					headers: {
 						"Content-Type": "application/json",
@@ -139,10 +139,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 					body: JSON.stringify(events_list)
 				})
-				.then(response => response.json())
-				.then(data => {setStore(data.token)}) // 
-				.catch(err => err)
-				
+					.then(response => response.json())
+					.then(data => { setStore(data.token) }) // 
+					.catch(err => err)
+
 
 			},
 
@@ -153,45 +153,80 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore()
 
 				const response_body = {
-					"msg" : events_list
+					"msg": events_list
 				}
 
-				await fetch( `${process.env.BACKEND_URL}/api/events-list` , {
+				await fetch(`${process.env.BACKEND_URL}/events-list`, {
 					method: "GET",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(events_list)
 				})
-				.then(response => response.json())
-				.then(data => {setStore({ allEventsList: data.response })}) // 
-				.catch(err => err)
+					.then(response => response.json())
+					.then(data => { setStore({ allEventsList: data.response }) }) // 
+					.catch(err => err)
 			},
 
 
 			// FETCH FOR DELETING EVENT
 			fetchDeleteEvent: async () => {
-				
+
 				// Get user token
 				const store = getStore()
 				let token = localStorage.getItem("token")
 
-				
 
-			fetch(`${process.env.BACKEND_URL}/api/delete-event/<int:event_id>`, {
-				method: "DELETE",
-				headers: {
-					"Content-Type": "application/json",
-					"Authorization": `Bearer ${token}`,
-				},
-				body: JSON.stringify([])
 
-			})
-			.then(response => response.json())
-				.then(data => {setStore({ allEventsList: data.response })}) // 
-				.catch(err => err)
+				fetch(`${process.env.BACKEND_URL}/delete-event/<int:event_id>`, {
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": `Bearer ${token}`,
+					},
+					body: JSON.stringify([])
+
+				})
+					.then(response => response.json())
+					.then(data => { setStore({ allEventsList: data.response }) }) // 
+					.catch(err => err)
+			},
+
+			updatePassword: async (token, data) => {
+				const response = fetch(`${process.env.BACKEND_URL}/reset-psw/${token}`, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": `Bearer ${token}`,
+					},
+					body: JSON.stringify(data)
+				})
+				.then(response => response.json())
+					.then(data => {alert("Contraseña actualizada")})  
+					.catch(err => err)
+			},
+
+			requestPassword: async (data) => {
+				const response = fetch(`${process.env.BACKEND_URL}/reset-psw-request`, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify(data)
+				})
+				.then(response => {
+					console.log(response.status)
+					if (response.status == 404){
+						throw new Error('No se encontro el usuario para el correo proporcionado')
+					} else if (response.status == 500){
+						throw new Error('Ocurrio un problema en el servidor')
+					} else {
+						return response.json()
+					}
+				})
+					.then(data => {alert("Instrucciones enviadas")})  
+					.catch(err => alert(err.message))
 			},
 
 
-			
 
 
 			// Use getActions to call a function within a fuction
@@ -225,6 +260,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			}
+
 		}
 	};
 };
