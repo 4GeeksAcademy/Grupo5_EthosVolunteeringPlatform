@@ -29,6 +29,7 @@ import InfoSalud from "./component/infoSalud";
 import InfoSociedad from "./component/infoSociedad";
 import InfoPartner from "./component/infoPartner";
 import { LoginModal } from "./component/loginModal";
+import { UpdatePsw } from "./component/updatepsw";
 
 //create your first component
 const Layout = () => {
@@ -53,6 +54,7 @@ const Layout = () => {
                         <Route element={<Contacto />} path="/Contacto" />
                         <Route element={<LoginForm />} path="/loginForm" />
                         <Route element={<LoginModal />} path="/recover-psw" />
+                        <Route element={<UpdatePsw />} path="/update-psw" />
                         <Route element={<UnirseOrganizacion />} path="/UnirseOrganizacion" />
                         <Route element={<UnirseVoluntario />} path="/UnirseVoluntario" />
                         <Route element={<InfoAmbiente />} path="/MedioAmbiente" />
