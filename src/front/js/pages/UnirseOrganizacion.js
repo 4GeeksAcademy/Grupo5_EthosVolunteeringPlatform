@@ -1,10 +1,24 @@
 import React from 'react'
+import { Context } from '../store/appContext'
+import { useContext } from 'react';
 
 export const UnirseOrganizacion = () => {
+  const { store, actions } = useContext(Context);
+  const data= {
+    organization_name: store.organization_name ?? '',
+    email: store.email ?? '',
+    password: store.password ?? '',
+    is_organization: "is_organization"
+}
+
   return (
     <>
       <div className='form-wrapper-org container mt-5'>
-        <form>
+        <form onSubmit={(e) => {
+                    e.preventDefault()
+                    actions.fetchSignup(data)
+                    e.target.reset()
+                }}>
           <div className='row mt-4'>
             <div className='form-header col'>
               <h3 className='text-dark'>¡Bienvenido a ETHOS!</h3>
@@ -14,15 +28,15 @@ export const UnirseOrganizacion = () => {
 
           <div className="mb-3">
             <label className="form-label text-dark">Nombre de la organización</label>
-            <input name="organization_name" className="form-control" required></input>
+            <input name="organization_name" onChange={actions.handleChange} className="form-control" required></input>
           </div>
           <div className="mb-3">
             <label className="form-label text-dark">Email</label>
-            <input name="email" className="form-control" placeholder="name@example.com" required></input>
+            <input name="email" onChange={actions.handleChange} className="form-control" placeholder="name@example.com" required></input>
           </div>
           <div className="mb-3">
             <label className="form-label text-dark">Contraseña</label>
-            <input name="email" className="form-control" placeholder="**********" required></input>
+            <input name="password" type="password" onChange={actions.handleChange} className="form-control" placeholder="**********" required></input>
           </div>
 
           <div className="row">
