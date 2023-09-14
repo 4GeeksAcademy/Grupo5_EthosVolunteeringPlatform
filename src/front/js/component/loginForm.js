@@ -27,7 +27,7 @@ export const LoginForm = () => {
                     </div>
                     <div className="mb-3">
                         <label className="form-label text-dark">Contraseña</label>
-                        <input name="password" onChange={actions.handleChange} className="form-control" placeholder="**********" required></input>
+                        <input name="password" type="password" onChange={actions.handleChange} className="form-control" placeholder="**********" required></input>
                     </div>
 
                     <div className="row">
