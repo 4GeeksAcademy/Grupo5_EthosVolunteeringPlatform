@@ -13,6 +13,47 @@ const imgStyle = {
 }
 
 export const CardsCampaigns = ({ item }) => {
+
+    const createEvent = async (data) => {
+        const event = {
+          summary : data.title,
+          location : data.location,
+          description : data.description,
+          start: {
+            dateTime: startDateTime,
+            timeZone,
+          },
+          end: {
+            dateTime: endDateTime,
+            timeZone,
+          },
+          reminders:{
+            'useDefault': false,
+            'overrides': [
+                { 'method': 'email', 'minutes': 24 * 60 },
+                { 'method': 'popup', 'minutes': 10 }
+            ]
+        }
+        };
+        try {
+          const response = await fetch(`${process.env.BACKEND_URL}/api/create-event`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(event)
+          });
+          const data = await response.json();
+          if (response.status === 403) {
+              window.location.href = data.authorization_url;
+          } else if (response.status === 500) {
+            alert(data.message);
+          } else {
+            alert(data.message);
+          }
+        } catch (error) {
+          console.error('Error al crear el evento:', error);
+        }
+      };
+
     return (
         <>
             <div className="container">

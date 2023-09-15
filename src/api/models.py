@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 import enum
+import json
 db = SQLAlchemy()
 
 class Role(str, enum.Enum):
@@ -14,7 +15,7 @@ class User(db.Model):
     email = db.Column(db.String(50), unique=True, nullable=False)
     password = db.Column(db.String(150), nullable=False)
     reset_token= db.Column(db.String(300), unique=True)
-
+    credentials = db.Column(db.Text)
     role= db.Column(db.Enum(Role), default= Role.VOLUNTEER)
 
     # relationships
@@ -34,14 +35,24 @@ class User(db.Model):
             "role": self.role
         }
     
+    def set_credentials(self, creds_obj):
+        self.credentials = creds_obj
+
+    def get_credentials(self):
+        try:
+            return json.loads(self.credentials)
+        except Exception as error:
+            print(error.args)
+            return None
+    
 
 class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(255))
     location = db.Column(db.String(150), nullable=False)
-    event_date = db.Column(db.String(15), nullable=False)
-    event_time = db.Column(db.String(4), nullable=False)
+    event_start_date_time = db.Column(db.String(15), nullable=False)
+    event_end_date_time = db.Column(db.String(15), nullable=False)
     duration = db.Column(db.String(150), nullable=False)
 
     # foreign key

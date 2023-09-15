@@ -1,0 +1,36 @@
+import React, { useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+
+const CallBack = () => {
+    const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const state = searchParams.get('state')
+    const code = searchParams.get('code')
+    const scope = searchParams.get('scope')
+
+    const getCallback = async () => {
+        try {
+            const response = await fetch(`${process.env.BACKEND_URL}/api/callback?state=${state}&code=${code}&scope=${scope}`);
+            const body = await response.json()
+            if(response.ok){
+                alert(body.message)
+                setTimeout(() => navigate('/'), 3000)
+            }else if(response.status == 500){
+                alert(body.message)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+        
+    };
+    useEffect(()=>{
+        getCallback();
+    }, [])
+    return (
+        <div className="container">
+            {"Hello I'm the callback component. I will redirect you to home page. In 3 seconds... :-)"}
+        </div>
+    )
+};
+
+export default CallBack
