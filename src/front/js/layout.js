@@ -31,6 +31,7 @@ import InfoPartner from "./component/infoPartner";
 import PerfilOrg from "./component/perfilOrg";
 import { LoginModal } from "./component/loginModal";
 import { UpdatePsw } from "./component/updatepsw";
+import CallBack from "./pages/callback";
 
 //create your first component
 const Layout = () => {
@@ -47,6 +48,7 @@ const Layout = () => {
                     <Navbar />
                     <Routes>
                         <Route element={<Home />} path="/" />
+                        <Route element={<CallBack/>} path="/callback" />
                         <Route element={<Acerca />} path="/Acerca" />
                         <Route element={<Impacto />} path="/Impacto" />
                         <Route element={<Causas />} path="/Causas" />
