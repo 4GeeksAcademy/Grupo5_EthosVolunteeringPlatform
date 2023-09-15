@@ -8,6 +8,7 @@
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
     "[python]": {
-        "editor.defaultFormatter": "ms-python.python"
-    }
+        "editor.defaultFormatter": "ms-python.autopep8"
+    },
+    "python.formatting.provider": "none"
 }

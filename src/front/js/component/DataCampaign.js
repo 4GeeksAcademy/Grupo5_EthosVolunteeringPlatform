@@ -9,7 +9,9 @@
             description: "Empieza la decimoquinta jornada de arborización urbana en los cinco distritos del cantón de Orotina.",
             organization : "Municipalidad de Orotina",
             date: "Septiembre 23",
-            duration: "1 día"
+            event_start_date_time: "2023-09-23T:09:00-06:00",
+            event_end_date_time: "2023-09-23T:14:00-06:00",
+            
     
         },
     
