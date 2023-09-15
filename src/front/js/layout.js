@@ -28,6 +28,7 @@ import InfoAmbiente from "./component/infoAmbiente";
 import InfoSalud from "./component/infoSalud";
 import InfoSociedad from "./component/infoSociedad";
 import InfoPartner from "./component/infoPartner";
+import PerfilOrg from "./component/perfilOrg";
 import { LoginModal } from "./component/loginModal";
 import { UpdatePsw } from "./component/updatepsw";
 
@@ -61,6 +62,7 @@ const Layout = () => {
                         <Route element={<InfoSalud />} path="/SaludyBienestar" />
                         <Route element={<InfoSociedad />} path="/SociedadyCultura" />
                         <Route element={<InfoPartner />} path="/infoPartner" />
+                        <Route element={<PerfilOrg />} path="/PerfilOrg" />
                         <Route element={<Demo />} path="/demo" />
 
                         <Route element={<Single />} path="/single/:theid" />

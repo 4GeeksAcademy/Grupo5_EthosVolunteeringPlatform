@@ -436,6 +436,7 @@ label{
     height: 350px;
 }
 
+/* Jumbotron de partnership */
 .container-jumbotron{
     width: 80%;
     height: 700px;
@@ -464,4 +465,9 @@ label{
     color: #5627AB;
     text-align: center;
     margin-top: 5%;
+}
+.container-perfil{
+    width: 700px;
+    margin-top: 70px;
+    margin-left: 100px;
 }

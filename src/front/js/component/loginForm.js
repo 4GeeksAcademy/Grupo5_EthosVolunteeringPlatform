@@ -1,10 +1,11 @@
 import React from 'react'
 import { Context } from '../store/appContext'
 import { useContext } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const LoginForm = () => {
     const { store, actions } = useContext(Context);
+    const navigate = useNavigate();
 
     return (
         <div>
@@ -13,6 +14,7 @@ export const LoginForm = () => {
                     e.preventDefault()
                     actions.fetchLogin()
                     e.target.reset()
+                    navigate("/PerfilOrg")
                 }}>
                     <div className='row mt-4'>
                         <div className='form-header col'>
