@@ -1,9 +1,13 @@
 import React from 'react'
-import { Context } from '../store/appContext'
+import { Context } from '../store/appContext';
 import { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const UnirseOrganizacion = () => {
+
   const { store, actions } = useContext(Context);
+  const navigate = useNavigate();
+
   const data= {
     organization_name: store.organization_name ?? '',
     email: store.email ?? '',
@@ -18,6 +22,7 @@ export const UnirseOrganizacion = () => {
                     e.preventDefault()
                     actions.fetchSignup(data)
                     e.target.reset()
+                    navigate("/loginForm")
                 }}>
           <div className='row mt-4'>
             <div className='form-header col'>
@@ -41,7 +46,7 @@ export const UnirseOrganizacion = () => {
 
           <div className="row">
             <div className='col-sm-12 mt-4 text-center'>
-              <button type='submit' className='submit-button btn'>Unirse</button>
+              <button type='submit' className='submit-button btn'>Registrarse</button>
             </div>
           </div>
 
