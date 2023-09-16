@@ -70,7 +70,7 @@ export const CardsCampaigns = ({ item }) => {
                                 <p className="card-text text-dark "> <small className='bold'> Fecha:</small> <small>{val.date}</small>  </p>
                                 <p className="card-text text-dark "> <small className='bold'> Duración:</small> <small>{val.duration}</small>  </p>
                                 <Link to=''>
-                                    <div href="#" className="card-button btn btn-primary">Agendar</div>
+                                    <div className="card-button btn btn-primary">Agendar</div>
                                 </Link>
                             </div>
                         </div>
