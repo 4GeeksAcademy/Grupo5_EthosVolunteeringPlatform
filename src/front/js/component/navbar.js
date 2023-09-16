@@ -43,7 +43,7 @@ export const Navbar = () => {
 								</Link>
 							</li>
 							<li className="nav-item">
-								<Link to={"/Contacto"} style={{ textDecoration: 'none' }}>
+								<Link to={"/Campaign"} style={{ textDecoration: 'none' }}>
 									<div className="nav-link" aria-current="page">Contacto</div>
 								</Link>
 							</li>

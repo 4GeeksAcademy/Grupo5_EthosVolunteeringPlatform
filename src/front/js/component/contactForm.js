@@ -4,7 +4,7 @@ export const ContactForm = () => {
   return (
     <div>
       <div className='form-wrapper-contact container mt-5'>
-        <form>
+        <form >
           <div className='row mt-4'>
             <div className='form-header col'>
               <h3>¡Bienvenido a <strong>ETHOS</strong>!</h3>

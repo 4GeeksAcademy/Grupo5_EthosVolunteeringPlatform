@@ -32,6 +32,7 @@ import PerfilOrg from "./component/perfilOrg";
 import { LoginModal } from "./component/loginModal";
 import { UpdatePsw } from "./component/updatepsw";
 import CallBack from "./pages/callback";
+import { FormOrgAgregarEvento } from "./component/formOrgAgregarEvento";
 
 //create your first component
 const Layout = () => {
@@ -65,6 +66,7 @@ const Layout = () => {
                         <Route element={<InfoSociedad />} path="/SociedadyCultura" />
                         <Route element={<InfoPartner />} path="/infoPartner" />
                         <Route element={<PerfilOrg />} path="/PerfilOrg" />
+                        <Route element={<FormOrgAgregarEvento />} path="/nuevo-evento" />
                         <Route element={<Demo />} path="/demo" />
 
                         <Route element={<Single />} path="/single/:theid" />
