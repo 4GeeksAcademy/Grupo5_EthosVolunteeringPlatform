@@ -1,8 +1,12 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 
 const perfilOrg = () => {
+
+  
+
     return (
         <>
             <div className='container-perfil'>
@@ -18,7 +22,9 @@ const perfilOrg = () => {
                     </div>
 
                     <div className='col'>
-                                <button type="button" className="add-event btn btn-danger">Crear envento</button>
+                        <Link to={"/nuevo-evento"}>
+                        <button type="button" className="add-event btn btn-danger">Crear envento</button>
+                        </Link>      
                     </div>
                 </div>
                 
