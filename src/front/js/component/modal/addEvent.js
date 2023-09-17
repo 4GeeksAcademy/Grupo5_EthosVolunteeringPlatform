@@ -10,7 +10,7 @@ export const ModalEvent = ({ modal, toggle }) => {
     const [time, setTime] = useState("");
 
     // Change date format
-  const changeDateFormat = (e) => {
+    const changeDateFormat = (e) => {
     // Obtener el valor del input
     const dateValue = e.target.value;
 
@@ -24,10 +24,12 @@ export const ModalEvent = ({ modal, toggle }) => {
     setFormattedDate(formatted);
   }
 
-  const handleTimeChange = (e) => {
+    const handleTimeChange = (e) => {
     // Actualizo el estado con la hora seleccionada
     setTime(e.target.value);
   }
+
+ 
 
 
     return (
@@ -43,8 +45,8 @@ export const ModalEvent = ({ modal, toggle }) => {
                     }}>
 
                         <div className="mb-3">
-                            <label for="exampleFormControlInput1" className="form-label">Nombre</label>
-                            <input name="name" onChange={actions.handleChange} type="name" className="form-control" id="exampleFormControlInput1"></input>
+                            <label for="exampleFormControlInput1" className="form-label">Título</label>
+                            <input name="title" onChange={actions.handleChange} type="name" className="form-control" id="exampleFormControlInput1"></input>
                         </div>
 
                         <div className="mb-3">
@@ -92,7 +94,7 @@ export const ModalEvent = ({ modal, toggle }) => {
 
                 </ModalBody>
                 <ModalFooter>
-                    <Button className='save-event' color="primary">
+                    <Button className='save-event' type='submit' color="primary">
                         Crear
                     </Button>{' '}
                     <Button className='nosave-event' color="secondary" onClick={toggle}>
