@@ -21,6 +21,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			user_role: null,
 			event_start_date_time: null,
 			event_end_date_time: null,
+			creator_id: null,
+			
 
 			message: null,
 			demo: [
