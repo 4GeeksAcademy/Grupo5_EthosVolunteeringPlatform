@@ -10,6 +10,7 @@ import json
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
+from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity, create_access_token
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
 
@@ -37,8 +38,9 @@ def handle_hello():
 
 
 @api.route('/callback')
+@jwt_required()
 def callback():
-    current_user_id = 14
+    current_user_id = get_jwt_identity()
     user = User.query.filter_by(id=current_user_id).first()
     if user:
         # Especifica el estado cuando creas el objeto flow para que pueda validarse
@@ -73,8 +75,9 @@ def callback():
 
 # Create event route
 @api.route('/create-event', methods=['POST'])
+@jwt_required()
 def create_event():
-    current_user_id = 14
+    current_user_id = get_jwt_identity()
     user = User.query.filter_by(id=current_user_id).first()
     if not user:
         return jsonify({"message": "User not found"}), 404
