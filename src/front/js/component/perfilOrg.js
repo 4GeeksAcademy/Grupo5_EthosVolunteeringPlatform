@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import { ModalEvent } from './modal/addEvent';
+import { Context } from '../store/appContext';
+import { useContext } from 'react';
 
 const cardStyle = {
     width: "18rem",
@@ -8,13 +10,25 @@ const cardStyle = {
     textAlign: "center"
 };
 
-// llamar store y el array orgEvenList
-// crear una var que contenga lo que viene de store, digamos que se llama "data"
-// con data se podría poblar cards de evento
+
+
+
+
+
 
 const perfilOrg = () => {
 
     //Create New Event Modal
+    const { store, actions } = useContext(Context);
+
+    // llamar store y el array orgEvenList
+    // crear una var que contenga lo que viene de store, digamos que se llama "data"
+    // con data se podría poblar cards de evento
+
+    const data = store.orgEvenList
+
+
+
     const [modal, setModal] = useState(false);
     const toggle = () => {
         setModal(!modal);
@@ -46,7 +60,7 @@ const perfilOrg = () => {
                             <div className="container">
 
                                 <div className="row g-4 justify-content-md-center align-items-center">
-                                    
+                                    {/* por aquí va el map */}
                                         <div className="col-lg-3 col-md-4" >
                                             <div className="card" style={cardStyle}>
                                 
