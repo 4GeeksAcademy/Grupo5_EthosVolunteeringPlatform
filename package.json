@@ -81,6 +81,7 @@
 		"react-countup": "^6.4.2",
 		"react-dom": "^16.8.4",
 		"react-polyfills": "0.0.1",
-		"react-router-dom": "^6.3.0"
+		"react-router-dom": "^6.3.0",
+		"reactstrap": "^9.2.0"
 	}
 }

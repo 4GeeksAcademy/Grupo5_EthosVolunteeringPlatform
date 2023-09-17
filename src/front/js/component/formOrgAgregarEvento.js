@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { Context } from '../store/appContext'
+import { useContext } from 'react';
 
 
 export const FormOrgAgregarEvento = () => {
 
+  const { store, actions } = useContext(Context);
   const navigate = useNavigate();
 
   const [formattedDate, setFormattedDate] = useState("");
   const [time, setTime] = useState("");
 
+  // Create event with Calendar Format
+
+
+  // Change date format
   const changeDateFormat = (e) => {
     // Obtener el valor del input
     const dateValue = e.target.value;
@@ -34,30 +41,27 @@ export const FormOrgAgregarEvento = () => {
 
 
 
-
-
-
-
       <div className='form-wrapper-event container mt-5'>
         <form onSubmit={(e) => {
-                    e.preventDefault()
-                    e.target.reset()
-                    navigate("/PerfilOrg")
-                }}>
+          e.preventDefault()
+          actions.handleChange()
+          e.target.reset()
+          navigate("/PerfilOrg")
+        }}>
 
           <div className="mb-3">
             <label for="exampleFormControlInput1" className="form-label">Nombre del evento</label>
-            <input type="name" className="form-control" id="exampleFormControlInput1"></input>
+            <input onChange={actions.handleChange} type="name" className="form-control" id="exampleFormControlInput1"></input>
           </div>
 
           <div className="mb-3">
             <label for="exampleFormControlTextarea1" className="form-label">Descripcion del evento</label>
-            <textarea className="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+            <textarea onChange={actions.handleChange} className="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
           </div>
 
           <div className="mb-3">
             <label for="exampleFormControlInput1" className="form-label">Lugar del evento</label>
-            <input type="location" className="form-control" id="exampleFormControlInput1"></input>
+            <input onChange={actions.handleChange} type="location" className="form-control" id="exampleFormControlInput1"></input>
           </div>
 
           <div className='mb-3'>
@@ -85,7 +89,7 @@ export const FormOrgAgregarEvento = () => {
               <label for="exampleFormControlInput1" className="form-label">¿Cuántos días dura el evento?</label>
             </div>
             <div className='col'>
-              <input type="tex" className="form-control" id="exampleFormControlInput1"></input>
+              <input onChange={actions.handleChange} type="text" className="form-control" id="exampleFormControlInput1"></input>
             </div>
           </div>
           <div className="row">
