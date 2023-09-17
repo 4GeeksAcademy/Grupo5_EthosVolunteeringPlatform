@@ -9,27 +9,34 @@ export const ModalEvent = ({ modal, toggle }) => {
     const [formattedDate, setFormattedDate] = useState("");
     const [time, setTime] = useState("");
 
+    const data= {
+        organization_name: store.organization_name ?? '',
+        is_organization: "is_organization"
+    }
+
     // Change date format
     const changeDateFormat = (e) => {
-    // Obtener el valor del input
-    const dateValue = e.target.value;
+        // Obtener el valor del input
+        const dateValue = e.target.value;
 
-    // Dividir la fecha en año, mes y dia
-    const dateParts = dateValue.split("-");
-    console.log(dateParts)
-    // Formatear la fecha como dd/mm/yyyy
-    const formatted = `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`;
+        // Dividir la fecha en año, mes y dia
+        const dateParts = dateValue.split("-");
+        console.log(dateParts)
+        // Formatear la fecha como dd/mm/yyyy
+        const formatted = `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`;
 
-    // Actualizar el estado con la fecha formateada
-    setFormattedDate(formatted);
-  }
+        // Actualizar el estado con la fecha formateada
+        setFormattedDate(formatted);
+    }
 
     const handleTimeChange = (e) => {
-    // Actualizo el estado con la hora seleccionada
-    setTime(e.target.value);
-  }
+        // Actualizo el estado con la hora seleccionada
+        setTime(e.target.value);
+    }
 
- 
+
+
+
 
 
     return (
@@ -45,7 +52,7 @@ export const ModalEvent = ({ modal, toggle }) => {
 
                         <div className="mb-3">
                             <label for="exampleFormControlInput1" className="form-label">Título</label>
-                            <input name="title" onChange={actions.handleChange} type="name" className="form-control" id="exampleFormControlInput1"></input>
+                            <input name="name" onChange={actions.handleChange} type="name" className="form-control" id="exampleFormControlInput1"></input>
                         </div>
 
                         <div className="mb-3">
@@ -66,12 +73,18 @@ export const ModalEvent = ({ modal, toggle }) => {
                         <div className="mb-3">
                             <label>Fecha de inicio:</label>
                             {/* input date */}
-                            <small><input className='ms-3 text-dark' name="event_date" type="date" value={formattedDate} onChange={changeDateFormat} /></small>
+                            <small><input className='ms-3 text-dark' name="event_start_date_time" type="date" value={formattedDate} onChange={actions.handleChange} /></small>
+                        </div>
+
+                        <div className="mb-3">
+                            <label>Fecha de cierre:</label>
+                            {/* input date */}
+                            <small><input className='ms-3 text-dark' name="event_end_date_time" type="date" value={formattedDate} onChange={actions.handleChange} /></small>
                         </div>
 
                         <div className="mb-3">
                             <label>Hora <small>(formato de 24 horas)</small></label>
-                            <small><input className='ms-3 text-dark' name="event_time" type="time" value={time} onChange={handleTimeChange} /></small>
+                            <small><input className='ms-3 text-dark' name="event_time" type="time" value={time} onChange={actions.handleChange}  /></small>
                             {/* Mostrar fecha en formato dd/mm/yyyy */}
                         </div>
 
@@ -87,19 +100,21 @@ export const ModalEvent = ({ modal, toggle }) => {
                                 <label> Hora seleccionada: <span>{time ? time : 'Ninguna'}</span></label>
                             </div>
 
+                            <div className='row mt-2 justify-content-end'>
+                                <div className='col-6'>
+                                    <Button className='save-event' type='submit' color="primary">Crear</Button>
+                                    <Button className='nosave-event ms-2' color="secondary" onClick={toggle}>Cancelar</Button>
+                                </div>
+
+                            </div>
+
+
                         </div>
                     </form>
 
 
                 </ModalBody>
-                <ModalFooter>
-                    <Button className='save-event' type='submit' color="primary">
-                        Crear
-                    </Button>{' '}
-                    <Button className='nosave-event' color="secondary" onClick={toggle}>
-                        Cancelar
-                    </Button>
-                </ModalFooter>
+
             </Modal>
 
         </>

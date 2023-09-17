@@ -53,7 +53,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
 # duracion del token
-app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(seconds=1800)
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(seconds=3600)
 
 # inicializar jwt
 jwt = JWTManager(app)
