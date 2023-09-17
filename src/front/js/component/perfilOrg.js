@@ -1,11 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
+import { ModalEvent } from './modal/addEvent';
+
+const cardStyle = {
+    width: "18rem",
+    background: "#ffffff",
+    textAlign: "center"
+};
 
 
 
 const perfilOrg = () => {
 
-  
+    //Create New Event Modal
+    const [modal, setModal] = useState(false);
+    const toggle = () => {
+        setModal(!modal);
+    }
 
     return (
         <>
@@ -22,17 +33,43 @@ const perfilOrg = () => {
                     </div>
 
                     <div className='col'>
-                        <Link to={"/nuevo-evento"}>
-                        <button type="button" className="add-event btn btn-danger">Crear envento</button>
-                        </Link>      
+                        <div>
+                            
+                                <button type="button" onClick={() => setModal(true)} className="add-event btn btn-danger">Crear envento</button>
+                            
+                        </div>
+
+                        <div className='mt-5'>
+
+                            <div className="container">
+
+                                <div className="row g-4 justify-content-md-center align-items-center">
+                                    
+                                        <div className="col-lg-3 col-md-4" >
+                                            <div className="card" style={cardStyle}>
+                                
+                                                <div className="card-body">
+                                                    <h5 className="card-title text-dark"> </h5>
+                                                    <p className="card-text text-dark"> </p>
+                                                    <p className="card-text text-dark ">  </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-                
+
                 <Link to={"/"} style={{ textDecoration: 'none' }}>
                     <i className='fas fa-arrow-alt-circle-left'></i>
                 </Link>
-                
+
             </div>
+
+            <ModalEvent toggle={toggle} modal={modal}/>
         </>
     )
 }
