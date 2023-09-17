@@ -8,7 +8,9 @@ const cardStyle = {
     textAlign: "center"
 };
 
-
+// llamar store y el array orgEvenList
+// crear una var que contenga lo que viene de store, digamos que se llama "data"
+// con data se podría poblar cards de evento
 
 const perfilOrg = () => {
 

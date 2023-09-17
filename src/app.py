@@ -212,7 +212,7 @@ def add_event():
         return jsonify({'error': 'This event already exists'}), 409
 
     required_keys = ['name', 'description', 'location',
-                     'event_date', 'event_time', 'duration']
+                      'event_time', 'event_start_date_time' , 'event_end_date_time' ,'duration']
     for key in required_keys:
         value = data.get(key, None)
         if value is None:
@@ -223,8 +223,9 @@ def add_event():
                 name=data['name'],
                 description=data['description'],
                 location=data['location'],
-                event_date=data['event_date'],
                 event_time=data['event_time'],
+                event_start_date_time=data['event_start_date_time'],
+                event_end_date_time=data['event_end_date_time'],
                 duration=data['duration'],
                 creator_id=current_user['id']
             )

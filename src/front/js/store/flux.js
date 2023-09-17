@@ -10,6 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			signupData: [],
 			allEventsList: [],
 			token: null,
+			orgEvenList: [],
 
 			// For Add Event
 			description: null,
@@ -18,6 +19,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			event_time: null,
 			duration: null,
 			user_role: null,
+			event_start_date_time: null,
+			event_end_date_time: null,
 
 			message: null,
 			demo: [
@@ -97,7 +100,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					name: store.name,
 					description: store.description,
 					location: store.location,
-					event_date: store.event_date,
+					event_start_date_time: store.event_start_date_time,
+                	event_end_date_time : store.event_end_date_time,
 					event_time: store.event_time,
 					duration: store.duration,
 					creator_id: store.token
@@ -141,6 +145,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => response.json())
 					.then(data => { setStore(data.token) }) // 
+					.then(data => { setStore({ orgEvenList: data.response })})
 					.catch(err => err)
 
 

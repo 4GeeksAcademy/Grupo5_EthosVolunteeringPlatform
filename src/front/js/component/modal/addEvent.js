@@ -41,7 +41,6 @@ export const ModalEvent = ({ modal, toggle }) => {
                         e.preventDefault();
                         actions.fetchAddEvent();
                         e.target.reset();
-
                     }}>
 
                         <div className="mb-3">
