@@ -211,7 +211,7 @@ def add_event():
     if event:
         return jsonify({'error': 'This event already exists'}), 409
 
-    required_keys = ['name', 'description', 'location',
+    required_keys = ['name', 'description', 'location', 'event_time',
                       'event_start_date_time' , 'event_end_date_time' ,'duration']
     for key in required_keys:
         value = data.get(key, None)

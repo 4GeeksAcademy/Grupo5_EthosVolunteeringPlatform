@@ -1,3 +1,5 @@
+import { storagetransfer } from "googleapis/build/src/apis/storagetransfer";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -16,7 +18,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			description: null,
 			location: null,
 			event_date: null,
-			event_time: [],
+			event_time: null,
 			duration: null,
 			user_role: null,
 			event_start_date_time: null,
@@ -102,6 +104,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					name: store.name,
 					description: store.description,
 					location: store.location,
+					event_time : store.event_time,
 					event_start_date_time: store.event_start_date_time,
                 	event_end_date_time : store.event_end_date_time,
 					event_time: store.event_time,
