@@ -12,20 +12,24 @@ const imgStyle = {
     height: "10rem"
 }
 
-export const CardsCampaigns = ({ item }) => {
+export const CardsCampaigns = ({ event }) => {
 
     const createEvent = async (data) => {
-        const event = {
-          summary : data.title,
+    const timeZone = "America/Costa_Rica"
+    const token = localStorage.getItem('token') 
+
+console.log(`${data.event_start_date_time}T${data.event_time}`)
+      const eventObj = {
+          summary : data.name,
           location : data.location,
           description : data.description,
           start: {
-            dateTime: startDateTime,
-            timeZone,
+            dateTime: `${data.event_start_date_time}T${data.event_time}:00`,
+            timeZone: timeZone,
           },
           end: {
-            dateTime: endDateTime,
-            timeZone,
+            dateTime: `${data.event_end_date_time}T${data.event_end_time}:00`,
+            timeZone: timeZone,
           },
           reminders:{
             'useDefault': false,
@@ -38,8 +42,9 @@ export const CardsCampaigns = ({ item }) => {
         try {
           const response = await fetch(`${process.env.BACKEND_URL}/api/create-event`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(event)
+            headers: { 'Content-Type': 'application/json',
+              "Authorization": `Bearer ${token}` },
+            body: JSON.stringify(eventObj)
           });
           const data = await response.json();
           if (response.status === 403) {
@@ -59,23 +64,23 @@ export const CardsCampaigns = ({ item }) => {
             <div className="container">
 
                 <div className="row g-4 justify-content-md-center align-items-center">
-                    {item.map((val) => (
-                        <div className="col-lg col-md" key={val.id}>
+  
+                        <div className="col-lg col-md">
                         <div className="card" style={cardStyle}>
-                            <img className="card-img-top img-fluid" src={val.img} style={imgStyle} alt="Card image cap"></img>
+                            <img className="card-img-top img-fluid" src="https://placehold.co/400" style={imgStyle} alt="Card image cap"></img>
                             <div className="card-body">
-                                <h5 className="card-title text-dark"> {val.title} </h5>
-                                <p className="card-text text-dark"> {val.description} </p>
-                                <p className="card-text text-dark "> <small className='bold'>{val.organization}</small>  </p>
-                                <p className="card-text text-dark "> <small className='bold'> Fecha:</small> <small>{val.date}</small>  </p>
-                                <p className="card-text text-dark "> <small className='bold'> Duración:</small> <small>{val.duration}</small>  </p>
-                                <Link to=''>
-                                    <div className="card-button btn btn-primary">Agendar</div>
-                                </Link>
+                                <h5 className="card-title text-dark"> {event.name} </h5>
+                                <p className="card-text text-dark"> {event.description} </p>
+                                <p className="card-text text-dark "> <small className='bold'>Hora: {event.event_time}</small>  </p> 
+                                <p className="card-text text-dark "> <small className='bold'> Fecha:</small> <small> Desde de {event.event_start_date_time} hasta {event.event_end_date_time} </small>  </p>
+                                <p className="card-text text-dark "> <small className='bold'> Localidad:</small> <small>{event.location}</small>  </p>
+                              
+                                    <div className="card-button btn btn-primary" onClick={() => {createEvent(event)}}>Agendar</div>
+                                
                             </div>
                         </div>
                     </div>
-                    ) )}
+              
 
 
 

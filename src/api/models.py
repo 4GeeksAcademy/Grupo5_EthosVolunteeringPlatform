@@ -51,7 +51,7 @@ class Event(db.Model):
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(255))
     location = db.Column(db.String(150), nullable=False)
-    #event_date = db.Column(db.String(15), nullable=False)
+    event_end_time = db.Column(db.String(15), nullable=False)
     event_time = db.Column(db.String(25), nullable=False)
     event_start_date_time = db.Column(db.String(15), nullable=False)
     event_end_date_time = db.Column(db.String(15), nullable=False)
@@ -70,7 +70,7 @@ class Event(db.Model):
             "name": self.name,
             "description": self.description,
             "location": self.location,
-            #"event_date": self.event_date,
+            "event_end_time": self.event_end_time,
             "event_time": self.event_time,
             "event_start_date_time" : self.event_start_date_time,
             "event_end_date_time" : self.event_end_date_time,

@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from 'react';
 import { VolunteersBannerCopy } from "../component/volunteersBannerCopy";
 import { SearchFilter } from '../component/searchFilter';
-import { AuxiliarPurpleTwo} from '../component/auxiliarPurpleTwo';
+import { AuxiliarPurpleTwo } from '../component/auxiliarPurpleTwo';
 import DataCampaign from '../component/DataCampaign';
 import { CardsCampaigns } from '../component/cardsCampaigns';
 import { FatFooter } from "../component/fatFooter";
+import { Context } from '../store/appContext';
 
 export const Campaign = () => {
 
+  const { store, actions } = useContext(Context);
   const [item, setItem] = useState(DataCampaign); //pupulate cards
   const filterItems = [... new Set(DataCampaign.map((val) => val.category))] // show categories for filter search
   const filterSearch = (cat) => {
@@ -25,16 +27,20 @@ export const Campaign = () => {
         </div>
 
         <div>
-          <SearchFilter 
-            filterItems = {filterItems}
-            filterSearch = {filterSearch}
-            setItem = {setItem}
+          <SearchFilter
+            filterItems={filterItems}
+            filterSearch={filterSearch}
+            setItem={setItem}
           />
 
         </div>
 
         <div>
-        <CardsCampaigns item={item}/>
+          {
+            store.events.map((event, index) => {
+              return <CardsCampaigns key={event.name} event={event} />
+            })
+          }
         </div>
 
         <div className='mt-5'>
