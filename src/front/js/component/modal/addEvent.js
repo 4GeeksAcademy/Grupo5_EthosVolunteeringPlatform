@@ -9,10 +9,7 @@ export const ModalEvent = ({ modal, toggle }) => {
     const [formattedDate, setFormattedDate] = useState("");
     const [time, setTime] = useState("");
 
-    const data= {
-        organization_name: store.organization_name ?? '',
-        is_organization: "is_organization"
-    }
+    
 
     // Change date format
     const changeDateFormat = (e) => {
