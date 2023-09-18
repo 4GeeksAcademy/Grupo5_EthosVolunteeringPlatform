@@ -52,7 +52,7 @@ class Event(db.Model):
     description = db.Column(db.String(255))
     location = db.Column(db.String(150), nullable=False)
     #event_date = db.Column(db.String(15), nullable=False)
-    event_time = db.Column(db.String(15), nullable=False)
+    event_time = db.Column(db.String(25), nullable=False)
     event_start_date_time = db.Column(db.String(15), nullable=False)
     event_end_date_time = db.Column(db.String(15), nullable=False)
     duration = db.Column(db.String(150), nullable=False)
