@@ -16,7 +16,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			description: null,
 			location: null,
 			event_date: null,
-			event_time: null,
+			event_time: [],
 			duration: null,
 			user_role: null,
 			event_start_date_time: null,
@@ -91,7 +91,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			// FETCH USER-ORGANIZATION ADD EVENT
-			fetchAddEvent: async () => { // MISSING AUTHORIZATION HEADER
+			fetchAddEvent: async () => { 
 
 				const store = getStore()
 				let token = localStorage.getItem("token")
