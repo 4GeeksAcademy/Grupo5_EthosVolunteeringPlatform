@@ -12,9 +12,17 @@ export const LoginForm = () => {
             <div className='form-wrapper-org container mt-5'>
                 <form onSubmit={(e) => {
                     e.preventDefault()
-                    actions.fetchLogin()
+                    actions.fetchLogin().then((success)=>{
+                        if (success){
+                            const userRole= localStorage.getItem('userRole')
+                            if (userRole == 'Organization'){
+                                navigate("/PerfilOrg")
+                            } else {
+                                navigate("/PerfilVolunteer")
+                            }
+                        }
+                    })
                     e.target.reset()
-                    navigate("/PerfilOrg")
                 }}>
                     <div className='row mt-4'>
                         <div className='form-header col'>

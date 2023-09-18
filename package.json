@@ -74,7 +74,6 @@
 	},
 	"dependencies": {
 		"bootstrap": "^5.3.1",
-		"googleapis": "^126.0.1",
 		"prop-types": "^15.6.1",
 		"react": "^16.8.4",
 		"react-bootstrap-counter": "^1.0.1",

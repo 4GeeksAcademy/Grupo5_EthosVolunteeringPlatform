@@ -1,4 +1,4 @@
-import { storagetransfer } from "googleapis/build/src/apis/storagetransfer";
+
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -81,16 +81,40 @@ const getState = ({ getStore, getActions, setStore }) => {
 					password: store.password
 				}
 
-				await fetch(`${process.env.BACKEND_URL}/login`, {
+				return fetch(`${process.env.BACKEND_URL}/login`, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(user)
 
 				})
-					.then(response => response.json())
-					.then(data => { localStorage.setItem("token", data.token) }) // Storage token
-					.catch(err => err)
+					.then(response => {
+						if (response.status == 400){
+							throw new Error('No Json data provided')
+						}
+						else if (response.status == 401){
+							throw new Error('something went wrong, please try again')
+						}
+						else {
+							return response.json()
+						}
+					})
+					.then(data => {
+						localStorage.setItem("token", data.token)
+						localStorage.setItem("userRole", data.role)
+						return true
+					}) // Storage token
+					.catch(err => {
+						console.log(err)
+						return false
+					})
 			},
+
+			//LOG OUT EN EL NAVBAR
+			logout: () => {
+				localStorage.removeItem('token');
+				localStorage.removeItem('userRole');
+				return true
+			  },
 
 			// FETCH USER-ORGANIZATION ADD EVENT
 			fetchAddEvent: async () => { 
