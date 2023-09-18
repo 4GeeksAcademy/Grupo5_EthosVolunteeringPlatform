@@ -51,9 +51,8 @@ else:
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-
 # duracion del token
-app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(seconds=3600)
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=1)
 
 # inicializar jwt
 jwt = JWTManager(app)
@@ -212,7 +211,7 @@ def add_event():
     if event:
         return jsonify({'error': 'This event already exists'}), 409
 
-    required_keys = ['name', 'description', 'location', 'event_time',
+    required_keys = ['name', 'description', 'location', 'event_time', 'event_end_time',
                       'event_start_date_time' , 'event_end_date_time' ,'duration']
     for key in required_keys:
         value = data.get(key, None)
@@ -225,6 +224,7 @@ def add_event():
                 description=data['description'],
                 location=data['location'],
                 event_time=data['event_time'],
+                event_end_time=data['event_end_time'],
                 event_start_date_time=data['event_start_date_time'],
                 event_end_date_time=data['event_end_date_time'],
                 duration=data['duration'],
@@ -252,7 +252,7 @@ def get_all_events():
         return jsonify({'message': 'user not found'}), 404
 
     events_list = [event.serialize() for event in user.created_events]
-    return jsonify({'message': events_list}), 200
+    return jsonify({'result': events_list}), 200
 
 
 # Endpoint for listing all events

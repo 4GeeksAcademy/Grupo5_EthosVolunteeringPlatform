@@ -41,7 +41,7 @@ def handle_hello():
 @jwt_required()
 def callback():
     current_user_id = get_jwt_identity()
-    user = User.query.filter_by(id=current_user_id).first()
+    user = User.query.filter_by(id=current_user_id['id']).first()
     if user:
         # Especifica el estado cuando creas el objeto flow para que pueda validarse
         # en el intercambio del código de autorización por un token de acceso
@@ -78,7 +78,8 @@ def callback():
 @jwt_required()
 def create_event():
     current_user_id = get_jwt_identity()
-    user = User.query.filter_by(id=current_user_id).first()
+    print(current_user_id)
+    user = User.query.filter_by(id=current_user_id['id']).first()
     if not user:
         return jsonify({"message": "User not found"}), 404
     credentials_dict = user.get_credentials() or {}
@@ -110,12 +111,13 @@ def create_event():
                 db.session.rollback()
         try:
             event_data = request.json
+            print(event_data)
             service = build('calendar', 'v3', credentials=credentials)
             event = service.events().insert(calendarId='primary', body=event_data).execute()
             return jsonify({'message': f'Evento creado con éxito: {event["htmlLink"]}'}), 200
         except Exception as e:
             print(f"Error creating event: {e}")
-            return jsonify({'message': 'Error when trying to load a event'}), 500
+            return jsonify({'message': 'Error creating event'}), 500
     else:
         authorization_url, state = flow.authorization_url(
             access_type='offline', included_granted_scopes='true')

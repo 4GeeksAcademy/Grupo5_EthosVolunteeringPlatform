@@ -19,11 +19,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			location: null,
 			event_date: null,
 			event_time: null,
+			event_end_time: null,
 			duration: null,
 			user_role: null,
 			event_start_date_time: null,
 			event_end_date_time: null,
 			creator_id: null,
+			events: [],
 			
 
 			message: null,
@@ -129,6 +131,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					description: store.description,
 					location: store.location,
 					event_time : store.event_time,
+					event_end_time : store.event_end_time,
 					event_start_date_time: store.event_start_date_time,
                 	event_end_date_time : store.event_end_date_time,
 					event_time: store.event_time,
@@ -258,6 +261,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(data => {alert("Instrucciones enviadas")})  
 					.catch(err => alert(err.message))
+			},
+
+			getOrgEvents: async () => {
+				const token = localStorage.getItem('token')
+				try {
+					const response = await fetch(`${process.env.BACKEND_URL}/all-events`, {
+						method: 'GET',
+						headers : {'Content-Type' : 'application/json', 
+									"Authorization": `Bearer ${token}`,
+					}})
+					const body = await response.json()
+					if (response.ok){
+						setStore({events: body.result})
+					} else if (response.status === 404){
+					  console.log(body.message)  
+					}
+				} catch (error) {
+					console.log(error);
+				}
 			},
 
 

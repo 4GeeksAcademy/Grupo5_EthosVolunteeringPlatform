@@ -9,7 +9,7 @@ export const ModalEvent = ({ modal, toggle }) => {
     const [formattedDate, setFormattedDate] = useState("");
     const [time, setTime] = useState("");
 
-    
+
 
     // Change date format
     const changeDateFormat = (e) => {
@@ -70,18 +70,24 @@ export const ModalEvent = ({ modal, toggle }) => {
                         <div className="mb-3">
                             <label>Fecha de inicio:</label>
                             {/* input date */}
-                            <small><input className='ms-3 text-dark' name="event_start_date_time" type="date" value={formattedDate} onChange={actions.handleChange} /></small>
+                            <small><input className='ms-3 text-dark' name="event_start_date_time" type="date" onChange={actions.handleChange} /></small>
                         </div>
 
                         <div className="mb-3">
                             <label>Fecha de cierre:</label>
                             {/* input date */}
-                            <small><input className='ms-3 text-dark' name="event_end_date_time" type="date" value={formattedDate} onChange={actions.handleChange} /></small>
+                            <small><input className='ms-3 text-dark' name="event_end_date_time" type="date" onChange={actions.handleChange} /></small>
                         </div>
 
                         <div className="mb-3">
-                            <label>Hora <small>(formato de 24 horas)</small></label>
-                            <small><input className='ms-3 text-dark' name="event_time" type="time" value={time} onChange={actions.handleChange}  /></small>
+                            <label>Hora inicio: <small>(formato de 24 horas)</small></label>
+                            <small><input className='ms-3 text-dark' name="event_time" type="time" onChange={actions.handleChange} /></small>
+                            {/* Mostrar fecha en formato dd/mm/yyyy */}
+                        </div>
+
+                        <div className="mb-3">
+                            <label>Hora final: <small>(formato de 24 horas)</small></label>
+                            <small><input className='ms-3 text-dark' name="event_end_time" type="time" onChange={actions.handleChange} /></small>
                             {/* Mostrar fecha en formato dd/mm/yyyy */}
                         </div>
 
@@ -89,13 +95,6 @@ export const ModalEvent = ({ modal, toggle }) => {
 
                         <div className='mb-3'>
 
-                            <div>
-                                <label> Fecha seleccionada: <span> {formattedDate ? formattedDate : 'Ninguna'}</span></label>
-                                {/* Mostrar hora seleccionada */}
-                            </div>
-                            <div>
-                                <label> Hora seleccionada: <span>{time ? time : 'Ninguna'}</span></label>
-                            </div>
 
                             <div className='row mt-2 justify-content-end'>
                                 <div className='col-6'>

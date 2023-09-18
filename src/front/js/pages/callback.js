@@ -7,10 +7,15 @@ const CallBack = () => {
     const state = searchParams.get('state')
     const code = searchParams.get('code')
     const scope = searchParams.get('scope')
+    
 
     const getCallback = async () => {
+        const token = localStorage.getItem('token')
         try {
-            const response = await fetch(`${process.env.BACKEND_URL}/api/callback?state=${state}&code=${code}&scope=${scope}`);
+            const response = await fetch(`${process.env.BACKEND_URL}/api/callback?state=${state}&code=${code}&scope=${scope}`,
+            {headers: { 'Content-Type': 'application/json',
+            "Authorization": `Bearer ${token}` }}
+            );
             const body = await response.json()
             if(response.ok){
                 alert(body.message)
