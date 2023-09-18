@@ -189,7 +189,8 @@ def login():
 
     token = create_access_token(identity={'id': user.id, 'role': user.role})
     return jsonify({'message': 'logged in succesfully',
-                    'token': token
+                    'token': token,
+                    'role': user.role
                     }), 200
 
 

@@ -1,9 +1,16 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import logo from "../../img/logo.png";
+import { Context } from '../store/appContext';
 
 
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
+
+	const auth = localStorage.getItem('token')
+
+	const navigate = useNavigate()
+
 	return (
 		<>
 			<nav className="navbar navbar-expand-lg navbar-light nav-style mt-4 mb-0" >
@@ -47,28 +54,43 @@ export const Navbar = () => {
 									<div className="nav-link" aria-current="page">Contacto</div>
 								</Link>
 							</li>
+							{
+								auth ?
 
-							<Link to={"/loginForm"} style={{ textDecoration: 'none' }}>
-								<button className="btn login" type="button">
-									Ingresar
-								</button>
-							</Link>
+									<button onClick={() => {
+										if (actions.logout()) {
+											setTimeout(() => navigate('/'), 3000)
+										}
+									}}
+										className="btn logout"
+										type="button">
+										Cerrar sesión
+									</button>
+
+									:
+									<div>
+										<Link to={"/loginForm"} style={{ textDecoration: 'none' }}>
+											<button className="btn login" type="button">
+												Ingresar
+											</button>
+										</Link>
 
 
-							<div className="dropdown">
-								<button className="btn join dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-									Registrarse
-								</button>
-								<ul className="dropdown-menu">
-									<Link to={"/UnirseOrganizacion"} style={{ textDecoration: 'none' }}>
-										<li><div className="dropdown-item join-login-text" href="#">Como organización</div></li>
-									</Link>
-									<Link to={"/UnirseVoluntario"} style={{ textDecoration: 'none' }}>
-										<li><div className="dropdown-item join-login-text" href="#">Como voluntario</div></li>
-									</Link>
-								</ul>
-							</div>
-
+										<div className="dropdown">
+											<button className="btn join dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+												Registrarse
+											</button>
+											<ul className="dropdown-menu">
+												<Link to={"/UnirseOrganizacion"} style={{ textDecoration: 'none' }}>
+													<li><div className="dropdown-item join-login-text" href="#">Como organización</div></li>
+												</Link>
+												<Link to={"/UnirseVoluntario"} style={{ textDecoration: 'none' }}>
+													<li><div className="dropdown-item join-login-text" href="#">Como voluntario</div></li>
+												</Link>
+											</ul>
+										</div>
+									</div>
+							}
 						</ul>
 					</div>
 				</div>
