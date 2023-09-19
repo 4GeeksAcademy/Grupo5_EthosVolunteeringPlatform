@@ -12,12 +12,12 @@ const cardStyle = {
 export const CausasCards = () => {
     return (
         <>
-            <div className="container-xxl pt-5 pb-5">
+            <div className="container-xxl pt-5 pb-3">
                 <div className="container">
 
-                    <div className="row g-4 justify-content-md-center align-items-center">
+                    <div className="row g-1 justify-content-md-center align-items-center">
 
-                        <div className="col-lg col-md">
+                        <div className="col ms-5 ">
                             <div className="card" style={cardStyle}>
                                 <img className="card-img-top img-fluid" src="https://images.unsplash.com/photo-1551855350-c86caeaf8707?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Card image cap"></img>
                                 <div className="card-body">

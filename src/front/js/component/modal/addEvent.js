@@ -8,6 +8,7 @@ export const ModalEvent = ({ modal, toggle }) => {
     const { store, actions } = useContext(Context);
     const [formattedDate, setFormattedDate] = useState("");
     const [time, setTime] = useState("");
+    const [file, setFile] = useState();
 
 
 
@@ -31,6 +32,39 @@ export const ModalEvent = ({ modal, toggle }) => {
         setTime(e.target.value);
     }
 
+    //Imgur API
+    // const onFileChange = event => {
+    //     // Updating the state
+    //     setFile({ file: event.target.files[0] });
+    //   };
+
+
+    //   const onFileUpload = async () => {
+    //     // Client ID
+    //     const clientId = "f7f6813a337de1d",
+    //       auth = "Client-ID " + clientId;
+      
+    //     // Creating an object of formData
+    //     const formData = new FormData();
+      
+    //     // Adding our image to formData
+    //     formData.append("file", file);
+      
+    //     // Making the post request
+    //     await fetch("https://api.imgur.com/3/image/", {
+    //       // API Endpoint
+    //       method: "POST", // HTTP Method
+    //       body: formData, // Data to be sent
+    //       headers: {
+    //         // Setting header
+    //         Authorization: auth,
+    //         Accept: "application/json",
+    //       },
+    //     })
+    //       .then((res) => alert("image uploaded") && console.log(res)) // Handling success
+    //       .catch((err) => alert("Failed") && console.log(err)); // Handling error
+    //   };
+
 
 
 
@@ -48,12 +82,29 @@ export const ModalEvent = ({ modal, toggle }) => {
                     }}>
 
                         <div className="mb-3">
-                            <label for="exampleFormControlInput1" className="form-label">Título</label>
+                            <label for="exampleFormControlInput1" className="form-label">Confirme el organizador del Evento</label>
+                            <input name="org_name" onChange={actions.handleChange} type="name" className="form-control" id="exampleFormControlInput1"></input>
+                        </div>
+
+                        <div className="mb-3">
+                            <label for="exampleFormControlInput1" className="form-label">Título del evento</label>
                             <input name="name" onChange={actions.handleChange} type="name" className="form-control" id="exampleFormControlInput1"></input>
                         </div>
 
                         <div className="mb-3">
-                            <label for="exampleFormControlTextarea1" className="form-label">Descripción</label>
+                            <label for="exampleFormControlInput1" className="form-label">Seleccione una imagen para el evento <small>URL</small></label>
+                            <input name="event_img" onChange={actions.handleChange} type="name" className="form-control" id="exampleFormControlInput1"></input>
+                            {/* <button onClick={onFileUpload}>Upload</button> */}
+
+                        </div>
+
+                        <div className="mb-3">
+                            <label for="exampleFormControlInput1" className="form-label">Causa del evento <small>(Ambiente, Cultura o Salud y Bienestar)</small></label>
+                            <input name="category" onChange={actions.handleChange} type="name" className="form-control" id="exampleFormControlInput1"></input>
+                        </div>
+
+                        <div className="mb-3">
+                            <label for="exampleFormControlTextarea1" className="form-label">Descripción del evento</label>
                             <textarea name="description" onChange={actions.handleChange} className="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
                         </div>
 
@@ -98,7 +149,7 @@ export const ModalEvent = ({ modal, toggle }) => {
 
                             <div className='row mt-2 justify-content-end'>
                                 <div className='col-6'>
-                                    <Button className='save-event' type='submit' color="primary">Crear</Button>
+                                    <Button className='save-event' type='submit' color="primary" onClick={toggle}>Crear</Button>
                                     <Button className='nosave-event ms-2' color="secondary" onClick={toggle}>Cancelar</Button>
                                 </div>
 

@@ -19,7 +19,7 @@ const CallBack = () => {
             const body = await response.json()
             if(response.ok){
                 alert(body.message)
-                setTimeout(() => navigate('/'), 3000)
+                setTimeout(() => navigate('/perfilOrg'), 3000)
             }else if(response.status == 500){
                 alert(body.message)
             }
@@ -33,7 +33,7 @@ const CallBack = () => {
     }, [])
     return (
         <div className="container">
-            {"Hello I'm the callback component. I will redirect you to home page. In 3 seconds... :-)"}
+            {"Serás redirigido a tu perfil en 3 seconds... :-)"}
         </div>
     )
 };

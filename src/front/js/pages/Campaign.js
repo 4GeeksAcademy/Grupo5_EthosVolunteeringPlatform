@@ -35,12 +35,16 @@ export const Campaign = () => {
 
         </div>
 
-        <div>
-          {
+        <div className='container-xxl pt-5 pb-3'>
+          <div className="container">
+            <div className="row g-4 justify-content-md-center align-items-center">
+            {
             store.events.map((event, index) => {
               return <CardsCampaigns key={event.name} event={event} />
             })
           }
+            </div>
+          </div>   
         </div>
 
         <div className='mt-5'>

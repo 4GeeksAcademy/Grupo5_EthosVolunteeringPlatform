@@ -69,7 +69,7 @@ export const FatFooter = () => {
                         <div className="col-md text-center text-md-center mb-3 mb-md-2">
                             <div className="border-top mt-1"></div>
                         
-                            <p className='mt-3 text-light'>Ethos Volunteering Website. Designed by 4Girls.</p>
+                            <p className='mt-3 text-light'>Ethos Volunteering Website. Designed & Developed by 4Girls.</p>
                         </div>
                     </div>
 
