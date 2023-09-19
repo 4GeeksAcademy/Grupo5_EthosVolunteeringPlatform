@@ -14,7 +14,7 @@ export const Navbar = () => {
 	return (
 		<>
 			<nav className="navbar navbar-expand-lg navbar-light nav-style mt-4 mb-0" >
-				<div className="container-fluid ms-5">
+				<div className="container-fluid ms-5=">
 					<Link to={"/"}>
 						<div className="navbar-brand brand-text" href="#"><img src={logo} width="190px"></img></div>
 					</Link>
@@ -56,24 +56,37 @@ export const Navbar = () => {
 							</li>
 							{
 								auth ?
+									<div className="d-flex">
+										<li className="nav-item">
+											<Link to={"/perfilOrg"} style={{ textDecoration: 'none' }}>
+												<button className="btn logout" type="button"> Mi perfil</button>
+											</Link>
+										</li>
 
-									<button onClick={() => {
-										if (actions.logout()) {
-											setTimeout(() => navigate('/'), 3000)
-										}
-									}}
-										className="btn logout"
-										type="button">
-										Cerrar sesión
-									</button>
+										<li>
+											<button onClick={() => {
+												if (actions.logout()) {
+													setTimeout(() => navigate('/'), 3000)
+												}
+											}}
+												className="btn login"
+												type="button">
+												Cerrar sesión
+											</button>
+										</li>
+
+									</div>
 
 									:
-									<div>
+
+									<div className="d-flex">
+
 										<Link to={"/loginForm"} style={{ textDecoration: 'none' }}>
 											<button className="btn login" type="button">
 												Ingresar
 											</button>
 										</Link>
+
 
 
 										<div className="dropdown">
@@ -89,6 +102,7 @@ export const Navbar = () => {
 												</Link>
 											</ul>
 										</div>
+
 									</div>
 							}
 						</ul>
