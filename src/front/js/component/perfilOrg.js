@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ModalEvent } from './modal/addEvent';
 import { Context } from '../store/appContext';
@@ -21,13 +21,13 @@ const perfilOrg = () => {
     // crear una var que contenga lo que viene de store, digamos que se llama "data"
     // con data se podría poblar cards de evento
 
-   
+
     const [modal, setModal] = useState(false);
     const toggle = () => {
         setModal(!modal);
     }
 
-    
+
 
     useEffect(() => {
         actions.getOrgEvents()
@@ -47,49 +47,37 @@ const perfilOrg = () => {
                         <p>Si necesitas asistencia, <Link to={"/Contacto"}>contáctanos</Link>.</p>
                     </div>
 
-                    <div className='col'>
+                    <div className='col-6'>
                         <div>
-                            
-                                <button type="button" onClick={() => setModal(true)} className="add-event btn btn-danger">Crear envento</button>
-                            
-                        </div>
 
-                        <div className='mt-5'>
+                            <button type="button" onClick={() => setModal(true)} className="add-event btn btn-danger">Crear envento</button>
 
-                            <div className="container">
 
-                                <div className="row g-4 justify-content-md-center align-items-center">
-                                    {/* por aquí va el map */}
-                                    {
-                                        store.events.map((event, index) => {
-                                            return <CardsCampaigns key={event.name} event={event}/>
-                                        })
-                                    }
-                                        {/* <div className="col-lg-3 col-md-4" >
-                                            <div className="card" style={cardStyle}>
-                                
-                                                <div className="card-body">
-                                                    <h5 className="card-title text-dark"> </h5>
-                                                    <p className="card-text text-dark"> </p>
-                                                    <p className="card-text text-dark ">  </p>
-                                                </div>
-                                            </div>
-                                        </div> */}
-                                    
-                                </div>
-                            </div>
+
 
                         </div>
+
+                    </div>
+
+                </div>
+
+                <div className='row'>
+                    <div className='col d-flex'>
+
+                {
+                    store.events.map((event, index) => {
+                        return <CardsCampaigns key={event.name} event={event} />
+                    })
+                }
                     </div>
                 </div>
 
-                <Link to={"/"} style={{ textDecoration: 'none' }}>
-                    <i className='fas fa-arrow-alt-circle-left'></i>
-                </Link>
+
 
             </div>
 
-            <ModalEvent toggle={toggle} modal={modal}/>
+
+            <ModalEvent toggle={toggle} modal={modal} />
         </>
     )
 }

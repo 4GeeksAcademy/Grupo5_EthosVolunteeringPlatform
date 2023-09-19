@@ -16,7 +16,8 @@ export const CardsCampaigns = ({ event }) => {
 
     const createEvent = async (data) => {
     const timeZone = "America/Costa_Rica"
-    const token = localStorage.getItem('token') 
+    const token = localStorage.getItem('token')
+     
 
 console.log(`${data.event_start_date_time}T${data.event_time}`)
       const eventObj = {
@@ -61,17 +62,19 @@ console.log(`${data.event_start_date_time}T${data.event_time}`)
 
     return (
         <>
-            <div className="container">
+            <div className="container-xxl pt-5 pb-3">
+              <div className="container">
 
                 <div className="row g-4 justify-content-md-center align-items-center">
   
-                        <div className="col-lg col-md">
+                        <div className="col-lg-3 col-md-4">
                         <div className="card" style={cardStyle}>
-                            <img className="card-img-top img-fluid" src="https://placehold.co/400" style={imgStyle} alt="Card image cap"></img>
-                            <div className="card-body">
+                            <img className="card-img-top img-fluid" src={event.event_img} style={imgStyle} alt="Card image cap"></img>
+                            <div className="card-body"> 
                                 <h5 className="card-title text-dark"> {event.name} </h5>
-                                <p className="card-text text-dark"> {event.description} </p>
-                                <p className="card-text text-dark "> <small className='bold'>Hora: {event.event_time}</small>  </p> 
+                                <p className="card-text text-dark"> <small className='bold'> Organizado por: </small> <small>{event.org_name}</small>  </p>
+                                <p className="card-text text-dark"> <small> {event.description} </small>  </p>
+                                <p className="card-text text-dark "> <small className='bold'>Hora: </small> <small>{event.event_time} - {event.event_end_time}</small> </p> 
                                 <p className="card-text text-dark "> <small className='bold'> Fecha:</small> <small> Desde de {event.event_start_date_time} hasta {event.event_end_date_time} </small>  </p>
                                 <p className="card-text text-dark "> <small className='bold'> Localidad:</small> <small>{event.location}</small>  </p>
                               
@@ -85,6 +88,7 @@ console.log(`${data.event_start_date_time}T${data.event_time}`)
 
 
                 </div>
+              </div>
             </div>
 
         </>

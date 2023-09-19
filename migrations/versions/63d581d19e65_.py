@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: b086fc648294
+Revision ID: 63d581d19e65
 Revises: 
-Create Date: 2023-09-01 02:42:13.483638
+Create Date: 2023-09-19 03:12:32.441192
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'b086fc648294'
+revision = '63d581d19e65'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -25,19 +25,26 @@ def upgrade():
     sa.Column('last_name', sa.String(length=20), nullable=True),
     sa.Column('email', sa.String(length=50), nullable=False),
     sa.Column('password', sa.String(length=150), nullable=False),
+    sa.Column('reset_token', sa.String(length=300), nullable=True),
+    sa.Column('credentials', sa.Text(), nullable=True),
     sa.Column('role', sa.Enum('VOLUNTEER', 'ORGANIZATION', name='role'), nullable=True),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('email')
+    sa.UniqueConstraint('email'),
+    sa.UniqueConstraint('reset_token')
     )
     op.create_table('event',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=100), nullable=False),
     sa.Column('description', sa.String(length=255), nullable=True),
     sa.Column('location', sa.String(length=150), nullable=False),
-    sa.Column('event_date', sa.String(length=15), nullable=False),
-    sa.Column('event_time', sa.String(length=4), nullable=False),
-    sa.Column('duration', sa.String(length=150), nullable=False),
-    sa.Column('cost', sa.Integer(), nullable=True),
+    sa.Column('event_end_time', sa.String(length=15), nullable=False),
+    sa.Column('event_time', sa.String(length=25), nullable=False),
+    sa.Column('event_start_date_time', sa.String(length=15), nullable=False),
+    sa.Column('event_end_date_time', sa.String(length=15), nullable=False),
+    sa.Column('duration', sa.String(length=15), nullable=False),
+    sa.Column('org_name', sa.String(length=25), nullable=False),
+    sa.Column('category', sa.String(length=25), nullable=False),
+    sa.Column('event_img', sa.String(length=500), nullable=False),
     sa.Column('creator_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['creator_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id')

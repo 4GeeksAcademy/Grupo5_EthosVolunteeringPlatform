@@ -55,7 +55,10 @@ class Event(db.Model):
     event_time = db.Column(db.String(25), nullable=False)
     event_start_date_time = db.Column(db.String(15), nullable=False)
     event_end_date_time = db.Column(db.String(15), nullable=False)
-    duration = db.Column(db.String(150), nullable=False)
+    duration = db.Column(db.String(15), nullable=False)
+    org_name = db.Column(db.String(25), nullable=False)
+    category = db.Column(db.String(25), nullable=False)
+    event_img = db.Column(db.String(500), nullable=False)
 
     # foreign key
     creator_id = db.Column(db.Integer, db.ForeignKey("user.id"))
@@ -75,6 +78,9 @@ class Event(db.Model):
             "event_start_date_time" : self.event_start_date_time,
             "event_end_date_time" : self.event_end_date_time,
             "duration": self.duration,
+            "org_name": self.org_name,
+            "category": self.category,
+            "event_img": self.event_img,
             "creator_id": self.creator_id,
             "attendance" : len(self.attendance)
         }

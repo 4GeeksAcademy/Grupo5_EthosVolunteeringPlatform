@@ -6,7 +6,7 @@
             title: "Orotina Verde",
             category: "Ambiente",
             img: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1913&q=80",
-            description: "Empieza la decimoquinta jornada de arborización urbana en los cinco distritos del cantón de Orotina.",
+            description: "Inicia la inscripción de cuenta-cuentos voluntarios para talleres de educación ambiental con escolares.",
             organization : "Municipalidad de Orotina",
             date: "Septiembre 23",
             event_start_date_time: "2023-09-23T:09:00-06:00",
@@ -21,7 +21,7 @@
             title: "STEMinistas!",
             category: "Cultura",
             img: "https://images.unsplash.com/photo-1653566031536-4d1b6a9da15e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-            description: "Convocatoria de científicas y programadoras para talleres con niñas incursionando en STEM.",
+            description: "Convocatoria de científicas, ingenieras y programadoras para talleres con niñas incursionando en STEM.",
             organization : "500 Científicas",
             date: "Octubre 1",
             duration: "3 días"

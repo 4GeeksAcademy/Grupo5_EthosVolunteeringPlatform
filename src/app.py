@@ -228,7 +228,10 @@ def add_event():
                 event_start_date_time=data['event_start_date_time'],
                 event_end_date_time=data['event_end_date_time'],
                 duration=data['duration'],
-                creator_id=current_user['id']
+                creator_id=current_user['id'],
+                org_name= data['org_name'],
+    			category= data['category'],
+    			event_img= data['event_img']
             )
 
             db.session.add(new_event)
