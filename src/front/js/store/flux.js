@@ -25,6 +25,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			event_start_date_time: null,
 			event_end_date_time: null,
 			creator_id: null,
+			org_name: null,
+    		category: null,
+    		event_img: null,
 			events: [],
 			
 
@@ -136,7 +139,10 @@ const getState = ({ getStore, getActions, setStore }) => {
                 	event_end_date_time : store.event_end_date_time,
 					event_time: store.event_time,
 					duration: store.duration,
-					creator_id: store.token
+					creator_id: store.token,
+					org_name: store.org_name,
+    				category: store.category,
+    				event_img: store.event_img
 				}
 
 
