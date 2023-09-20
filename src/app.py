@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 import os
-from flask import Flask, request, jsonify, url_for, send_from_directory
+from flask import Flask, request, jsonify, url_for, send_from_directory, render_template
 from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
@@ -26,16 +26,16 @@ static_file_dir = os.path.join(os.path.dirname(
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
-
+SENDER_EMAIL=os.getenv("SENDER_EMAIL")
 # flask mail
 app.config.update(dict(
     DEBUG=False,
-    MAIL_SERVER='smtp.gmail.com',
-    MAIL_PORT=587,
+    MAIL_SERVER=os.getenv('MAIL_SERVER'),
+    MAIL_PORT=os.getenv('MAIL_PORT'),
     MAIL_USE_TLS=True,
     MAIL_USE_SSL=False,
-    MAIL_USERNAME='alopez70828@gmail.com',
-    MAIL_PASSWORD='rpgmgktavmmdtded'
+    MAIL_USERNAME=os.getenv('MAIL_USERNAME'),
+    MAIL_PASSWORD=os.getenv('MAIL_PASSWORD')
 ))
 mail = Mail(app)
 
@@ -291,7 +291,6 @@ def delete_event(event_id):
 # Endpoints to send an email
 @app.route('/reset-psw-request', methods=['POST'])
 def reset_psw_request():
-
     email = request.json.get('email', None)
     if email is not None:
         user = User.query.filter_by(email=email).first()
@@ -301,15 +300,22 @@ def reset_psw_request():
             try:
                 db.session.commit()
                 reset_url = f"https://zany-broccoli-qjprvq6j9j9f6x7w-3000.app.github.dev/update-psw?token={reset_token}"
-                message = Message(subject="Test de email",
-                                  sender='alopez70828@gmail.com',
-                                  recipients=['alopez70828@gmail.com']
+                message = Message(subject="Cambio de contraseña",
+                                  sender=SENDER_EMAIL,
+                                  recipients=[f"{user.email}"]
                                   )
+                user_name = ""
+                if user.role == "Volunteer" :
+                    user_name = user.name
+                else:
+                    user_name = user.organization_name
 
-                message.body = reset_url
+                message.html = render_template("email.html", reset_url=reset_url, user_name=user_name)
+
                 mail.send(message)
                 return jsonify({"message": "Send succesfully"}), 200
             except Exception as error:
+                print(error.args)
                 db.session.rollback()
                 return jsonify({"message": f"Server error {error}"}), 500
     return jsonify({"message": f"user not found"}), 404

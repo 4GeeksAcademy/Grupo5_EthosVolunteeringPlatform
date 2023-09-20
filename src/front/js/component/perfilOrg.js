@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ModalEvent } from './modal/addEvent';
 import { Context } from '../store/appContext';
-import FatFooter from './fatFooter';
+import {FatFooter} from './fatFooter';
 import { useContext } from 'react';
 import { CardsCampaigns } from './cardsCampaigns';
 
@@ -13,7 +13,7 @@ const cardStyle = {
 };
 
 
-const perfilOrg = () => {
+const PerfilOrg = () => {
 
     //Create New Event Modal
     const { store, actions } = useContext(Context);
@@ -63,7 +63,7 @@ const perfilOrg = () => {
                 </div>
 
                 <div className='row'>
-                    <div className='col d-flex'>
+                    <div className='col mt-3 d-flex'>
 
                 {
                     store.events.map((event, index) => {
@@ -74,10 +74,10 @@ const perfilOrg = () => {
                 </div>
 
 
-
+                
             </div>
 
-
+            <div className='mt-5'><FatFooter /></div>
             <ModalEvent toggle={toggle} modal={modal} />
 
             
@@ -85,4 +85,4 @@ const perfilOrg = () => {
     )
 }
 
-export default perfilOrg
+export default PerfilOrg
