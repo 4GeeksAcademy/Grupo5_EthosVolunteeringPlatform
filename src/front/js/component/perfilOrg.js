@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ModalEvent } from './modal/addEvent';
 import { Context } from '../store/appContext';
+import FatFooter from './fatFooter';
 import { useContext } from 'react';
 import { CardsCampaigns } from './cardsCampaigns';
 
@@ -79,7 +80,7 @@ const perfilOrg = () => {
 
             <ModalEvent toggle={toggle} modal={modal} />
 
-            <div className='mt-5'><FatFooter /></div>
+            
         </>
     )
 }
