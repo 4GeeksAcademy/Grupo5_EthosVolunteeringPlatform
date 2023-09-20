@@ -26,11 +26,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			event_end_date_time: null,
 			creator_id: null,
 			org_name: null,
-    		category: null,
-    		event_img: null,
+			category: null,
+			event_img: null,
 			events: [],
 			allEvents: [],
-			
+
 
 			message: null,
 			demo: [
@@ -54,7 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			// FETCH USER SIGNUP DATA FROM ENDPOINT
-			fetchSignup: async (user) => {
+			fetchSignup: (user) => {
 				const store = getStore()
 
 				// Body request format
@@ -66,7 +66,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// 	user_role: store.user_role
 				// }
 
-				await fetch(`${process.env.BACKEND_URL}/register`, {
+				fetch(`${process.env.BACKEND_URL}/register`, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(user)
@@ -78,7 +78,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			// FETCH USER LOGIN DATA FROM ENDPOINT
-			fetchLogin: async () => {
+			fetchLogin: () => {
 				const store = getStore()
 
 				// Body request format
@@ -94,10 +94,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				})
 					.then(response => {
-						if (response.status == 400){
+						if (response.status == 400) {
 							throw new Error('No Json data provided')
 						}
-						else if (response.status == 401){
+						else if (response.status == 401) {
 							throw new Error('something went wrong, please try again')
 						}
 						else {
@@ -120,10 +120,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				localStorage.removeItem('token');
 				localStorage.removeItem('userRole');
 				return true
-			  },
+			},
 
 			// FETCH USER-ORGANIZATION ADD EVENT
-			fetchAddEvent: async () => { 
+			fetchAddEvent: () => {
 
 				const store = getStore()
 				let token = localStorage.getItem("token")
@@ -134,20 +134,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 					name: store.name,
 					description: store.description,
 					location: store.location,
-					event_time : store.event_time,
-					event_end_time : store.event_end_time,
+					event_time: store.event_time,
+					event_end_time: store.event_end_time,
 					event_start_date_time: store.event_start_date_time,
-                	event_end_date_time : store.event_end_date_time,
+					event_end_date_time: store.event_end_date_time,
 					event_time: store.event_time,
 					duration: store.duration,
 					creator_id: store.token,
 					org_name: store.org_name,
-    				category: store.category,
-    				event_img: store.event_img
+					category: store.category,
+					event_img: store.event_img
 				}
 
 
-				await fetch(`${process.env.BACKEND_URL}/add-event`, {
+				fetch(`${process.env.BACKEND_URL}/add-event`, {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
@@ -157,13 +157,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				})
 					.then(response => response.json())
-					.then(data => { setStore(data.token) }) // 
+					.then(data => { getActions().getOrgEvents() }) // 
 					.catch(err => err)
 
 			},
 
 			//FETCH ALL EVENTS AND ATTENDANCE FOR ORGANIZATIONS
-			fetchAllEventsByOrg: async () => {
+			fetchAllEventsByOrg: () => {
 
 				// Get user token
 				const store = getStore()
@@ -174,7 +174,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					"msg": events_list
 				}
 
-				await fetch(`${process.env.BACKEND_URL}/all-events`, {
+				fetch(`${process.env.BACKEND_URL}/all-events`, {
 					method: "GET",
 					headers: {
 						"Content-Type": "application/json",
@@ -184,7 +184,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => response.json())
 					.then(data => { setStore(data.token) }) // 
-					.then(data => { setStore({ orgEvenList: data.response })})
+					.then(data => { setStore({ orgEvenList: data.response }) })
 					.catch(err => err)
 
 
@@ -192,7 +192,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// FETCH ALL EVENTS FOR VOLUNTEERS
 
-			fetchEventsList: async () => {
+			fetchEventsList: () => {
 
 				const store = getStore()
 
@@ -200,7 +200,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					"msg": events_list
 				}
 
-				await fetch(`${process.env.BACKEND_URL}/events-list`, {
+				fetch(`${process.env.BACKEND_URL}/events-list`, {
 					method: "GET",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify(events_list)
@@ -215,133 +215,146 @@ const getState = ({ getStore, getActions, setStore }) => {
 			fetchDeleteEvent: async (event_id) => {
 
 				// Get user token
-				const store = getStore()
 				let token = localStorage.getItem("token")
 
+				try {
+					const response= await fetch(`${process.env.BACKEND_URL}/delete-event/${event_id}`, {
+						method: "DELETE",
+						headers: {
+							"Content-Type": "application/json",
+							"Authorization": `Bearer ${token}`,
+						}
 
-
-				fetch(`${process.env.BACKEND_URL}/delete-event/${event_id}`, {
-					method: "DELETE",
-					headers: {
-						"Content-Type": "application/json",
-						"Authorization": `Bearer ${token}`,
+					})
+					if (response.status == 404){
+						alert("evento no encontrado")
+						return false
+					} else if (response.status == 500){
+						alert("ocurrio un error del servidor")
+						return false
+					} else if (response.status == 204){
+						alert("evento eliminado")
+						getActions().getOrgEvents()
+						return true
 					}
+				} catch (error) {
+					console.log(JSON.stringify(error));
+				}
+		},
 
-				})
-					.then(response => response.json())
-					.then(data => { setStore({ allEventsList: data.response }) }) // 
-					.catch(err => err)
-			},
-
-			updatePassword: async (token, data) => {
-				const response = fetch(`${process.env.BACKEND_URL}/reset-psw/${token}`, {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-						"Authorization": `Bearer ${token}`,
-					},
-					body: JSON.stringify(data)
-				})
+		updatePassword: (token, data) => {
+			fetch(`${process.env.BACKEND_URL}/reset-psw/${token}`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					"Authorization": `Bearer ${token}`,
+				},
+				body: JSON.stringify(data)
+			})
 				.then(response => response.json())
-					.then(data => {alert("Contraseña actualizada")})  
-					.catch(err => err)
-			},
+				.then(data => { alert("Contraseña actualizada") })
+				.catch(err => err)
+		},
 
-			requestPassword: async (data) => {
-				const response = fetch(`${process.env.BACKEND_URL}/reset-psw-request`, {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json"
-					},
-					body: JSON.stringify(data)
-				})
+		requestPassword: (data) => {
+			fetch(`${process.env.BACKEND_URL}/reset-psw-request`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify(data)
+			})
 				.then(response => {
 					console.log(response.status)
-					if (response.status == 404){
+					if (response.status == 404) {
 						throw new Error('No se encontro el usuario para el correo proporcionado')
-					} else if (response.status == 500){
+					} else if (response.status == 500) {
 						throw new Error('Ocurrio un problema en el servidor')
 					} else {
 						return response.json()
 					}
 				})
-					.then(data => {alert("Instrucciones enviadas")})  
-					.catch(err => alert(err.message))
-			},
+				.then(data => { alert("Instrucciones enviadas") })
+				.catch(err => alert(err.message))
+		},
 
-			getOrgEvents: async () => {
-				const token = localStorage.getItem('token')
-				try {
-					const response = await fetch(`${process.env.BACKEND_URL}/all-events`, {
-						method: 'GET',
-						headers : {'Content-Type' : 'application/json', 
-									"Authorization": `Bearer ${token}`,
-					}})
-					const body = await response.json()
-					if (response.ok){
-						setStore({events: body.result})
-					} else if (response.status === 404){
-					  console.log(body.message)  
+		getOrgEvents: async () => {
+			const token = localStorage.getItem('token')
+			try {
+				const response = await fetch(`${process.env.BACKEND_URL}/all-events`, {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+						"Authorization": `Bearer ${token}`,
 					}
-				} catch (error) {
-					console.log(error);
+				})
+				const body = await response.json()
+				if (response.ok) {
+					setStore({ events: body.result })
+				} else if (response.status === 404) {
+					console.log(body.message)
 				}
-			},
-
-			getAllEvents: async () => {
-				try {
-					const response = await fetch(`${process.env.BACKEND_URL}/events-list`, {
-						method: 'GET',
-						headers : {'Content-Type' : 'application/json', 
-					}})
-					const body = await response.json()
-					if (response.ok){
-						setStore({allEvents: body.result})
-					} else if (response.status === 404){
-					  console.log(body.message)  
-					}
-				} catch (error) {
-					console.log(error);
-				}
-			},
-
-
-
-
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-
-			getMessage: async () => {
-				try {
-					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
-					const data = await resp.json()
-					setStore({ message: data.message })
-					// don't forget to return something, that is how the async resolves
-					return data;
-				} catch (error) {
-					console.log("Error loading message from backend", error)
-				}
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
+			} catch (error) {
+				console.log(error);
 			}
+		},
 
+		getAllEvents: async () => {
+			try {
+				const response = await fetch(`${process.env.BACKEND_URL}/events-list`, {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+					}
+				})
+				const body = await response.json()
+				if (response.ok) {
+					setStore({ allEvents: body.result })
+				} else if (response.status === 404) {
+					console.log(body.message)
+				}
+			} catch (error) {
+				console.log(error);
+			}
+		},
+
+
+
+
+		// Use getActions to call a function within a fuction
+		exampleFunction: () => {
+			getActions().changeColor(0, "green");
+		},
+
+		getMessage: async () => {
+			try {
+				// fetching data from the backend
+				const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
+				const data = await resp.json()
+				setStore({ message: data.message })
+				// don't forget to return something, that is how the async resolves
+				return data;
+			} catch (error) {
+				console.log("Error loading message from backend", error)
+			}
+		},
+		changeColor: (index, color) => {
+			//get the store
+			const store = getStore();
+
+			//we have to loop the entire demo array to look for the respective index
+			//and change its color
+			const demo = store.demo.map((elm, i) => {
+				if (i === index) elm.background = color;
+				return elm;
+			});
+
+			//reset the global store
+			setStore({ demo: demo });
 		}
-	};
+
+	}
+};
 };
 
 export default getState;

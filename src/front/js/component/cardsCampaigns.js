@@ -90,7 +90,7 @@ export const CardsCampaigns = ({ event }) => {
 
                       <div>
                         <div className="card-button btn btn-primary" onClick={() => { createEvent(event) }}>Agendar</div>
-                        <div className="card-button btn btn-primary" onClick={() => actions.fetchDeleteEvent(event.id)}>Eliminar</div>
+                        <div className="card-button btn btn-primary mt-3" onClick={async () => await actions.fetchDeleteEvent(event.id)}>Eliminar</div>
                         
                       </div>
                       :
