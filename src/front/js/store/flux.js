@@ -220,7 +220,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
-				fetch(`${process.env.BACKEND_URL}/delete-event/${id=event_id}`, {
+				fetch(`${process.env.BACKEND_URL}/delete-event/${event_id}`, {
 					method: "DELETE",
 					headers: {
 						"Content-Type": "application/json",
