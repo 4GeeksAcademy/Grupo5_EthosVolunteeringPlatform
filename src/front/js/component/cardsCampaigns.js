@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from "react";
 import { Link } from 'react-router-dom';
+import { Context } from '../store/appContext';
 
 const cardStyle = {
   width: "18rem",
@@ -13,6 +14,9 @@ const imgStyle = {
 }
 
 export const CardsCampaigns = ({ event }) => {
+
+  const { store, actions } = useContext(Context);
+  const auth = localStorage.getItem('token')
 
   const createEvent = async (data) => {
     const timeZone = "America/Costa_Rica"
@@ -80,14 +84,19 @@ export const CardsCampaigns = ({ event }) => {
                   <p className="card-text text-dark "> <small className='bold'> Fecha:</small> <small> Desde de {event.event_start_date_time} hasta {event.event_end_date_time} </small>  </p>
                   <p className="card-text text-dark "> <small className='bold'> Localidad:</small> <small>{event.location}</small>  </p>
 
-                  <div className="card-button btn btn-primary" onClick={() => { createEvent(event) }}>Agendar</div>
-                  
+
                   {
-                    auth ?                
-                  <div className="card-button btn btn-primary" onClick={() => { fetchDeleteEvent(event) }}>Eliminar</div>
-                  :
-                  <div> </div>
-                  }
+                    auth ?
+
+                      <div>
+                        <div className="card-button btn btn-primary" onClick={() => { createEvent(event) }}>Agendar</div>
+                        <div className="card-button btn btn-primary" onClick={() => actions.fetchDeleteEvent()}>Eliminar</div>
+                        
+                      </div>
+                      :
+                      <div><p><small className="text-muted">Inicie sesión para agendar</small></p></div>
+                      }
+
 
                 </div>
               </div>

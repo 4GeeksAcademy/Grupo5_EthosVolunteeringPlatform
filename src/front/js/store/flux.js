@@ -212,7 +212,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 			// FETCH FOR DELETING EVENT
-			fetchDeleteEvent: async () => {
+			fetchDeleteEvent: async (event_id) => {
 
 				// Get user token
 				const store = getStore()
@@ -220,13 +220,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
-				fetch(`${process.env.BACKEND_URL}/delete-event/<int:event_id>`, {
+				fetch(`${process.env.BACKEND_URL}/delete-event/${id=event_id}`, {
 					method: "DELETE",
 					headers: {
 						"Content-Type": "application/json",
 						"Authorization": `Bearer ${token}`,
-					},
-					body: JSON.stringify([])
+					}
 
 				})
 					.then(response => response.json())
