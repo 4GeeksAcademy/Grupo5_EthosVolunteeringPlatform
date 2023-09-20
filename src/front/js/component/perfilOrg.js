@@ -35,7 +35,7 @@ const perfilOrg = () => {
 
     return (
         <>
-            <div className='container-perfil'>
+            <div className='container-perfil mb-5'>
                 <div>
                     <h1>Mi Perfil</h1>
                 </div>
@@ -50,7 +50,7 @@ const perfilOrg = () => {
                     <div className='col-6'>
                         <div>
 
-                            <button type="button" onClick={() => setModal(true)} className="add-event btn btn-danger">Crear envento</button>
+                            <button type="button" onClick={() => setModal(true)} className="add-event btn">Crear envento</button>
 
 
 
@@ -78,6 +78,8 @@ const perfilOrg = () => {
 
 
             <ModalEvent toggle={toggle} modal={modal} />
+
+            <div className='mt-5'><FatFooter /></div>
         </>
     )
 }
