@@ -98,13 +98,16 @@ export const CardsCampaigns = ({ event }) => {
                       {userRole == "Organization" && location.pathname == "/perfilOrg" ?
                       <div className="card-button btn btn-primary" onClick={() => actions.fetchDeleteEvent()}>Eliminar</div>
                       : ""
-                      } 
+                      }
                       
 
                     </div>
                     :
-                    <div><p><small className="text-muted">Inicie sesión para agendar</small></p></div>
+                    <div><p><small className="text-muted">Inicie sesión para agendar</small></p</div>
                 }
+                      
+
+
 
 
               </div>
