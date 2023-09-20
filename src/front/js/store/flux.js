@@ -29,6 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     		category: null,
     		event_img: null,
 			events: [],
+			allEvents: [],
 			
 
 			message: null,
@@ -280,6 +281,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const body = await response.json()
 					if (response.ok){
 						setStore({events: body.result})
+					} else if (response.status === 404){
+					  console.log(body.message)  
+					}
+				} catch (error) {
+					console.log(error);
+				}
+			},
+
+			getAllEvents: async () => {
+				try {
+					const response = await fetch(`${process.env.BACKEND_URL}/events-list`, {
+						method: 'GET',
+						headers : {'Content-Type' : 'application/json', 
+					}})
+					const body = await response.json()
+					if (response.ok){
+						setStore({allEvents: body.result})
 					} else if (response.status === 404){
 					  console.log(body.message)  
 					}
