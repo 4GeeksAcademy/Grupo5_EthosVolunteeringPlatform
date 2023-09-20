@@ -250,7 +250,22 @@ body{
     cursor: pointer,
 }
 
+.go-campaign-profile{
+    background: #5627AB;
+    width: 180px;
+    border: none;
+    color:#F5f5f5;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    margin-left: 5%;
+}
 
+.go-campaign-profile:hover{
+    background: #00367C;
+    color:#F5f5f5;
+    cursor: pointer, 
+}
 
 
 /* ----------------------------------------------

@@ -29,6 +29,7 @@ import InfoSalud from "./component/infoSalud";
 import InfoSociedad from "./component/infoSociedad";
 import InfoPartner from "./component/infoPartner";
 import PerfilOrg from "./component/perfilOrg";
+import PerfilVol from "./component/perfilVol";
 import { LoginModal } from "./component/loginModal";
 import { UpdatePsw } from "./component/updatepsw";
 import CallBack from "./pages/callback";
@@ -66,6 +67,7 @@ const Layout = () => {
                         <Route element={<InfoSociedad />} path="/SociedadyCultura" />
                         <Route element={<InfoPartner />} path="/infoPartner" />
                         <Route element={<PerfilOrg />} path="/PerfilOrg" />
+                        <Route element={<PerfilVol />} path="/PerfilVolunteer" />
                         <Route element={<FormOrgAgregarEvento />} path="/nuevo-evento" />
                         <Route element={<Demo />} path="/demo" />
 
