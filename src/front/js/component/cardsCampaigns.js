@@ -93,17 +93,17 @@ export const CardsCampaigns = ({ event }) => {
                   auth ?
 
                     <div>
-                      <div className="card-button btn btn-primary" onClick={() => { createEvent(event) }}>Agendar</div>
+                      <div className="card-button-alt btn" onClick={() => { createEvent(event) }}>Agendar</div>
 
                       {userRole == "Organization" && location.pathname == "/perfilOrg" ?
-                      <div className="card-button btn btn-primary" onClick={() => actions.fetchDeleteEvent()}>Eliminar</div>
+                      <div className="card-button-delete btn " onClick={() => actions.fetchDeleteEvent(event.id)}>Eliminar</div>
                       : ""
                       }
                       
 
                     </div>
                     :
-                    <div><p><small className="text-muted">Inicie sesión para agendar</small></p</div>
+                    <div><p><small className="text-muted">Inicie sesión para agendar</small></p></div>
                 }
                       
 

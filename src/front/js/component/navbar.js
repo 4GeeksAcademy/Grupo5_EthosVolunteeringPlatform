@@ -16,7 +16,7 @@ export const Navbar = () => {
 			<nav className="navbar navbar-expand-lg navbar-light nav-style mt-4 mb-0" >
 				<div className="container-fluid ms-5=">
 					<Link to={"/"}>
-						<div className="navbar-brand brand-text" href="#"><img src={logo} width="190px"></img></div>
+						<div className="navbar-brand brand-text ms-4"><img src={logo} width="190px"></img></div>
 					</Link>
 					<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span className="navbar-toggler-icon"></span>
@@ -50,7 +50,7 @@ export const Navbar = () => {
 								</Link>
 							</li>
 							<li className="nav-item">
-								<Link to={"/Campaign"} style={{ textDecoration: 'none' }}>
+								<Link to={"/Contacto"} style={{ textDecoration: 'none' }}>
 									<div className="nav-link" aria-current="page">Contacto</div>
 								</Link>
 							</li>
@@ -66,7 +66,7 @@ export const Navbar = () => {
 										<li>
 											<button onClick={() => {
 												if (actions.logout()) {
-													setTimeout(() => navigate('/'), 3000)
+													setTimeout(() => navigate('/'), 1000)
 												}
 											}}
 												className="btn login"
@@ -86,8 +86,6 @@ export const Navbar = () => {
 												Ingresar
 											</button>
 										</Link>
-
-
 
 										<div className="dropdown">
 											<button className="btn join dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
