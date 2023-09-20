@@ -1,7 +1,10 @@
-import React from 'react';
-import DataCampaign from './DataCampaign';
+import React, { useContext } from 'react';
+import { Context } from '../store/appContext';
+
 
 export const SearchFilter = ({filterItems, filterSearch, setItem}) => {
+    const { store, actions } = useContext(Context);
+    const DataCampaign = store.allEvents
     return (
         <>
             <div className="container mt-5 mb-5 pb-3 pt-5">

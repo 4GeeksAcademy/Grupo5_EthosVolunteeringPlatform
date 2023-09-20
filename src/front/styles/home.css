@@ -543,3 +543,12 @@ label{
 .nosave-event:hover{
     background-color: #00367C;
 }
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-auto-rows: auto;
+    grid-column-gap: 3%;
+    grid-row-gap: 3%;
+    margin-left: 6%;
+    }

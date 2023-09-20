@@ -68,12 +68,12 @@ export const CardsCampaigns = ({ event }) => {
 
   return (
     <>
-      <div className="container-xxl pt-5 pb-3">
+      
         <div className="container">
 
-          <div className="row g-4 justify-content-md-center align-items-center">
+          <div className="row ">
 
-            <div className="col-lg-3 col-md-4">
+            <div className="col">
               <div className="card" style={cardStyle}>
                 <img className="card-img-top img-fluid" src={event.event_img} style={imgStyle} alt="Card image cap"></img>
                 <div className="card-body">
@@ -107,7 +107,7 @@ export const CardsCampaigns = ({ event }) => {
 
           </div>
         </div>
-      </div>
+      
 
     </>
   )

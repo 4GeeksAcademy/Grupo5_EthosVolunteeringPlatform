@@ -63,7 +63,7 @@ const perfilOrg = () => {
                 </div>
 
                 <div className='row'>
-                    <div className='col d-flex'>
+                    <div className='col mt-3 d-flex'>
 
                 {
                     store.events.map((event, index) => {
