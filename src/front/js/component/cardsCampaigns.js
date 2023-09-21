@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Context } from '../store/appContext';
 
 const cardStyle = {
@@ -15,7 +15,11 @@ const imgStyle = {
 
 export const CardsCampaigns = ({ event }) => {
 
+  const location = useLocation()
+  console.log(location)
   const { store, actions } = useContext(Context);
+
+  const userRole = localStorage.getItem('userRole')
   const auth = localStorage.getItem('token')
 
   const createEvent = async (data) => {
@@ -68,46 +72,54 @@ export const CardsCampaigns = ({ event }) => {
 
   return (
     <>
-      <div className="container-xxl pt-5 pb-3">
-        <div className="container">
 
-          <div className="row g-4 justify-content-md-center align-items-center">
+      <div className="container">
 
-            <div className="col-lg-3 col-md-4">
-              <div className="card" style={cardStyle}>
-                <img className="card-img-top img-fluid" src={event.event_img} style={imgStyle} alt="Card image cap"></img>
-                <div className="card-body">
-                  <h5 className="card-title text-dark"> {event.name} </h5>
-                  <p className="card-text text-dark"> <small className='bold'> Organizado por: </small> <small>{event.org_name}</small>  </p>
-                  <p className="card-text text-dark"> <small> {event.description} </small>  </p>
-                  <p className="card-text text-dark "> <small className='bold'>Hora: </small> <small>{event.event_time} - {event.event_end_time}</small> </p>
-                  <p className="card-text text-dark "> <small className='bold'> Fecha:</small> <small> Desde de {event.event_start_date_time} hasta {event.event_end_date_time} </small>  </p>
-                  <p className="card-text text-dark "> <small className='bold'> Localidad:</small> <small>{event.location}</small>  </p>
+        <div className="row ">
+
+          <div className="col">
+            <div className="card" style={cardStyle}>
+              <img className="card-img-top img-fluid" src={event.event_img} style={imgStyle} alt="Card image cap"></img>
+              <div className="card-body">
+                <h5 className="card-title text-dark"> {event.name} </h5>
+                <p className="card-text text-dark"> <small className='bold'> Organizado por: </small> <small>{event.org_name}</small>  </p>
+                <p className="card-text text-dark"> <small> {event.description} </small>  </p>
+                <p className="card-text text-dark "> <small className='bold'>Hora: </small> <small>{event.event_time} - {event.event_end_time}</small> </p>
+                <p className="card-text text-dark "> <small className='bold'> Fecha:</small> <small> Desde de {event.event_start_date_time} hasta {event.event_end_date_time} </small>  </p>
+                <p className="card-text text-dark "> <small className='bold'> Localidad:</small> <small>{event.location}</small>  </p>
 
 
-                  {
-                    auth ?
+                {
+                  auth ?
 
-                      <div>
-                        <div className="card-button btn btn-primary" onClick={() => { createEvent(event) }}>Agendar</div>
-                        <div className="card-button btn btn-primary mt-3" onClick={async () => await actions.fetchDeleteEvent(event.id)}>Eliminar</div>
-                        
-                      </div>
-                      :
-                      <div><p><small className="text-muted">Inicie sesión para agendar</small></p></div>
+                    <div>
+                      <div className="card-button-alt btn" onClick={() => { createEvent(event) }}>Agendar</div>
+
+                      {userRole == "Organization" && location.pathname == "/perfilOrg" ?
+                      <div className="card-button-delete btn " onClick={() => actions.fetchDeleteEvent(event.id)}>Eliminar</div>
+                      : ""
                       }
+                      
+
+                    </div>
+                    :
+                    <div><p><small className="text-muted">Inicie sesión para agendar</small></p></div>
+                }
+                      
 
 
-                </div>
+
+
               </div>
             </div>
-
-
-
-
           </div>
+
+
+
+
         </div>
       </div>
+
 
     </>
   )

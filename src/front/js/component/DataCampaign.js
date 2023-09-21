@@ -79,7 +79,7 @@
             title: "San José Fluye",
             category: "Ambiente",
             img: "https://images.unsplash.com/photo-1652971799012-41787043b35d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2039&q=80",
-            description: "Apúntate a las jornadas de limpieza de la cuenca del Río Torres en los barrios Otoya y Amón.",
+            description: "Apúntate a las jornadas de reforestación de la cuenca del Río Jesús María en la comunidad de Orotina.",
             organization : "MCJ",
             date: "Octubre 28",
             duration: "1 día"
